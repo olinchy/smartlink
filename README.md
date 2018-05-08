@@ -31,4 +31,5 @@ cat paas*.tar.gz* | tar -xzf - && cd pdm-cli && ./install.sh
 - deploy offline
 ```
 pdm-cli deploy --offline
+https://wiki.zte.com.cn/pages/viewpage.action?pageId=73242279
 ```
