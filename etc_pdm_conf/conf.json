@@ -3,12 +3,6 @@
     "scenariotype": "baremetal",
     "region_detail": ""
   },
-  "iaas": {
-    "url": "http://10.62.97.112:5000/v2.0/",
-    "tenantName": "paas1",
-    "username": "paas1",
-    "password": "paas1"
-  },
   "nodepools": [
     {
       "name": "ose_np",
@@ -159,7 +153,7 @@
       {
         "api_ip": "172.20.0.2",
         "man_ip": "172.21.0.2",
-        "admin_ip": "192.172.1.248"
+        "admin_ip": "10.86.111.85"
       }
     ],
     "api_vlan_id": "",
@@ -203,11 +197,11 @@
         {
           "name": "subnet_iapi",
           "enable_dhcp": false,
-          "gateway_ip": "192.172.1.1",
+          "gateway_ip": "10.86.111.1",
           "allocation_pools": [
             {
-              "start": "192.172.1.248",
-              "end": "192.172.1.248"
+              "start": "10.86.111.85",
+              "end": "10.86.111.85"
             }
           ],
           "ip_version": 4,
