@@ -1,0 +1,52 @@
+{
+    "nodes": [
+        {
+            "status": "ACTIVE", 
+            "name": "paas_controller",
+            "image": "controller", 
+            "userdata": {},
+            "netinfo": {
+                "net_api": {
+                    "ip": "192.175.1.27",
+                    "OS-EXT-IPS:type": "fixed"
+                }, 
+                "net_mgt": {
+                    "ip": "192.168.101.8",
+                    "OS-EXT-IPS:type": "fixed"
+                }
+            }, 
+            "hw_info": {
+                "disk": 60,
+                "cpu": 8,
+                "memory": 8
+            }, 
+            "id": "1"
+        }
+    ],
+    "vips": {
+        "net_api": [
+            {
+                "ip": "192.175.1.27",
+                "bindfloatip": "yes",
+                "port_name": "",
+                "isused": ""
+            }, 
+            {
+                "ip": "192.168.102.8",
+                "port_name": "", 
+                "isused": ""
+            }
+        ], 
+        "net_mgt": [
+            {
+                "ip": "192.168.101.8",
+                "port_name": "", 
+                "isused": ""
+            }
+        ]
+    },
+    "cidr": {
+    "net_api": "192.168.101.0/24",
+    "net_mgt": "192.168.102.0/24"
+    }
+}
