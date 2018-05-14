@@ -1,39 +1,8 @@
 #### networking plan
-![networking plan pic.1](networking.png)
-#### prepare to install PaaS
-##### make sure no lacking of libc !-_-, if do lack libc, don't panic, I have got it covered
-```
-## upload glibc-2.18.tar.gz
-tar zxf glibc-2.18.tar.gz 
-cd glibc-2.18/
-mkdir build
-cd build/
-../configure --prefix=/usr #注意了，别修改路径
-make -j2
-make install
-```
-##### now check whether ansible-playbook existed
-##### download PDM-CLI
-```
-curl -s -u zxpaas:zxpaas -o GetVerLink ftp://zxpaas@10.67.18.8/GetVerLink && chmod +x GetVerLink
-```
-- select target version of PaaS: [https://wiki.zte.com.cn/pages/viewpage.action?pageId=2850873](https://wiki.zte.com.cn/pages/viewpage.action?pageId=2850873)
-- execute install via PDM-CLI
-```
-## ./GetVerLink v1.17.30.03.p10
-./GetVerLink [version number]
-```
-- with showback
-```
-Please check the input version number : v1.17.30.03.p06
-Download pdm-cli command:
-curl -s -u zxpaas:zxpaas -o install-pdm-cli.sh ftp://10.67.18.8/v1.17/v1.17.30/v1.17.30.03.p06/install-pdm-cli.sh && bash install-pdm-cli.sh valid_srepo
-Upgrade pdm-cli command:
-curl -s -u zxpaas:zxpaas -o install-pdm-cli.sh ftp://10.67.18.8/v1.17/v1.17.30/v1.17.30.03.p06/install-pdm-cli.sh && sed -i 's/.\/install.sh/.\/upgrade.sh/g' install-pdm-cli.sh && bash install-pdm-cli.sh valid_srepo
-```
-- copy commands under <b>Download pdm-cli command:</b> and execute it to finish downloading PDM-CLI
-- create static route for admin connections (<b>version repository deployed locally</b>)
-![necessary connections](route.png) 
+![networking plan pic.1](../networking.png)
+##### preparation
+- create static route for admin connections (ps: i donot know why) (<b>version repository deployed locally</b>)
+![necessary connections](../route.png) 
 ```
 ## 10.67.18.8 is the address of PaaS repository
 ## admin connection for administrator
@@ -41,6 +10,19 @@ route add -net [ip section of terminal].0/24 gw [local gateway]
 ## admin connection to PaaS repository
 route add -net 10.67.18.0/24 gw [local gateway]
 ```
+##### install pdm-cli & CPaaS offline 
+
+- download and install pdm-cli [CPaaS package ver. 1.17.30.03.p10](https://artxa.zte.com.cn:443/artifactory/oes_tcp-release-generic/embpaas/both/v1.17.30.03.p10_1595805_1/version) 
+```
+## after download the packages
+## enter dowload folder
+## 33 files in total
+mkdir -p /paasdata/offline/paas
+mv paas* /paasdata/offline/paas
+cd /paasdata/offline/paas
+cat paas*.tar.gz* | tar -xzf - && cd pdm-cli && ./install.sh
+```
+
 ##### configure parameters for PaaS
 - questions: 
   - what are phynet1 and phynet2 for?
