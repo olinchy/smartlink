@@ -3,11 +3,17 @@
     "scenariotype": "baremetal",
     "region_detail": ""
   },
+  "iaas": {
+    "url": "http://10.62.97.112:5000/v2.0/",
+    "tenantName": "paas1",
+    "username": "paas1",
+    "password": "paas1"
+  },
   "nodepools": [
     {
-      "name": "ose_np",
+      "name": "default_np",
       "min_num": 0,
-      "max_num": 100,
+      "max_num": 10,
       "step": 1,
       "upper_limit": 100,
       "lower_limit": 0,
@@ -15,7 +21,7 @@
       "timezone": "",
       "vm_conf": {
         "flavor_name": "flavor_node",
-        "image_name": "rhel-ose",
+        "image_name": "node",
         "boot_mode": "",
         "snapshot_id": "",
         "volume_size": "",
@@ -52,7 +58,7 @@
     },
     {
       "name": "elk",
-      "num": 1,
+      "num": 0,
       "deploy_in_role": [
         "paas_controller"
       ]
@@ -70,18 +76,18 @@
           ],
           "node_num": 1,
           "node_source": {
-            "np_name": "",
+            "np_name": "default_np",
             "node_role": [
               "paas_controller"
             ]
           },
+          "node_config": {
+            "app_exclusive_count": 0,
+            "hugepage_2m_total_size": 0
+          },
           "labels": {
             "dpdk": "true",
             "privilege": "true"
-          },
-          "node_config": {
-            "app_exclusive_count": "0",
-            "hugepage_2m_total_size": "0"
           }
         }
       ]
@@ -148,16 +154,16 @@
     "man_ip": ""
   },
   "bm_network": {
-    "default_physnet": "physnet0",
+    "default_physnet": "physnet1",
     "paas_controller_ip": [
       {
         "api_ip": "172.20.0.2",
         "man_ip": "172.21.0.2",
-        "admin_ip": "10.86.111.85"
+        "admin_ip": "88.88.1.2"
       }
     ],
-    "api_vlan_id": "",
-    "mgt_vlan_id": "",
+    "api_vlan_id": "1001",
+    "mgt_vlan_id": "1002",
     "net_api": {
       "subnet": [
         {
@@ -172,9 +178,22 @@
           ],
           "ip_version": 4,
           "cidr": "172.20.0.0/16"
+        },
+        {
+          "name": "subnet_api_v6",
+          "enable_dhcp": true,
+          "gateway_ip": "3ffe:ffff:0:f101::1",
+          "allocation_pools": [
+            {
+              "start": "3ffe:ffff:0:f101::100",
+              "end": "3ffe:ffff:0:f101::1ff"
+            }
+          ],
+          "ip_version": 6,
+          "cidr": "3ffe:ffff:0:f101::/112"
         }
       ],
-      "provider:physical_network": "physnet0"
+      "provider:physical_network": "physnet1"
     },
     "net_mgt": {
       "subnet": {
@@ -190,22 +209,35 @@
         "ip_version": 4,
         "cidr": "172.21.0.0/16"
       },
-      "provider:physical_network": "physnet0"
+      "provider:physical_network": "physnet1"
     },
     "net_iapi": {
       "subnet": [
         {
           "name": "subnet_iapi",
           "enable_dhcp": false,
-          "gateway_ip": "10.86.111.1",
+          "gateway_ip": "10.86.110.1",
           "allocation_pools": [
             {
-              "start": "10.86.111.85",
-              "end": "10.86.111.85"
+              "start": "10.86.110.251",
+              "end": "10.86.110.252"
             }
           ],
           "ip_version": 4,
-          "cidr": "192.172.1.0/24"
+          "cidr": "10.86.110.0/16"
+        },
+        {
+          "name": "subnet_iapi_v6",
+          "enable_dhcp": false,
+          "gateway_ip": "4ffe:ffff:0:f101::1",
+          "allocation_pools": [
+            {
+              "start": "4ffe:ffff:0:f101::10e",
+              "end": "4ffe:ffff:0:f101::10f"
+            }
+          ],
+          "ip_version": 6,
+          "cidr": "4ffe:ffff:0:f101::/112"
         }
       ],
       "provider:physical_network": "physnet0",
@@ -219,9 +251,9 @@
         "desc": "PaaS control network for tcfs",
         "gateway": "172.28.0.1",
         "cidr": "172.28.0.0/16",
-        "provider:network_type": "flat",
-        "provider:physical_network": "physnet0",
-        "provider:segmentation_id": ""
+        "provider:network_type": "vlan",
+        "provider:physical_network": "physnet1",
+        "provider:segmentation_id": "1003"
       }
     },
     "net_media": {
@@ -231,9 +263,9 @@
         "desc": "PaaS media network for tcfs",
         "gateway": "172.29.0.1",
         "cidr": "172.29.0.0/16",
-        "provider:network_type": "flat",
-        "provider:physical_network": "physnet0",
-        "provider:segmentation_id": ""
+        "provider:network_type": "vlan",
+        "provider:physical_network": "physnet1",
+        "provider:segmentation_id": "1004"
       }
     }
   }
