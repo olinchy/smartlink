@@ -1,38 +1,51 @@
 #### networking plan
 ![networking plan pic.1](../networking.png)
 ##### prepare ip address
-- create static route for admin connections (ps: i donot know why) (<b>version repository deployed locally</b>)
+- 3 IPs at least
+    1. temporary <b>PUBLIC</b> ip for version downloading 
+    2. 2 continuous ip use as floating ip
+
+- 2 network interface at least
+
+    ![networking structure](../networking_structure.png)
+    1. physnet0 : flat, public access
+    2. physnet1 : vlan, internal switch(open virtual switch will override it), for internal exchange
+    3. physnet...: vlan, just like physnet1
+
+- create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
 ![necessary connections](../route.png) 
-```
-## 10.67.18.8 is the address of PaaS repository
-## admin connection for administrator
-route add -net [ip section of terminal].0/24 gw [local gateway]
-## admin connection to PaaS repository
-route add -net 10.67.18.0/24 gw [local gateway]
-```
-- ip address deployment
-```
-## use public ip as access from client terminal
-## create admin net using 88.88.1.* in any interface (don't know why)
-## enp129s0f0 connect to where and why 88.88.1.*?
-ifconfig enp129s0f0 88.88.1.2/24 up
-
-```
-- 4 ip
-1. 1 public ip for controller
-2. 2 continuous ip use as floating ip
-3. temporary ip for version downloading 
-
+    ```
+    ## 10.67.18.8 is the address of PaaS repository
+    ## admin connection for administrator
+    route add -net [ip section of terminal].0/24 gw [local gateway]
+    ## admin connection to PaaS repository
+    route add -net 10.67.18.0/24 gw [local gateway]
+    ```
+- ip address deployment <b>DO NOT USE 'ifcfg-' FILE</b>
+    1. config temporary public ip
+        ```
+        ifconfig [PUBLIC CONNECTED INTERFACE] [TEMP IP] up
+        ```
+    2. config admin ip for network deployment
+    
+    ```
+    ## use public ip as access from client terminal
+    ## create admin net using 88.88.1.* in any interface (don't know why)
+    ## enp129s0f0 connect to where and why 88.88.1.*?
+    ifconfig enp129s0f0 88.88.1.2/24 up
+    ifconfig [PUBLIC CONNECTED INTERFACE] [TEMP IP] up
+    
+    ```
 - network realms
-1. net_api : physnet1 or physnet2
-2. net_mgt : physnet1 or physnet2
-3. net_iapi : physnet0  
-4. net_ctrl : physnet1 or physnet2
-5. net_media : physnet1 or physnet2 
-6. summary:
-    - count(interfaces with connection) = count(physnet)
-    - physnet0 with public ip
-    - physnet1 or physnet2 and so on with no private ip
+    1. net_api : physnet1 or physnet2
+    2. net_mgt : physnet1 or physnet2
+    3. net_iapi : physnet0  
+    4. net_ctrl : physnet1 or physnet2
+    5. net_media : physnet1 or physnet2 
+    6. summary:
+        - count(interfaces with connection) = count(physnet)
+        - physnet0 with public ip
+        - physnet1 or physnet2 and so on with no private ip
 
 ##### install pdm-cli & CPaaS offline 
 
@@ -75,5 +88,7 @@ cat paas*.tar.gz* | tar -xzf - && cd pdm-cli && ./install.sh
     pdm-cli deploy --offline
     ```
 #### verify deploy 
-
+```
+   http://[ip]/portal/#/login
+```
    
