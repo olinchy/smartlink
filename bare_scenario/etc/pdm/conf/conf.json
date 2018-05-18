@@ -76,7 +76,7 @@
           ],
           "node_num": 1,
           "node_source": {
-            "np_name": "default_np",
+            "np_name": "",
             "node_role": [
               "paas_controller"
             ]
@@ -86,8 +86,6 @@
             "hugepage_2m_total_size": 0
           },
           "labels": {
-            "dpdk": "true",
-            "privilege": "true"
           }
         }
       ]

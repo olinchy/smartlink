@@ -45,7 +45,7 @@
     1. keep cluster1 only
     2. add 'minion' to roles
     3. add 'paas_controller' to 'node_role'
-    4. labels.dpdk = true, labels.privilege = true
+    4. labels must be null
     5. add node_config
     6. app_exclusive_count 
         1. default is 0
