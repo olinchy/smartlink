@@ -2,3 +2,5 @@ https://wiki.zte.com.cn/pages/viewpage.action?pageId=255413892 ALARM/PM/aPaaS_SI
 https://wiki.zte.com.cn/pages/viewpage.action?pageId=255413888 OES_Manager_Provision_RES
 https://wiki.zte.com.cn/pages/viewpage.action?pageId=255413890 OES_Manager_Provision_TOPO
 
+# wiki for blueprint
+http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p11/user_guide/blueprint.html 
