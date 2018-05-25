@@ -5,7 +5,7 @@
     1. using already deployed physnet
         - plug fiber to inner connection interface(etc. physnet1/enp2s0f1)
         - create it on site  http://ipaddr/portaladmin/#/main/resourcemanager/sharednetwork/list
-        ![create network](./create_network_using_physical_net.png)
+        ![create network](create_network_using_physical_net.png)
     2. using extra physical network
         1. 改vnm的相关配置，文件在paascontroller上/etc/vnm/目录下
             1. ml2_conf.ini 
