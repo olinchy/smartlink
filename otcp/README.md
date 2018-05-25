@@ -62,4 +62,4 @@ chmod a+x oki-cli
 ./oki-cli component set --gbase=false
 ./oki-cli install -m steps -t otcp
 
-``` 
+```
