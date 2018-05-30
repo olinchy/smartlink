@@ -1,6 +1,6 @@
 #### networking plan
 ![networking plan pic.1](../networking.png)
-##### prepare ip address
+##### prepare ip address (<b>FINISH IT IN LOCAL TERMINAL</b>) 
 - 3 IPs at least
     1. temporary <b>PUBLIC</b> ip for version downloading 
     2. 2 continuous ip use as floating ip
@@ -12,15 +12,6 @@
     2. physnet1 : vlan, internal switch(open virtual switch will override it), for internal exchange
     3. physnet...: vlan, just like physnet1
 
-- create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
-![necessary connections](../route.png) 
-    ```
-    ## 10.67.18.8 is the address of PaaS repository
-    ## admin connection for administrator
-    route add -net [ip section of terminal].0/24 gw [local gateway]
-    ## admin connection to PaaS repository
-    route add -net 10.67.18.0/24 gw [local gateway]
-    ```
 - ip address deployment <b>DO NOT USE 'ifcfg-' FILE</b>
     1. config temporary public ip
         ```
@@ -35,6 +26,16 @@
     ifconfig enp129s0f0 88.88.1.2/24 up
     ifconfig [PUBLIC CONNECTED INTERFACE] [TEMP IP] up
     
+    ```
+
+- create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
+![necessary connections](../route.png) 
+    ```
+    ## 10.67.18.8 is the address of PaaS repository
+    ## admin connection for administrator
+    route add -net [ip section of terminal].0/24 gw [local gateway]
+    ## admin connection to PaaS repository
+    route add -net 10.67.18.0/24 gw [local gateway]
     ```
 - network realms
     1. net_api : physnet1 or physnet2
