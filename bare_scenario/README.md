@@ -53,10 +53,13 @@
 ## after download the packages
 ## enter dowload folder
 ## 33 files in total
+
+cd [upload directory]
 mkdir -p /paasdata/offline/paas
 mv paas* /paasdata/offline/paas
 cd /paasdata/offline/paas
 cat paas*.tar.gz* | tar -xzf - && cd pdm-cli && ./install.sh
+
 ```
 
 ##### configure parameters for PaaS
