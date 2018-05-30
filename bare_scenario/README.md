@@ -31,10 +31,11 @@
 - create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
 ![necessary connections](../route.png) 
     ```
-    ## 10.67.18.8 is the address of PaaS repository
-    ## admin connection for administrator
-    route add -net [ip section of terminal].0/24 gw [local gateway]
+    ## admin connection from terminal to controller
+    route add -net [xxx.xxx.xxx.xxx/xx] gw [local gateway]
+
     ## admin connection to PaaS repository
+    ## 10.67.18.8 is the address of PaaS repository
     route add -net 10.67.18.0/24 gw [local gateway]
     ```
 - network realms
