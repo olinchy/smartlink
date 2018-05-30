@@ -20,12 +20,9 @@
     2. config admin ip for network deployment
     
     ```
-    ## use public ip as access from client terminal
     ## create admin net using 88.88.1.* in any interface (don't know why)
     ## enp129s0f0 connect to where and why 88.88.1.*?
     ifconfig enp129s0f0 88.88.1.2/24 up
-    ifconfig [PUBLIC CONNECTED INTERFACE] [TEMP IP] up
-    
     ```
 
 - create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
