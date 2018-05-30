@@ -63,28 +63,12 @@ cat paas*.tar.gz* | tar -xzf - && cd pdm-cli && ./install.sh
 ```
 
 ##### configure parameters for PaaS
-- questions: 
-  - what are phynet1 and phynet2 for?
-  - How to deploy ZICT PaaS with only one network interface?
 - steps:
  1. understand 'net_api', 'net_mgt', 'net_admin' and 'net_store'(see also pic.1)
- 2. modify [/etc/pdm/conf/vnm_network.conf](./vnm_network.conf)
-     ```
-    # origin from UEP : network_vlan_ranges = physnet0:100:200,physnet1:100:200,physnet2:100:200
-    # still don't know what does vlan for and Can I ignore it? 
-    # according to /etc/network/Inet_deploy.conf.tmpl, 3 phynet assigned to same interface, so still follow uep for now 
-    network_vlan_ranges = physnet0:100:200,physnet1:100:200,physnet2:100:200
-     ``` 
- 3. modify [/etc/pdm/conf/conf.json](./conf.json) according to <b>chapter - 4.2</b> in [http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p10/installation_guide/paasInstall/n_merged_into_one_new.html#id10](http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p10/installation_guide/paasInstall/n_merged_into_one_new.html#id10)
-     ```
-     ## set network type to 'flat' means segmentation_id can be null
-     "provider:network_type": "flat",
-     "provider:physical_network": "physnet0",
-     "provider:segmentation_id": ""
-     ```
- 4. modify [/etc/network/Inet_deploy.conf.tmpl](./Inet_deploy.conf.tmpl) (using only one network interface)
- 5. modify [/etc/pdm/OCSA_VM.conf](./OCSA_VM.conf)
-
+ 2. modify [/etc/pdm/conf/vnm_network.conf](./etc/pdm/conf/vnm_network.conf) explains in [vnm_network.conf.md](./etc/pdm/conf/vnm_network.conf.md)
+ 3. modify [/etc/pdm/conf/conf.json](./etc/pdm/conf/conf.json) explains in [conf.json.md](./etc/pdm/conf/conf.json.md)  according to <b>chapter - 4.2</b> in [http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p10/installation_guide/paasInstall/n_merged_into_one_new.html#id10](http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p10/installation_guide/paasInstall/n_merged_into_one_new.html#id10)
+ 4. modify [/etc/network/Inet_deploy.conf.tmpl](./etc/network/Inet_deploy.conf.tmpl) explains in [Inet_deploy.conf.tmpl.md](./etc/network/Inet_deploy.conf.tmpl.md) (using only one network interface)
+ 5. modify [/etc/pdm/OCSA_VM.conf](./etc/pdm/OCSA_VM.conf)
  6. deploy offline
     ```
     pdm-cli deploy --offline
