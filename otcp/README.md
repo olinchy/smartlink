@@ -56,7 +56,6 @@ chmod a+x oki-cli
 ./oki-cli component set --gbase=false
 
 # these components depends on GBase, delete it also
-rm -rf ../../../otcp/OES_Analytics_PM_RealtimeQos/
 rm -rf ../../../otcp/OES_Analytics_STREAM/
 rm -rf ../../../otcp/OES_Analytics_PM_OfflineAnalys/
 
@@ -65,5 +64,15 @@ rm -rf ../../../otcp/OES_Analytics_PM_OfflineAnalys/
 - install step by step
 ```
 ./oki-cli component set --gbase=false
-./oki-cli install -m steps -t otcp
+./oki-cli install -m step -t otcp
+```
+
+- uninstall in one click  
+```
+./oki-cli uninstall -m all
+```
+
+- uninstall step by step
+```
+./oki-cli uninstall -m step
 ```
