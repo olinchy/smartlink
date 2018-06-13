@@ -1,4 +1,8 @@
 ### download package
+```
+# download UME from BN alongside OTCP
+curl -u<USERNAME>:<PASSWORD> -O "https://artsz.zte.com.cn/artifactory/umebn-release-generic/<TARGET_FILE_PATH>"
+```
 ### unzip 
 ### execute install command
 - deploy net_hmf(for legacy ems) and net_ne(for ne)
