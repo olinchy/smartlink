@@ -31,3 +31,10 @@
 - [administration](http://ip/portaladmin/) admin/111111
 - [project view](http://ip/portal/) project user or admin
 - [msb view](http://ip/msb/)
+
+###### develop framework
+- [https://spring.io/guides/gs/rest-service/](https://spring.io/guides/gs/rest-service/)
+- [https://www.dropwizard.io/1.3.2/docs/](https://www.dropwizard.io/1.3.2/docs/)
+
+###### references
+- [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
