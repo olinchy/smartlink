@@ -55,3 +55,5 @@ physical_pf_mappings=physnet3:ens1f0                        #对应paasnw_driver
   【如果本节点角色含有minion，则NW在部署的时候会自动复制/etc/network/paasnw_drivers.conf放到/etc/paasnw/paasnw_drivers.conf 】
 现在节点是minion角色的话，需要手动复制cp /etc/network/paasnw_drivers.conf  /etc/paasnw/
 然后重启nw的某些服务才能生效，这个具体事宜请咨询李钊。
+
+git clone ssh://10121897@gerritro.zte.com.cn:29418/umebn/em/su31 && git config --global url."ssh://10121897@gerrit.zte.com.cn".pushInsteadOf ssh://10121897@gerritro.zte.com.cn
