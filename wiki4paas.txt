@@ -23,6 +23,9 @@ network_vlan_ranges = physnet0:101:1000,physnet1:101:1000,physnet2:101:1000
 2)ovs_neutron_plugin.ini 修改bridge_mappings = physnet0:br-phy0,physnet1:br-phy1，增加需要的physnet
 bridge_mappings = physnet0:br-phy0,physnet1:br-phy1,physnet2:br-phy2
 
+# code path
+git clone ssh://10121897@gerritro.zte.com.cn:29418/umebn/em/su31 && git config --global url."ssh://10121897@gerrit.zte.com.cn".pushInsteadOf ssh://10121897@gerritro.zte.com.cn
+
 
 # k8s
 kubectl get pod -o wide --all-namespaces
