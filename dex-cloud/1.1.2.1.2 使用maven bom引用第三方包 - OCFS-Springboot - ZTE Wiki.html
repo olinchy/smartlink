@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                            <title>1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki</title>
+    
+        
+
+                        
+    
+                        
+    
+
+                
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
+
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="confluence-base-url" name="confluence-base-url" content="https://wiki.zte.com.cn">
+
+<meta id="atlassian-token" name="atlassian-token" content="e0e1f54c81d8a076983830eb8e33fcd0b13eafd9">
+
+<meta id="confluence-cluster-node-id" name="confluence-cluster-node-id" value="39a44145">
+<meta id="confluence-cluster-node-name" name="confluence-cluster-node-name" value="node197">
+
+<meta id="confluence-space-key" name="confluence-space-key" content="dexspring">
+<script type="text/javascript">
+        var contextPath = '';
+</script>
+
+    
+
+    <meta name="confluence-request-time" content="1530261348043">
+        
+    
+        
+            <meta name="ajs-is-space-admin" content="false"> <meta name="ajs-has-space-config" content="false">
+            <meta name="ajs-show-space-welcome-dialog" content="true">
+            <style>.ia-fixed-sidebar, .ia-splitter-left {width: 285px;}.theme-default .ia-splitter #main {margin-left: 285px;}.ia-fixed-sidebar {visibility: hidden;}</style>
+            <meta name="ajs-use-keyboard-shortcuts" content="true">
+            <meta name="ajs-discovered-plugin-features" content="{&quot;com.atlassian.confluence.plugins.confluence-jira-metadata&quot;:[&quot;linked-issues-dropdown&quot;]}">
+            <meta name="stp-license-product-name" content="Confluence"> <meta name="stp-license-days-to-expiry" content="244"> <meta name="stp-license-is-admin" content="false"> <meta name="stp-license-should-keep-banner-hidden" content="true">
+            <meta name="ajs-keyboardshortcut-hash" content="819c939e2e35e063d9c365c25978a0d7">
+            <meta id="team-calendars-has-jira-link" content="true">
+            <meta name="ajs-team-calendars-display-time-format" content="displayTimeFormat12">
+            <meta id="team-calendars-display-week-number" content="false">
+            <meta id="team-calendars-show-timezone-setup" content="true">
+            <meta id="team-calendars-user-timezone" content="Asia/Shanghai">
+            <script type="text/x-template" id="team-calendars-messages" title="team-calendars-messages"><fieldset class="i18n hidden"><input type="hidden" name="calendar3.month.long.july" value="七月"><input type="hidden" name="calendar3.day.short.wednesday" value="星期三"><input type="hidden" name="calendar3.day.short.thursday" value="星期四"><input type="hidden" name="calendar3.month.short.march" value="三月"><input type="hidden" name="calendar3.month.long.april" value="四月"><input type="hidden" name="calendar3.month.long.october" value="十月"><input type="hidden" name="calendar3.month.long.august" value="八月"><input type="hidden" name="calendar3.month.short.july" value="七月"><input type="hidden" name="calendar3.month.short.may" value="五月"><input type="hidden" name="calendar3.month.short.november" value="十一月"><input type="hidden" name="calendar3.day.long.friday" value="星期五"><input type="hidden" name="calendar3.day.long.sunday" value="星期日"><input type="hidden" name="calendar3.day.long.saturday" value="星期六"><input type="hidden" name="calendar3.month.short.april" value="四月"><input type="hidden" name="calendar3.day.long.wednesday" value="星期三"><input type="hidden" name="calendar3.month.long.december" value="十二月"><input type="hidden" name="calendar3.month.short.october" value="十月"><input type="hidden" name="calendar3.day.long.monday" value="星期一"><input type="hidden" name="calendar3.month.short.june" value="六月"><input type="hidden" name="calendar3.day.short.monday" value="星期一"><input type="hidden" name="calendar3.day.short.tuesday" value="星期二"><input type="hidden" name="calendar3.day.short.saturday" value="星期六"><input type="hidden" name="calendar3.month.long.march" value="三月"><input type="hidden" name="calendar3.month.long.june" value="六月"><input type="hidden" name="calendar3.month.short.february" value="二月"><input type="hidden" name="calendar3.month.short.august" value="八月"><input type="hidden" name="calendar3.month.short.december" value="十二月"><input type="hidden" name="calendar3.day.short.sunday" value="星期日"><input type="hidden" name="calendar3.month.long.february" value="二月"><input type="hidden" name="calendar3.day.long.tuesday" value="星期二"><input type="hidden" name="calendar3.month.long.may" value="五月"><input type="hidden" name="calendar3.month.long.september" value="九月"><input type="hidden" name="calendar3.month.long.november" value="十一月"><input type="hidden" name="calendar3.month.short.january" value="一月"><input type="hidden" name="calendar3.month.short.september" value="九月"><input type="hidden" name="calendar3.day.long.thursday" value="星期四"><input type="hidden" name="calendar3.month.long.january" value="一月"><input type="hidden" name="calendar3.day.short.friday" value="星期五"></fieldset></script>
+            <meta name="ajs-is-confluence-admin" content="false">
+            <meta name="ajs-connection-timeout" content="10000">
+            
+    
+    
+            <meta name="ajs-page-id" content="207815222">
+            <meta name="ajs-latest-page-id" content="207815222">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-page-title" content="1.1.2.1.2 使用maven bom引用第三方包">
+            <meta name="ajs-latest-published-page-title" content="1.1.2.1.2 使用maven bom引用第三方包">
+            <meta name="ajs-parent-page-title" content="1.1.2.1 开发环境快速搭建">
+            <meta name="ajs-parent-page-id" content="207815176">
+            <meta name="ajs-space-key" content="dexspring">
+            <meta name="ajs-space-name" content="OCFS-Springboot">
+            <meta name="ajs-jira-metadata-count" content="0">
+            <meta name="ajs-from-page-title" content="">
+            <meta name="ajs-can-remove-page" content="false">
+            <meta name="ajs-can-remove-page-hierarchy" content="false">
+            <meta name="ajs-browse-page-tree-mode" content="view">
+            <meta name="ajs-shared-drafts" content="false">
+            <meta name="ajs-user-display-name" content="刘伟10121897">
+            <meta name="ajs-context-path" content="">
+            <meta name="ajs-base-url" content="https://wiki.zte.com.cn">
+            <meta name="ajs-version-number" content="6.2.1">
+            <meta name="ajs-build-number" content="7111">
+            <meta name="ajs-remote-user" content="10121897">
+            <meta name="ajs-remote-user-key" content="ff80818154a2866f0154a8fda65b5e0c">
+            <meta name="ajs-remote-user-has-licensed-access" content="true">
+            <meta name="ajs-current-user-fullname" content="刘伟10121897">
+            <meta name="ajs-current-user-avatar-url" content="/download/attachments/32291385/user-avatar">
+            <meta name="ajs-current-user-avatar-uri-reference" content="/download/attachments/32291385/user-avatar">
+            <meta name="ajs-static-resource-url-prefix" content="/s/zh_CN/7111/_">
+            <meta name="ajs-global-settings-attachment-max-size" content="40971520">
+            <meta name="ajs-user-locale" content="zh_CN">
+            <meta name="ajs-enabled-dark-features" content="site-wide.synchrony.disable,relevant-sidebar,site-wide.shared-drafts.disable,confluence.view.edit.transition,confluence-inline-comments-resolved,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareContentEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.mentions.api.ConfluenceMentionEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.security.ForgotPasswordEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.tasklist.event.SendTaskEmailEvent,file-annotations,confluence.efi.onboarding.rich.space.content,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.comment.CommentCreateEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.requestaccess.events.AccessGrantedEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.PageMoveEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.follow.FollowEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.inlinecomments.events.InlineCommentReplyEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostCreateEvent,confluence.table.resizable,notification.batch,confluence-inline-comments-rich-editor,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostUpdateEvent,site-wide.synchrony.opt-in,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentMentionUpdateEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.hipchat.api.events.HipChatUserMapped,quick-reload-inline-comments-flags,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostMovedEvent,clc.quick.create,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.PageUpdateEvent,cql.search.screen,nps.survey.inline.dialog,confluence.efi.onboarding.new.templates,pdf-preview,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageMovedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareCustomEvent,previews.sharing,previews.versions,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentUpdateEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.attachment.AttachmentBatchUploadCompletedEvent,collaborative-audit-log,notification.plugin.api.enabled.com.atlassian.confluence.efi.emails.events.OnboardingLessUsersEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentRemoveEvent,confluence.wrap.macro,previews.conversion-service,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.comment.CommentUpdateEvent,editor.ajax.save,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageEditedEvent,previews.trigger-all-file-types,notification.plugin.api.enabled.com.atlassian.confluence.plugins.inlinecomments.events.InlineCommentResolveEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.like.LikeCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.inlinecomments.events.InlineCommentCreateEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.requestaccess.events.AccessRequestedEvent,previews.sharing.pushstate,file-annotations.likes,collaborative.editing.frictionless.upgrade,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.PageCreateEvent,notification.plugin.api.enabled.com.atlassian.confluence.efi.emails.events.OnboardingNoSpaceCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareDraftEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareAttachmentEvent,confluence-inline-comments,confluence-inline-comments-dangling-comment">
+            <meta name="ajs-atl-token" content="e0e1f54c81d8a076983830eb8e33fcd0b13eafd9">
+            <meta name="ajs-confluence-flavour" content="VANILLA">
+            <meta name="ajs-user-date-pattern" content="yyyy-M-d">
+            <meta name="ajs-date.format" content="MMM dd, yyyy">
+    
+    <link rel="shortcut icon" href="https://wiki.zte.com.cn/s/zh_CN/7111/72/_/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://wiki.zte.com.cn/s/zh_CN/7111/72/_/favicon.ico">
+
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.zte.com.cn/opensearch/osd.action" title="ZTE Wiki">
+    
+                    
+            <meta name="ajs-create-issue-metadata-show-discovery" content="true">
+            
+
+    <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-hipchat-integration-plugin:discovery-javascript-data.link-active"]="{\u0022linkActive\u0022:false,\u0022conditionsMet\u0022:false,\u0022admin\u0022:false}";
+WRM._unparsedData["com.atlassian.applinks.applinks-plugin:applinks-common-exported.applinks-help-paths"]="{\u0022entries\u0022:{\u0022applinks.docs.root\u0022:\u0022https://confluence.atlassian.com/display/APPLINKS-052/\u0022,\u0022applinks.docs.diagnostics.troubleshoot.sslunmatched\u0022:\u0022SSL+and+application+link+troubleshooting+guide\u0022,\u0022applinks.docs.diagnostics.troubleshoot.oauthsignatureinvalid\u0022:\u0022OAuth+troubleshooting+guide\u0022,\u0022applinks.docs.diagnostics.troubleshoot.oauthtimestamprefused\u0022:\u0022OAuth+troubleshooting+guide\u0022,\u0022applinks.docs.delete.entity.link\u0022:\u0022Create+links+between+projects\u0022,\u0022applinks.docs.adding.application.link\u0022:\u0022Link+Atlassian+applications+to+work+together\u0022,\u0022applinks.docs.administration.guide\u0022:\u0022Application+Links+Documentation\u0022,\u0022applinks.docs.oauth.security\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.troubleshoot.application.links\u0022:\u0022Troubleshoot+application+links\u0022,\u0022applinks.docs.diagnostics.troubleshoot.unknownerror\u0022:\u0022Network+and+connectivity+troubleshooting+guide\u0022,\u0022applinks.docs.configuring.auth.trusted.apps\u0022:\u0022Configuring+Trusted+Applications+authentication+for+an+application+link\u0022,\u0022applinks.docs.diagnostics.troubleshoot.authlevelunsupported\u0022:\u0022OAuth+troubleshooting+guide\u0022,\u0022applinks.docs.diagnostics.troubleshoot.ssluntrusted\u0022:\u0022SSL+and+application+link+troubleshooting+guide\u0022,\u0022applinks.docs.diagnostics.troubleshoot.unknownhost\u0022:\u0022Network+and+connectivity+troubleshooting+guide\u0022,\u0022applinks.docs.delete.application.link\u0022:\u0022Link+Atlassian+applications+to+work+together\u0022,\u0022applinks.docs.link.applications\u0022:\u0022Link+Atlassian+applications+to+work+together\u0022,\u0022applinks.docs.diagnostics.troubleshoot.oauthproblem\u0022:\u0022OAuth+troubleshooting+guide\u0022,\u0022applinks.docs.diagnostics.troubleshoot.migration\u0022:\u0022Update+application+links+to+use+OAuth\u0022,\u0022applinks.docs.relocate.application.link\u0022:\u0022Link+Atlassian+applications+to+work+together\u0022,\u0022applinks.docs.administering.entity.links\u0022:\u0022Create+links+between+projects\u0022,\u0022applinks.docs.upgrade.application.link\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.diagnostics.troubleshoot.connectionrefused\u0022:\u0022Network+and+connectivity+troubleshooting+guide\u0022,\u0022applinks.docs.configuring.auth.oauth\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.insufficient.remote.permission\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.configuring.application.link.auth\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.diagnostics\u0022:\u0022Application+links+diagnostics\u0022,\u0022applinks.docs.configured.authentication.types\u0022:\u0022OAuth+security+for+application+links\u0022,\u0022applinks.docs.adding.entity.link\u0022:\u0022Create+links+between+projects\u0022,\u0022applinks.docs.diagnostics.troubleshoot.unexpectedresponse\u0022:\u0022Network+and+connectivity+troubleshooting+guide\u0022,\u0022applinks.docs.configuring.auth.basic\u0022:\u0022Configuring+Basic+HTTP+Authentication+for+an+Application+Link\u0022,\u0022applinks.docs.diagnostics.troubleshoot.authlevelmismatch\u0022:\u0022OAuth+troubleshooting+guide\u0022}}";
+WRM._unparsedData["com.atlassian.applinks.applinks-plugin:applinks-common-exported.applinks-types"]="{\u0022crowd\u0022:\u0022\u4eba\u7fa4\u0022,\u0022confluence\u0022:\u0022\u6c47\u5408\u3002\u0022,\u0022fecru\u0022:\u0022\u9c7c\u773c/\u7194\u7089\u3002\u0022,\u0022stash\u0022:\u0022Bitbucket\u670d\u52a1\u5668\u0022,\u0022jira\u0022:\u0022JIRA\u0022,\u0022refapp\u0022:\u0022\u76f8\u5173\u5e94\u7528\u7a0b\u5e8f\u0022,\u0022bamboo\u0022:\u0022\u7af9\u0022,\u0022generic\u0022:\u0022\u901a\u7528\u5e94\u7528\u7a0b\u5e8f\u0022}";
+WRM._unparsedData["com.atlassian.applinks.applinks-plugin:applinks-common-exported.entity-types"]="{\u0022singular\u0022:{\u0022refapp.charlie\u0022:\u0022Charlie\u0022,\u0022fecru.project\u0022:\u0022Crucible\u9879\u76ee\u0022,\u0022fecru.repository\u0022:\u0022FishEye\u7248\u672c\u5e93\u0022,\u0022stash.project\u0022:\u0022Bitbucket\u670d\u52a1\u5668\u9879\u76ee\u0022,\u0022generic.entity\u0022:\u0022\u901a\u7528\u9879\u76ee\u0022,\u0022confluence.space\u0022:\u0022Confluence\u7a7a\u95f4\u0022,\u0022bamboo.project\u0022:\u0022Bamboo\u9879\u76ee\u0022,\u0022jira.project\u0022:\u0022JIRA\u9879\u76ee\u0022},\u0022plural\u0022:{\u0022refapp.charlie\u0022:\u0022\u67e5\u7406\u65af\u0022,\u0022fecru.project\u0022:\u0022Crucible\u9879\u76ee\u0022,\u0022fecru.repository\u0022:\u0022FishEye\u50a8\u5b58\u5e93\u0022,\u0022stash.project\u0022:\u0022Bitbucket\u670d\u52a1\u5668\u9879\u76ee\u0022,\u0022generic.entity\u0022:\u0022\u901a\u7528\u9879\u76ee\u0022,\u0022confluence.space\u0022:\u0022Confluence\u7a7a\u95f4\u0022,\u0022bamboo.project\u0022:\u0022Bamboo\u9879\u76ee\u0022,\u0022jira.project\u0022:\u0022\u591a\u4e2aJIRA\u9879\u76ee\u0022}}";
+WRM._unparsedData["com.atlassian.applinks.applinks-plugin:applinks-common-exported.authentication-types"]="{\u0022com.atlassian.applinks.api.auth.types.BasicAuthenticationProvider\u0022:\u0022\u57fa\u672c\u8bbf\u95ee\u0022,\u0022com.atlassian.applinks.api.auth.types.TrustedAppsAuthenticationProvider\u0022:\u0022\u4fe1\u4efb\u7684\u5e94\u7528\u65e0\u6548\u0022,\u0022com.atlassian.applinks.api.auth.types.CorsAuthenticationProvider\u0022:\u0022\u6b4c\u73e5\u0022,\u0022com.atlassian.applinks.api.auth.types.OAuthAuthenticationProvider\u0022:\u0022Oauth\u0022,\u0022com.atlassian.applinks.api.auth.types.TwoLeggedOAuthAuthenticationProvider\u0022:\u0022Oauth\u0022,\u0022com.atlassian.applinks.api.auth.types.TwoLeggedOAuthWithImpersonationAuthenticationProvider\u0022:\u0022Oauth\u0022}";
+WRM._unparsedData["com.atlassian.confluence.plugins.synchrony-interop:synchrony-status-banner-loader.synchrony-status"]="false";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-feature-discovery-plugin:confluence-feature-discovery-plugin-resources.test-mode"]="false";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-license-banner:confluence-license-banner-resources.license-details"]="{\u0022daysBeforeLicenseExpiry\u0022:0,\u0022daysBeforeMaintenanceExpiry\u0022:0,\u0022showLicenseExpiryBanner\u0022:false,\u0022showMaintenanceExpiryBanner\u0022:false,\u0022renewUrl\u0022:null,\u0022salesEmail\u0022:null}";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/6a6901c64e28eedb0b761e9631dab938-CDN/zh_CN/7111/9d3e3bdc3468fb65368e7b4102f46628/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/6a6901c64e28eedb0b761e9631dab938-CDN/zh_CN/7111/9d3e3bdc3468fb65368e7b4102f46628/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch(1).css" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,page,atl.general,atl.comments,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch(2).css" media="print" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,page,atl.general,atl.comments,-_super" data-wrm-batch-type="context">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/bd550c9eedaaeda367f1a9d364723a26-T/zh_CN/7111/bb4ad65e6427da22fd3f7abe16b27905/_/download/contextbatch/css/atl.confluence.plugins.pagetree-desktop,main,viewcontent,page,atl.general,atl.comments,-_super/batch.css?anonymous-access-enabled=true&amp;build-number=7111&amp;conditionalComment=lt+IE+9&amp;confluence.table.resizable=true&amp;confluence.view.edit.transition=true&amp;highlightactions=true&amp;hostenabled=true&amp;is-server-instance=true&amp;nps-acknowledged=true" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,page,atl.general,atl.comments,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/custom.css" media="all">
+<script type="text/javascript" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js.下载" data-wrm-key="_super" data-wrm-batch-type="context"></script><style type="text/css"></style><style type="text/css"></style>
+<script type="text/javascript" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(1).下载" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,page,atl.general,atl.comments,-_super" data-wrm-batch-type="context"></script><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style>
+
+    
+        
+            <meta name="stp-license-product-name" content="Confluence"> <meta name="stp-license-days-to-expiry" content="244"> <meta name="stp-license-is-admin" content="false"> <meta name="stp-license-should-keep-banner-hidden" content="true">
+    
+
+        
+        <meta name="ajs-site-title" content="ZTE Wiki">
+            
+    
+
+    
+                <link rel="canonical" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222">
+        <link rel="shortlink" href="https://wiki.zte.com.cn/x/NgJjD">
+    <meta name="wikilink" content="[dexspring:1.1.2.1.2 使用maven bom引用第三方包]">
+    <meta name="page-version" content="7">
+    <meta name="ajs-page-version" content="7">
+
+<script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(2).下载"></script><link rel="stylesheet" type="text/css" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch(3).css"><script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(3).下载"></script><link rel="stylesheet" type="text/css" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/com.atlassian.confluence.ext.newcode-macro-plugin-sh-theme-confluence.css"><script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(4).下载"></script>
+            <meta name="ajs-use-watch" content="true">
+            <meta name="ajs-attachment-source-content-id" content="207815222">
+            <meta name="ajs-use-inline-tasks" content="true">
+            <meta name="ajs-heartbeat" content="true">
+            <meta name="ajs-action-locale" content="zh_CN">
+            <meta name="ajs-editor-plugin-resource-prefix" content="/s/zh_CN/7111/6.2.1/_">
+            <meta name="ajs-edit-mode" content="legacy">
+            <meta name="ajs-user-watching-own-content" content="true">
+            <meta name="ajs-new-page" content="false">
+            <meta name="ajs-editor-mode" content="richtext">
+            <meta name="ajs-auto-start" content="false">
+            <meta name="ajs-conf-revision" content="confluence$content$207815222.15">
+            <meta name="ajs-sync-revision-source" content="">
+            <meta name="ajs-draft-id" content="0">
+            <meta name="ajs-draft-share-id" content="">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-collaborative-editor-status" content="">
+            <meta name="ajs-existing-draft-id" content="0">
+            <meta name="ajs-content-id" content="207815222">
+            <meta name="ajs-form-name" content="inlinecommentform">
+            <meta name="ajs-can-attach-files" content="false">
+            <meta name="ajs-show-draft-message" content="false">
+            <meta name="ajs-shared-drafts" content="false">
+            <meta name="ajs-collaborative-content" content="false">
+            <meta name="ajs-min-editor-height" content="150">
+            <meta name="ajs-version-comment" content="">
+            <meta name="ajs-draft-type" content="page">
+                
+                <meta name="ajs-synchrony-token" content="">
+    <meta name="ajs-synchrony-base-url" content="">
+    <meta name="ajs-synchrony-app-id" content="">
+    <meta name="ajs-synchrony-expiry" content="">
+    <meta name="ajs-use-xhr-fallback" content="">
+
+            		    <meta name="ajs-max-thumb-width" content="300">
+		    <meta name="ajs-max-thumb-height" content="300">
+		    <meta name="ajs-can-send-email" content="false">
+		    <meta name="ajs-is-dev-mode" content="false">
+		    <meta name="ajs-draft-save-interval" content="30000">
+		    <meta name="ajs-show-hidden-user-macros" content="false">
+		    <meta name="ajs-is-admin" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autocomplete" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autoformat" content="false">
+		    <meta name="ajs-heartbeat-interval" content="30000">
+	
+    <link rel="stylesheet" type="text/css" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch(4).css"><script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(5).下载"></script><script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/com.atlassian.confluence.plugins.editor.confluence-source-editor-atlassian-source-editor-javascript.js.下载"></script><link rel="stylesheet" type="text/css" href="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch(5).css"><script type="text/javascript" charset="utf-8" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/batch.js(6).下载"></script><style type="text/css"></style></head>
+
+    
+<body id="com-atlassian-confluence" class="theme-default  aui-layout aui-theme-default" data-aui-version="6.0.6">
+
+        
+            <div id="stp-licenseStatus-banner"></div>
+    <ul id="assistive-skip-links" class="assistive">
+    <li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#title-heading">转至内容</a></li>
+    <li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#breadcrumbs">转至导航栏</a></li>
+    <li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#header-menu-bar">转至主菜单</a></li>
+    <li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#navigation">转至动作菜单</a></li>
+    <li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#quick-search-query">转至快速搜索</a></li>
+</ul>
+<div id="page">
+<div id="full-height-container">
+    <div id="header-precursor">
+        <div class="cell">
+            
+                            </div>
+    </div>
+            
+
+
+
+
+
+<header id="header" role="banner">
+    <nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true"><div class="aui-header-inner"><div class="aui-header-before"><a class=" aui-dropdown2-trigger app-switcher-trigger" aria-controls="app-switcher" aria-haspopup="true" role="button" tabindex="0" data-aui-trigger="" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#app-switcher" resolved="" aria-expanded="false"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">已链接应用程序</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default aui-layer" role="menu" aria-hidden="true" data-is-switcher="true" data-environment="{&quot;isUserAdmin&quot;:false,&quot;isAppSuggestionAvailable&quot;:false,&quot;isSiteAdminUser&quot;:false}" resolved=""><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link"><a href="https://jira.zte.com.cn/secure/MyJiraHome.jspa" class="aui-dropdown2-radio " title="https://jira.zte.com.cn/secure/MyJiraHome.jspa" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">ZTE JIRA</span></a></li><li class="nav-link nav-link-local"><a href="https://wiki.zte.com.cn/" class="aui-dropdown2-radio aui-dropdown2-checked checked" title="https://wiki.zte.com.cn/" resolved="" aria-checked="true" tabindex="0"><span class="nav-link-label">ZTE Wiki</span></a></li><li class="nav-link"><a href="http://gerrit.zte.com.cn/" class="aui-dropdown2-radio " title="http://gerrit.zte.com.cn/" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">Gerrit</span></a></li><li class="nav-link"><a href="http://alm.zte.com.cn/" class="aui-dropdown2-radio " title="http://alm.zte.com.cn" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">TFS</span></a></li><li class="nav-link"><a href="https://uac.zte.com.cn/portal/login.html?businessSystemCode=100000128630&amp;url=https%3A%2F%2Fwiki.zte.com.cn" class="aui-dropdown2-radio " title="https://uac.zte.com.cn/portal/login.html?businessSystemCode=100000128630&amp;url=https%3A%2F%2Fwiki.zte.com.cn" resolved="" aria-checked="false" tabindex="0"><span class="nav-link-label">wiki</span></a></li></ul></div></div></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-confluence"><a href="https://wiki.zte.com.cn/"><span class="aui-header-logo-device">ZTE Wiki</span></a></h1><ul class="aui-nav" resolved="" style="width: auto;">
+                            <li>
+            
+        
+        
+<a id="space-menu-link" class=" aui-dropdown2-trigger aui-nav-link" aria-controls="space-menu-link-content" aria-haspopup="true" role="button" title="空间" tabindex="0" data-aui-trigger="" resolved="" aria-expanded="false" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#space-menu-link-content">空间<span class="icon aui-icon-dropdown"></span></a><div id="space-menu-link-content" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer" role="menu" aria-hidden="true" resolved=""><div role="application"></div></div>
+        </li>
+                    <li>
+            
+    
+        
+<a id="people-directory-link" href="https://wiki.zte.com.cn/browsepeople.action" class=" aui-nav-imagelink" title="人员">
+            <span>人员</span>
+    </a>
+        </li>
+                    <li>
+            
+    
+        
+<a href="https://wiki.zte.com.cn/calendar/mycalendar.action" class=" aui-nav-imagelink" title="Calendars">
+            <span>Calendars</span>
+    </a>
+        </li>
+                                        <li class="aui-buttons">
+                                <a href="https://wiki.zte.com.cn/pages/createpage.action?spaceKey=dexspring&amp;fromPageId=207815222" id="create-page-button" class="aui-button aui-button-primary" title="从模板创建 (c)" tabindex="0"><span class="">创建 </span></a>
+            </li>
+    </ul>
+</div><div class="aui-header-secondary"><ul class="aui-nav" resolved="">
+                        <li>
+        <form id="quick-search" class="aui-quicksearch dont-default-focus header-quicksearch" action="https://wiki.zte.com.cn/dosearchsite.action" method="get"><fieldset><label for="quick-search-query" class="assistive">快速搜索</label><input id="quick-search-query" class="text app-search search quick-search-query" type="text" accesskey="q" autocomplete="off" name="queryString" title="快速搜索 (/或者g ，g)"><input id="quick-search-submit" class="quick-search-submit" type="submit" value="搜索"><div class="aui-dd-parent quick-nav-drop-down"></div></fieldset></form>
+    </li>
+        <li>
+            
+        <a id="help-menu-link" class="aui-nav-link aui-dropdown2-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" aria-haspopup="true" title="帮助" resolved="" aria-controls="help-menu-link-content" aria-expanded="false">
+        <span class="aui-icon aui-icon-small aui-iconfont-help">帮助</span>
+    </a>
+    <nav id="help-menu-link-content" class="aui-dropdown2 aui-style-default aui-layer" aria-hidden="true" resolved="">
+                    <div class="aui-dropdown2-section">
+                                <ul id="help-menu-link-leading" class="aui-list-truncate section-leading first">
+                                            <li>
+        
+            
+<a id="confluence-help-link" href="https://docs.atlassian.com/confluence/docs-62/" class="    " title="访问Confluence文档首页" target="_blank">
+        在线帮助
+</a>
+</li>
+                                            <li>
+    
+                
+<a id="keyboard-shortcuts-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="    " title="查看可用的键盘快捷方式 (?)">
+        快捷键
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="feed-builder-link" href="https://wiki.zte.com.cn/dashboard/configurerssfeed.action" class="    " title="创建个性化的 RSS源。">
+        RSS源建立器
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="whats-new-menu-link" href="https://confluence.atlassian.com/display/DOC/Confluence+6.2+Release+Notes?a=false" class="    " title="">
+        新功能
+</a>
+</li>
+                                            <li>
+    
+                
+<a id="gadget-directory-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="   user-item administration-link " title="浏览小工具">
+        可用的小工具
+</a>
+</li>
+                                            <li>
+    
+            
+<a id="confluence-about-link" href="https://wiki.zte.com.cn/aboutconfluencepage.action" class="    " title="获取关于Confluence的更多信息">
+        关于Confluence
+</a>
+</li>
+                                    </ul>
+            </div>
+            </nav>
+    
+    </li>
+        <li>
+                
+    
+    </li>
+        <li>
+                    
+        
+            
+<a id="notifications-anchor" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="mw-anchor read aui-nav-imagelink" title="打开通知 (g ，n)"><div class="badge-i aui-icon aui-icon-small aui-iconfont-workbox-empty"></div><span class="badge-w"><span class="badge">0</span></span></a>
+    
+    </li>
+        <li>
+                                            
+        <a id="user-menu-link" class="aui-dropdown2-trigger " aria-haspopup="true" data-username="10121897" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" title="刘伟10121897" resolved="" aria-controls="user-menu-link-content" aria-expanded="false">
+                    <div class="aui-avatar aui-avatar-small">
+                <div class="aui-avatar-inner">
+                                                                                                    <img src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/user-avatar">
+                </div>
+            </div>
+            <span class="aui-icon-dropdown"></span>
+        </a>
+        <nav id="user-menu-link-content" class="aui-dropdown2 aui-style-default aui-layer" aria-hidden="true" resolved="">
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-preferences" class="aui-list-truncate section-user-preferences first">
+                                                    <li>
+        
+            
+<a id="view-user-history-link" href="https://wiki.zte.com.cn/users/viewuserhistory.action" class="   user-item user-history popup-link " title=" (g ，r)">
+        最近浏览
+</a>
+</li>
+                                            </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-content" class="aui-list-truncate section-user-content">
+                                                    <li>
+    
+            
+<a id="view-user-profile-link" href="https://wiki.zte.com.cn/users/viewmyprofile.action" class="   user-item user-profile " title="">
+        用户信息
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="view-mytasks-link" href="https://wiki.zte.com.cn/plugins/inlinetasks/mytasks.action" class="   user-item list-user-status " title="">
+        任务
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-favourites-link" href="https://wiki.zte.com.cn/users/viewmyfavourites.action" class="   user-item " title="">
+        收藏夹 
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-watches-link" href="https://wiki.zte.com.cn/users/viewnotifications.action" class="   user-item " title="">
+        关注
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-drafts-link" href="https://wiki.zte.com.cn/users/viewmydrafts.action" class="   user-item " title="">
+        草稿
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-network-link" href="https://wiki.zte.com.cn/users/viewfollow.action?username=10121897" class="   follow-link " title="">
+        网络
+</a>
+</li>
+                                                    <li>
+    
+            
+<a id="user-settings-link" href="https://wiki.zte.com.cn/users/viewmysettings.action" class="   user-item " title="">
+        设置
+</a>
+</li>
+                                            </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="user-menu-link-user-operations" class="aui-list-truncate section-user-operations">
+                                                    <li>
+    
+            
+<a id="logout-link" href="https://wiki.zte.com.cn/logout.action" class="   user-item logout-link " title="">
+        注销
+</a>
+</li>
+                                            </ul>
+                </div>
+                    </nav>
+                    
+    </li>
+    </ul>
+</div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    <br class="clear">
+</header>
+    
+
+    
+    	<div class="ia-splitter">
+    		<div class="ia-splitter-left">
+    			<div class="ia-fixed-sidebar" style="width: 416px; visibility: visible; top: 41px; left: 0px;">
+                                            
+                            <div class="acs-side-bar ia-scrollable-section"><div class="acs-side-bar-space-info tipsy-enabled" data-configure-tooltip="编辑空间详情"><div class="avatar"><div class="space-logo" data-key="dexspring" data-name="OCFS-Springboot" data-entity-type="confluence.space"><div class="avatar-img-container"><div class="avatar-img-wrapper"><a href="https://wiki.zte.com.cn/display/dexspring/OCFS-Springboot" title="OCFS-Springboot"><img class="avatar-img" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/default-space-logo-256.png" alt="OCFS-Springboot"></a></div></div></div></div><div class="space-information-container"><div class="name"><a href="https://wiki.zte.com.cn/display/dexspring/OCFS-Springboot" title="OCFS-Springboot">OCFS-Springboot</a></div><div class="flyout-handle icon"></div><div class="favourite-space-icon"><button title="收藏空间" id="space-favourite-add" class="space-favourite aui-icon aui-icon-small aui-iconfont-unstar"></button><button class=" space-favourite-hidden  space-favourite aui-icon aui-icon-small aui-iconfont-star" id="space-favourite-remove" title="取消收藏"></button></div></div></div><div class="acs-side-bar-content"><div class="acs-nav-wrapper"><div class="acs-nav" data-has-create-permission="false" data-quick-links-state="null" data-page-tree-state="null" data-nav-type="page-tree"><div class="acs-nav-sections"><div class="main-links-section "><ul class="acs-nav-list"><li class="acs-nav-item wiki current-item" data-collector-key="spacebar-pages"><a class="acs-nav-item-link tipsy-enabled" href="https://wiki.zte.com.cn/collector/pages.action?key=dexspring" data-collapsed-tooltip="页面"><span class="icon"></span><span class="acs-nav-item-label">页面</span></a></li><li class="acs-nav-item blog" data-collector-key="spacebar-blogs"><a class="acs-nav-item-link tipsy-enabled" href="https://wiki.zte.com.cn/pages/viewrecentblogposts.action?key=dexspring" data-collapsed-tooltip="博文"><span class="icon"></span><span class="acs-nav-item-label">博文</span></a></li><li class="acs-nav-item space-calendar-sidebar-link" data-collector-key="space-calendar-sidebar-link"><a class="acs-nav-item-link tipsy-enabled" href="https://wiki.zte.com.cn/display/dexspring/calendars" data-collapsed-tooltip="Calendars"><span class="icon"></span><span class="acs-nav-item-label">Calendars</span></a></li></ul></div><div class="quick-links-wrapper"><h5 class="ia-quick-links-header-title">空间快捷链接</h5><div class="quick-links-section tipsy-enabled " data-collapsed-tooltip="空间快捷链接"><ul class="acs-nav-list"><li class="acs-nav-item pinned_page"><a class="acs-nav-item-link tipsy-enabled" href="https://wiki.zte.com.cn/display/OESGREFOMSA/OES-DexCloud" data-collapsed-tooltip="null"><span class="icon"></span><span class="acs-nav-item-label">OES-DexCloud</span></a></li><li class="acs-nav-item external_link"><a class="acs-nav-item-link tipsy-enabled" href="https://wiki.zte.com.cn/display/javaAF/OCFS-Dropwizard" data-collapsed-tooltip="null"><span class="icon"></span><span class="acs-nav-item-label">OCFS-Dropwizard</span></a></li></ul></div></div><div class="custom-sidebar"><div class="custom-sidebar-content"><div class="content"><p>       受EAR影响，WIKI暂停所有附件相关功能，敬请谅解。<br>
+       请仔细阅读殷一民董事长发出的通知信、由出口管制委员会(ECC)发布的指引，并确保在禁止令生效期间对系统的使用完全合规。如果您有任何疑问敬请联系您的区域合规总监。</p></div></div></div></div></div></div><div class="ia-secondary-container tipsy-enabled" data-tree-type="page-tree"><div class="ia-secondary-header"><h5 class="ia-secondary-header-title page-tree"><span class="icon"></span><span class="label">页面树结构</span></h5></div><div class="ia-secondary-content">
+
+
+<div class="plugin_pagetree conf-macro output-inline" data-hasbody="false" data-macro-name="pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children" id="children189825888-0">
+<ul class="plugin_pagetree_children_list" id="child_ul189825888-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus196353194-0" class="plugin_pagetree_childtoggle icon icon-section-opened" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan196353194-0">                        <a href="https://wiki.zte.com.cn/display/dexspring/1.+OCFS-Springboot">1. OCFS-Springboot</a>
+        </span>
+            </div>
+
+        <div id="children196353194-0" class="plugin_pagetree_children_container">
+                                                        <ul class="plugin_pagetree_children_list" id="child_ul196353194-0">
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus196353208-0" class="plugin_pagetree_childtoggle icon icon-section-opened" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan196353208-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353208">1.1 二次开发手册</a>
+        </span>
+            </div>
+
+        <div id="children196353208-0" class="plugin_pagetree_children_container">
+                                                        <ul class="plugin_pagetree_children_list" id="child_ul196353208-0">
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <span class="no-children icon"></span>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan196353223-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353223">1.1.1 开发环境配置</a>
+        </span>
+            </div>
+
+        <div id="children196353223-0" class="plugin_pagetree_children_container">
+            </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus196353244-0" class="plugin_pagetree_childtoggle icon icon-section-opened" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan196353244-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353244">1.1.2 整体介绍</a>
+        </span>
+            </div>
+
+        <div id="children196353244-0" class="plugin_pagetree_children_container">
+                                                        <ul class="plugin_pagetree_children_list" id="child_ul196353244-0">
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus207815176-0" class="plugin_pagetree_childtoggle icon icon-section-opened" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan207815176-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815176">1.1.2.1 开发环境快速搭建</a>
+        </span>
+            </div>
+
+        <div id="children207815176-0" class="plugin_pagetree_children_container">
+                                                        <ul class="plugin_pagetree_children_list" id="child_ul207815176-0">
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <span class="no-children icon"></span>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan206191533-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=206191533">1.1.2.1.1 使用maven ArchType 快速建立开发工程骨架</a>
+        </span>
+            </div>
+
+        <div id="children206191533-0" class="plugin_pagetree_children_container">
+            </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <span class="no-children icon"></span>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span plugin_pagetree_current" id="childrenspan207815222-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222">1.1.2.1.2 使用maven bom引用第三方包</a>
+        </span>
+            </div>
+
+        <div id="children207815222-0" class="plugin_pagetree_children_container">
+            </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <span class="no-children icon"></span>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan207815292-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815292">1.1.2.1.3 使用 dexADF-springboot的maven starter 引用DexCloud的jar包</a>
+        </span>
+            </div>
+
+        <div id="children207815292-0" class="plugin_pagetree_children_container">
+            </div>
+    </li>
+                                        </ul>
+                                        </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <span class="no-children icon"></span>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan196353282-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353282">1.1.2.2 基本开发方式介绍</a>
+        </span>
+            </div>
+
+        <div id="children196353282-0" class="plugin_pagetree_children_container">
+            </div>
+    </li>
+                                        </ul>
+                                        </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus209355472-0" class="plugin_pagetree_childtoggle icon icon-section-closed" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan209355472-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=209355472">1.1.3 各子模块开发介绍</a>
+        </span>
+            </div>
+
+        <div id="children209355472-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+                                        </ul>
+                                        </div>
+    </li>
+                                            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                                            <a id="plusminus207816949-0" class="plugin_pagetree_childtoggle icon icon-section-closed" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+          
+        
+                    <span class="plugin_pagetree_children_span" id="childrenspan207816949-0">                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207816949">9.1 . 参考资料</a>
+        </span>
+            </div>
+
+        <div id="children207816949-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+                                        </ul>
+                                        </div>
+    </li>
+    </ul>
+</div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input type="hidden" name="treeId" value="">
+        <input type="hidden" name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=true">
+        <input type="hidden" name="treePageId" value="207815222">
+
+        <input type="hidden" name="noRoot" value="false">
+        <input type="hidden" name="rootPageId" value="189825888">
+
+        <input type="hidden" name="rootPage" value="">
+        <input type="hidden" name="startDepth" value="0">
+        <input type="hidden" name="spaceKey" value="dexspring">
+
+        <input type="hidden" name="i18n-pagetree.loading" value="载入中...">
+        <input type="hidden" name="i18n-pagetree.error.permission" value="无法载入页面树。看来你没有权限查看根页面。">
+        <input type="hidden" name="i18n-pagetree.eeror.general" value="检索页面树时发生问题。有关详细信息，请检查服务器的日志文件。">
+        <input type="hidden" name="loginUrl" value="/login.action?os_destination=%2Fpages%2Fviewpage.action%3FpageId%3D207815222&amp;permissionViolation=true">
+        <input type="hidden" name="mobile" value="false">
+
+                <fieldset class="hidden">
+                                                <input type="hidden" name="ancestorId" value="207815176">
+                                    <input type="hidden" name="ancestorId" value="196353244">
+                                    <input type="hidden" name="ancestorId" value="196353208">
+                                    <input type="hidden" name="ancestorId" value="196353194">
+                                    <input type="hidden" name="ancestorId" value="189825888">
+                                    </fieldset>
+    </fieldset>
+</div>
+</div></div></div><div class="hidden"><a href="https://wiki.zte.com.cn/collector/pages.action?key=dexspring" id="space-pages-link" title=" (g ，s)"></a><script type="text/x-template" title="logo-config-content"><h2>空间详情</h2><div class="personal-space-logo-hint">您的个人头像被作为您的个人空间的logo使用。<a href="/users/profile/editmyprofilepicture.action" target="_blank">更改您的个人头像</a>.</div></script></div></div><div class="space-tools-section"><div id="space-tools-menu-additional-items" class="hidden"><div data-label="浏览页面" data-class="" data-href="/pages/reorderpages.action?key=dexspring">浏览页面</div></div><button id="space-tools-menu-trigger" class=" aui-dropdown2-trigger aui-button aui-button-subtle tipsy-enabled" aria-controls="space-tools-menu" aria-haspopup="true" role="button" data-aui-trigger="" resolved="" aria-expanded="false" data-collapsed-tooltip="空间管理"><span class="aui-icon aui-icon-small aui-iconfont-configure">设置</span><span class="aui-button-label">空间管理</span><span class="icon aui-icon-dropdown"></span></button><div id="space-tools-menu" class="aui-dropdown2 aui-style-default space-tools-dropdown aui-layer" role="menu" aria-hidden="true" data-aui-alignment="top left" resolved=""><div role="presentation" class="aui-dropdown2-section space-tools-navigation"><div role="group"><ul class="aui-list-truncate" role="presentation"><li role="presentation"><a role="menuitem" tabindex="-1" class="" href="https://wiki.zte.com.cn/spaces/viewspacesummary.action?key=dexspring">概览</a></li><li role="presentation"><a role="menuitem" tabindex="-1" class="" href="https://wiki.zte.com.cn/pages/reorderpages.action?key=dexspring">内容工具</a></li></ul></div></div><div role="presentation" class="aui-dropdown2-section space-operations"><div role="group"><ul class="aui-list-truncate" role="presentation"><li role="presentation"><a role="menuitem" tabindex="-1" class="" href="https://wiki.zte.com.cn/pages/reorderpages.action?key=dexspring">浏览页面</a></li></ul></div></div></div><a class="expand-collapse-trigger" data-tooltip="收起侧边栏 ( [ )"></a></div>
+                    
+                        			<div class="ia-splitter-handle tipsy-enabled" data-tooltip="收起侧边栏 ( [ )" original-title=" ([)"><div class="ia-splitter-handle-highlight"></div></div></div>
+    		</div>
+        <!-- \#header -->
+
+            
+    
+        <div id="main" class=" aui-page-panel" style="margin-left: 416px;">
+                        <div id="main-header">
+                        
+    <div id="navigation" class="content-navigation view">
+                    <ul class="ajs-menu-bar">
+                                                                    <li class="ajs-button normal">
+
+        
+            
+                                            
+    
+    
+    <a id="page-favourite" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" rel="nofollow" class="aui-button aui-button-subtle action-page-favourite" accesskey="f" title="收藏 (f)">
+                <span>
+                            <span class="aui-icon aui-icon-small aui-iconfont-unstar"></span>
+                        <u>f</u>收藏
+        </span>    </a>
+</li>
+                                            <li class="ajs-button normal">
+
+        
+            
+                                            
+    
+    
+    <a id="watch-content-button" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" rel="nofollow" class="aui-button aui-button-subtle watch-menu watch-state-initialised" title="关注(w)">
+                <span><span class="aui-icon aui-icon-small aui-iconfont-unwatch"></span> <u> </u> 观看</span>    </a>
+</li>
+                                            <li class="ajs-button normal">
+
+        
+            
+                                            
+    
+    
+    <a id="shareContentLink" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" rel="nofollow" class="aui-button aui-button-subtle share" title="与别人分享此页面 (s或者k)">
+                <span>
+                            <span class="aui-icon aui-icon-small aui-iconfont-share"></span>
+                        <u>S</u>分享
+        </span>    </a>
+</li>
+                    
+        <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action aui-dropdown2-trigger-arrowless aui-button aui-button-subtle ajs-menu-title aui-dropdown2-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" aria-haspopup="true" data-container="#navigation" resolved="" aria-controls="action-menu" aria-expanded="false">
+            <span>
+                                    <span class="aui-icon aui-icon-small aui-iconfont-more"></span>
+                                
+            </span>
+        </a>         <div id="action-menu" class="aui-dropdown2 aui-style-default aui-layer most-right-menu-item" aria-hidden="true" resolved="">
+                            <div class="aui-dropdown2-section">
+                    <ul id="action-menu-primary" class="section-primary first">
+                                                    <li>
+
+    
+        
+                                            
+    
+    
+    <a id="view-attachments-link" href="https://wiki.zte.com.cn/pages/viewpageattachments.action?pageId=207815222" rel="nofollow" class="action-view-attachments" accesskey="t" title="查看附件 (t)">
+                <span>
+                        <u>t</u>附件(0)
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-view-history-link" href="https://wiki.zte.com.cn/pages/viewpreviousversions.action?pageId=207815222" rel="nofollow" class="action-view-history" title="">
+                <span>
+                        页面历史
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-page-permissions-link" href="https://wiki.zte.com.cn/pages/viewinfo.action?pageId=207815222" rel="nofollow" class="action-page-permissions" title="编辑限制">
+                <span>
+                        限制
+        </span>    </a>
+</li>
+                                        </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="action-menu-secondary" class="section-secondary">
+                                                    <li>
+
+    
+        
+                                            
+    
+    
+    <a id="view-page-info-link" href="https://wiki.zte.com.cn/pages/viewinfo.action?pageId=207815222" rel="nofollow" class="action-view-info" title="">
+                <span>
+                        页面信息
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+            
+                                            
+    
+    
+    <a id="view-resolved-comments" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" rel="nofollow" class="" title="">
+                <span>已解决评论 (0)</span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="view-in-hierarchy-link" href="https://wiki.zte.com.cn/pages/reorderpages.action?key=dexspring&amp;openId=207815222#selectedPageInHierarchy" rel="nofollow" class="" title="">
+                <span>
+                        以层级方式查看
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-source-editor-view-storage-link" href="https://wiki.zte.com.cn/plugins/viewstorage/viewpagestorage.action?pageId=207815222" rel="nofollow" class="action-view-storage view-storage-link popup-link" title="">
+                <span>
+                        View Storage Format
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-view-source-link" href="https://wiki.zte.com.cn/plugins/viewsource/viewpagesrc.action?pageId=207815222" rel="nofollow" class="action-view-source popup-link" title="">
+                <span>
+                        查看页面源代码
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-export-pdf-link" href="https://wiki.zte.com.cn/spaces/flyingpdf/pdfpageexport.action?pageId=207815222" rel="nofollow" class="" title="">
+                <span>
+                        导出为PDF
+        </span>    </a>
+</li>
+                                                <li>
+
+    
+        
+                                            
+    
+    
+    <a id="com-k15t-confluence-scroll-office-launcher" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222" rel="nofollow" class="" title="">
+                <span>
+                        Export to Word
+        </span>    </a>
+</li>
+                                                <li style="display: none;">
+
+    
+        
+                                            
+    
+    
+    <a id="action-export-word-link" href="https://wiki.zte.com.cn/exportword?pageId=207815222" rel="nofollow" class="action-export-word" title="">
+                <span>
+                        导出为Word
+        </span>    </a>
+</li>
+                                        </ul>
+                </div>
+                            <div class="aui-dropdown2-section">
+                    <ul id="action-menu-modify" class="section-modify">
+                                                    <li>
+
+    
+        
+                                            
+    
+    
+    <a id="action-copy-page-link" href="https://wiki.zte.com.cn/pages/copypage.action?idOfPageToCopy=207815222&amp;spaceKey=dexspring" rel="nofollow" class="action-copy" title="">
+                <span>
+                        复制
+        </span>    </a>
+</li>
+                                        </ul>
+                </div>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+            
+            <div id="title-heading" class="pagetitle with-breadcrumbs">
+                
+                                    <div id="breadcrumb-section">
+                        
+    
+    
+    <ol id="breadcrumbs">
+                                        
+                        
+        <li class="first">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/collector/pages.action?key=dexspring">页面</a></span>
+                                                                                                            </li><li id="ellipsis" title="显示全部导航项"><span><strong>…</strong></span></li>
+                                                
+                        
+        <li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/display/dexspring/OCFS-Springboot">OCFS-Springboot</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/display/dexspring/1.+OCFS-Springboot">1. OCFS-Springboot</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353208">1.1 二次开发手册</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353244">1.1.2 整体介绍</a></span>
+                                                                                    
+                        
+        </li><li>
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815176">1.1.2.1 开发环境快速搭建</a></span>
+                                                                    </li></ol>
+
+
+                    </div>
+                
+                
+        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#page-banner-end" class="assistive">跳到banner的尾部</a>
+<div id="page-banner-start" class="assistive"></div>
+
+                    
+            <div id="page-metadata-banner" style="visibility: visible;"><ul class="banner"><li id="system-content-items" class="noprint"><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222" title="权限限制" id="content-metadata-page-restrictions" class="aui-icon aui-icon-small aui-iconfont-unlocked restricted"></a></li><li class="page-metadata-item noprint has-button" id="content-metadata-jira-wrapper"><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222" title="" id="content-metadata-jira" class="aui-button aui-button-subtle content-metadata-jira tipsy-disabled hidden"><span>JIRA链接</span></a></li></ul></div>
+            
+
+<a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#page-banner-start" class="assistive">回到标题开始</a>
+<div id="page-banner-end" class="assistive"></div>
+    
+
+                <h1 id="title-text" class="with-breadcrumbs">
+                                                <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222">1.1.2.1.2 使用maven bom引用第三方包</a>
+                                    </h1>
+            </div>
+        </div><!-- \#main-header -->
+        
+        
+
+        <div id="sidebar-container">
+                                                </div><!-- \#sidebar-container -->
+
+        
+    
+
+        
+
+
+
+
+            
+    
+
+                                
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+    
+
+    
+            
+        
+
+    
+    
+
+    
+            
+        
+
+
+
+    
+<div id="content" class="page view" style="background-image: url(&quot;http://10.30.12.67/BackgoundImage/10121/10121897_2052_S.jpg&quot;); background-repeat: repeat;">
+    
+
+
+<div id="action-messages">
+                        </div>
+
+
+
+            <script type="text/x-template" title="searchResultsGrid">
+    <table class="aui">
+        <thead>
+            <tr class="header">
+                <th class="search-result-title">页面标题</th>
+                <th class="search-result-space">空间</th>
+                <th class="search-result-date">更新于</th>
+            </tr>
+        </thead>
+    </table>
+</script>
+<script type="text/x-template" title="searchResultsGridCount">
+    <p class="search-result-count">{0}</p>
+</script>
+<script type="text/x-template" title="searchResultsGridRow">
+    <tr class="search-result">
+        <td class="search-result-title"><a href="{1}" class="content-type-{2}"><span>{0}</span></a></td>
+        <td class="search-result-space"><a class="space" href="/display/{4}/" title="{3}">{3}</a></td>
+        <td class="search-result-date"><span class="date" title="{6}">{5}</span></td>
+    </tr>
+</script>
+        
+    
+            
+
+        
+                            
+    
+
+                    
+
+        
+        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#page-metadata-end" class="assistive">转至元数据结尾</a>
+<div id="page-metadata-start" class="assistive"></div>
+
+    <div class="page-metadata">
+        <ul>
+            <li class="page-metadata-modification-info">
+                
+        
+    
+        
+    
+        
+            
+            由<span class="author">     <a href="https://wiki.zte.com.cn/display/~10071214" class="url fn confluence-userlink userlink-0" data-username="10071214" title="" data-user-hover-bound="true">胡锐10071214</a></span>创建, 最后修改于<a class="last-modified" title="查看变更" href="https://wiki.zte.com.cn/pages/diffpagesbyversion.action?pageId=207815222&amp;selectedPageVersions=6&amp;selectedPageVersions=7">六月 28, 2018</a>
+                </li>
+        </ul>
+    </div>
+
+
+<a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#page-metadata-start" class="assistive">转至元数据起始</a>
+<div id="page-metadata-end" class="assistive"></div>
+
+        
+                                            
+        <div id="main-content" class="wiki-content">
+                           
+        <p>maven bom为了解决maven依赖配置中的第三方包冲突而提供的一个机制，相关具体介绍可以参看&nbsp;<a class="unresolved" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">Bill Of Materials</a></p><p>springboot自身采用了此机制来解决第三方包的冲突，dexADF-springboot中也继续延续了这个机制，相关配置是配置在模块的顶层 POM中，格式如下，相关示例可以参考：<a href="http://gitlab.zte.com.cn/dexcloud/dexcloud-springboot-best-practice/tree/master" class="external-link" rel="nofollow">http://gitlab.zte.com.cn/dexcloud/dexcloud-springboot-best-practice/tree/master</a></p><div class="code panel pdl conf-macro output-block" style="border-width: 1px;" data-hasbody="true" data-macro-name="code"><div class="codeContent panelContent pdl">
+<div><div id="highlighter_471284" class="syntaxhighlighter sh-confluence nogutter  xml"><div class="toolbar"><span><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">parent</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;com.zte.oes.dexcloud&lt;/</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;dexcloud-springboot-parent&lt;/</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">version</code><code class="xml plain">&gt;dexcloud的版本号&lt;/</code><code class="xml keyword">version</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">parent</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml plain">。。。。</code></div><div class="line number7 index6 alt2"><code class="xml comments">&lt;!-- dexcloud bom的声明，由于dexcloud自身使用了部分springcloud的组件，所以也需要将springclou的pom加入--&gt;</code></div><div class="line number8 index7 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">dependencyManagement</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dependencies</code><code class="xml plain">&gt;</code></div><div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dependency</code><code class="xml plain">&gt;</code></div><div class="line number11 index10 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;com.zte.oes.dexcloud&lt;/</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;</code></div><div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;dexcloud-springboot-dependencies&lt;/</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;</code></div><div class="line number13 index12 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">version</code><code class="xml plain">&gt;${dexcloud-springboot.version}&lt;/</code><code class="xml keyword">version</code><code class="xml plain">&gt;</code></div><div class="line number14 index13 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">type</code><code class="xml plain">&gt;pom&lt;/</code><code class="xml keyword">type</code><code class="xml plain">&gt;</code></div><div class="line number15 index14 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">scope</code><code class="xml plain">&gt;import&lt;/</code><code class="xml keyword">scope</code><code class="xml plain">&gt;</code></div><div class="line number16 index15 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">dependency</code><code class="xml plain">&gt;</code></div><div class="line number17 index16 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dependency</code><code class="xml plain">&gt;</code></div><div class="line number18 index17 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;com.zte.oes.dexcloud&lt;/</code><code class="xml keyword">groupId</code><code class="xml plain">&gt;</code></div><div class="line number19 index18 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;sdk-all-dependency&lt;/</code><code class="xml keyword">artifactId</code><code class="xml plain">&gt;</code></div><div class="line number20 index19 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">version</code><code class="xml plain">&gt;${dexcloud-springboot.version}&lt;/</code><code class="xml keyword">version</code><code class="xml plain">&gt;</code></div><div class="line number21 index20 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">type</code><code class="xml plain">&gt;pom&lt;/</code><code class="xml keyword">type</code><code class="xml plain">&gt;</code></div><div class="line number22 index21 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">scope</code><code class="xml plain">&gt;import&lt;/</code><code class="xml keyword">scope</code><code class="xml plain">&gt;</code></div><div class="line number23 index22 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">dependency</code><code class="xml plain">&gt;</code></div><div class="line number24 index23 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">dependencies</code><code class="xml plain">&gt;</code></div><div class="line number25 index24 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">dependencyManagement</code><code class="xml plain">&gt;</code></div><div class="line number26 index25 alt1">&nbsp;</div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="xml comments">&lt;!-- 成都maven的私服地址，dexcloud的相关jar包会上传到这里，开发者可以根据需要调整--&gt;</code></div><div class="line number29 index28 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">repositories</code><code class="xml plain">&gt;</code></div><div class="line number30 index29 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">repository</code><code class="xml plain">&gt;</code></div><div class="line number31 index30 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">id</code><code class="xml plain">&gt;dexcloud-public&lt;/</code><code class="xml keyword">id</code><code class="xml plain">&gt;</code></div><div class="line number32 index31 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">url</code><code class="xml plain">&gt;<a href="http://10.74.156.77/repos/content/groups/public">http://10.74.156.77/repos/content/groups/public</a>&lt;/</code><code class="xml keyword">url</code><code class="xml plain">&gt;</code></div><div class="line number33 index32 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">snapshots</code><code class="xml plain">&gt;</code></div><div class="line number34 index33 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">enabled</code><code class="xml plain">&gt;false&lt;/</code><code class="xml keyword">enabled</code><code class="xml plain">&gt;</code></div><div class="line number35 index34 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">snapshots</code><code class="xml plain">&gt;</code></div><div class="line number36 index35 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">repository</code><code class="xml plain">&gt;</code></div><div class="line number37 index36 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">repository</code><code class="xml plain">&gt;</code></div><div class="line number38 index37 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">id</code><code class="xml plain">&gt;dexcloud-snapshots&lt;/</code><code class="xml keyword">id</code><code class="xml plain">&gt;</code></div><div class="line number39 index38 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">url</code><code class="xml plain">&gt;<a href="http://10.74.156.77/repos/content/groups/public-snapshots">http://10.74.156.77/repos/content/groups/public-snapshots</a>&lt;/</code><code class="xml keyword">url</code><code class="xml plain">&gt;</code></div><div class="line number40 index39 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">snapshots</code><code class="xml plain">&gt;</code></div><div class="line number41 index40 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">enabled</code><code class="xml plain">&gt;true&lt;/</code><code class="xml keyword">enabled</code><code class="xml plain">&gt;</code></div><div class="line number42 index41 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">snapshots</code><code class="xml plain">&gt;</code></div><div class="line number43 index42 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">repository</code><code class="xml plain">&gt;</code></div><div class="line number44 index43 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">repositories</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div></div><p><br></p><p><br></p><p><br></p>
+
+       <script type="text/javascript">
+            var curruser = AJS.$("meta[name='ajs-remote-user']"); 
+            var path = "http://10.30.12.67/BackgoundImage/" + curruser.attr("content").substring(0,5) + "/" + curruser.attr("content") + "_2052_S.jpg";
+            AJS.$("#content").css("background-image", "url('" + path + "')").css("background-repeat", "repeat");
+        </script>
+
+
+                
+        
+    
+        </div>
+
+        <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222"
+    dc:identifier="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222"
+    dc:title="1.1.2.1.2 使用maven bom引用第三方包"
+    trackback:ping="https://wiki.zte.com.cn/rpc/trackback/207815222"/>
+</rdf:RDF>
+-->
+
+                        
+    
+
+
+
+<div id="likes-and-labels-container"><div id="likes-section" class="no-print"><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222" class="like-button"><span class="aui-icon aui-icon-small aui-iconfont-like"></span><span class="like-button-text">赞</span></a><span class="like-summary">成为第一个赞同者</span></div><div id="labels-section" class="pageSection group">
+    <div class="labels-section-content content-column" entityid="207815222" entitytype="page">
+	<div class="labels-content">
+		
+    <ul class="label-list label-list-right  has-pen">
+            <li class="no-labels-message">
+            无标签
+        </li>
+                <li class="labels-edit-container">
+            <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="show-labels-editor" title="编辑标签 (l)">
+                <span class="aui-icon aui-icon-small aui-iconfont-edit-small">编辑标签</span>
+            </a>
+        </li>
+        </ul>
+
+    </div>
+</div>
+</div></div>
+        
+		
+            
+
+
+
+
+            
+        
+
+
+
+
+
+
+
+
+                        
+    
+<div id="comments-section" class="pageSection group">
+        
+    
+
+
+    <div class="bottom-comment-panels comment-panels">
+                
+                    
+    
+
+
+        
+        
+    
+    <div class="quick-comment-container comment add"><p class="comment-user-logo"><a class="userLogoLink userlink-1" data-username="10121897" href="https://wiki.zte.com.cn/display/~10121897" title="" data-user-hover-bound="true"><img class="userLogo logo" src="./1.1.2.1.2 使用maven bom引用第三方包 - OCFS-Springboot - ZTE Wiki_files/user-avatar" alt="用户图标: 10121897" title=""></a></p><div class="quick-comment-body"><div class="quick-comment-loading-container" style="display:none;"></div><div id="editor-messages"></div><div id="all-messages"></div><form style="display:block;" class="quick-comment-form aui" method="post" name="inlinecommentform" action="https://wiki.zte.com.cn/pages/doaddcomment.action?pageId=207815222"><div title="添加评论 (m)" class="quick-comment-prompt"><span>编写评论...</span></div></form></div></div>
+
+            </div>
+
+            <div id="comments-actions" class="aui-toolbar noprint" style="display: none;">
+            <p class="toolbar-group">
+                <span class="toolbar-item"><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222&amp;showComments=true&amp;showCommentArea=true#addcomment" id="add-comment-rte" accesskey="m" class="toolbar-trigger">添加评论</a></span>
+            </p>
+        </div>
+    </div>
+        
+
+
+                
+    
+            
+</div>
+
+    
+
+    
+
+
+
+
+    
+    
+
+    
+    
+    
+
+
+    
+<div id="space-tools-web-items" class="hidden">
+                <div data-label="概览" data-href="/spaces/viewspacesummary.action?key=dexspring">概览</div>
+            <div data-label="内容工具" data-href="/pages/reorderpages.action?key=dexspring">内容工具</div>
+    </div>
+        
+
+
+
+            </div><!-- \#main -->
+            
+    
+    
+        
+            
+            
+
+<div id="footer" role="contentinfo" style="margin-left: 416px;">
+    <section class="footer-body">
+
+                                                    
+        
+
+        <ul id="poweredby">
+            <li class="noprint">基于 <a href="http://www.atlassian.com/software/confluence" class="hover-footer-link" rel="nofollow">Atlassian Confluence</a> <span id="footer-build-information">6.2.1</span> <span id="footer-cluster-node">(node197: 39a44145)</span> 技术构建</li>
+            <li class="print-only">由 Atlassian 合流6.2.1 打印</li>
+            <li class="noprint"><a href="https://support.atlassian.com/help/confluence" class="hover-footer-link" rel="nofollow">报告缺陷</a></li>
+            <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="hover-footer-link" rel="nofollow">Atlassian 新闻</a></li>
+        </ul>
+
+        
+
+        <div id="footer-logo"><a href="http://www.atlassian.com/" rel="nofollow">Atlassian</a></div>
+
+                    
+        
+    </section>
+</div>
+
+    
+</div>
+
+</div><!-- \#full-height-container -->
+</div><!-- \#page -->
+
+    <span style="display:none;" id="confluence-server-performance">{"serverDuration": 4871, "requestCorrelationId": "1bd672880bb46363"}</span>
+
+
+<script type="text/javascript">
+    AJS.BigPipe = AJS.BigPipe || {};
+    AJS.BigPipe.metrics = AJS.BigPipe.metrics || {};
+    AJS.BigPipe.metrics.pageEnd = typeof window.performance !== "undefined" && typeof window.performance.now === "function"
+                                    ? Math.ceil(window.performance.now()) : 0;
+    AJS.BigPipe.metrics.isBigPipeEnabled = 'false' === 'true';
+</script>
+
+
+    
+<div class="aui-popup aui-dialog" id="removing-occurrences-dialog" style="margin-top: -100px; margin-left: -200px; width: 400px; height: 200px; z-index: 3002; display: none;"><div class="dialog-components"><h2 class="dialog-title">Remove all occurrences?</h2><ul class="dialog-page-menu" style="height: 93px; display: none;"><li class="page-menu-item selected"><button class="item-button">Panel</button></li></ul><div class="dialog-page-body"><div class="dialog-panel-body panel-body" style="height: 93px;"><p>Would you like to remove all label occurrences from pages and attachments?</p></div></div><div class="dialog-button-panel"><button class="button-panel-button">Yes</button><button class="button-panel-button">No</button><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="button-panel-link #">Cancel</a></div></div></div><div id="editor-preload-container" style="display: none;">
+ 
+
+<div class="hidden">
+        
+
+
+<content tag="breadcrumbs">
+    
+    
+    <ol id="quickedit-breadcrumbs">
+                                        
+                        
+        <li class="first">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/display/dexspring" target="_blank">OCFS-Springboot</a></span>
+                                                                                    
+                        
+        </li><li>
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/collector/pages.action?key=dexspring" target="_blank">页面</a></span>
+                                                                                                            </li><li id="ellipsis" title="显示全部导航项"><span><strong>…</strong></span></li>
+                                                
+                        
+        <li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/display/dexspring/OCFS-Springboot" target="_blank">OCFS-Springboot</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/display/dexspring/1.+OCFS-Springboot" target="_blank">1. OCFS-Springboot</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353208" target="_blank">1.1 二次开发手册</a></span>
+                                                                                                    
+                        
+        </li><li class="hidden-crumb">
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=196353244" target="_blank">1.1.2 整体介绍</a></span>
+                                                                                    
+                        
+        </li><li>
+                        
+                            <span class=""><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815176" target="_blank">1.1.2.1 开发环境快速搭建</a></span>
+                                                                                    
+                        
+        </li><li>
+                        
+                            <span class="edited-page-title"><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222" target="_blank">1.1.2.1.2 使用maven bom引用第三方包</a></span>
+                                                                    </li></ol>
+
+</content>
+</div>
+
+
+        
+    
+
+                                                                                        
+
+<script type="text/x-template" title="editor-css" id="editor-css-resources">
+    <link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/2.0.5/_/download/batch/com.atlassian.confluence.plugins.confluence-collaborative-editor-plugin:confluence-collaborative-editor-plugin-editor-content-resources/com.atlassian.confluence.plugins.confluence-collaborative-editor-plugin:confluence-collaborative-editor-plugin-editor-content-resources.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-collaborative-editor-plugin:confluence-collaborative-editor-plugin-editor-content-resources" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d31cd7d2fde86846818b7c61a667b08c-CDN/zh_CN/7111/6.0.6/_/download/batch/com.atlassian.auiplugin:aui-page-typography/com.atlassian.auiplugin:aui-page-typography.css" data-wrm-key="com.atlassian.auiplugin:aui-page-typography" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d31cd7d2fde86846818b7c61a667b08c-CDN/zh_CN/7111/6.0.6/_/download/batch/com.atlassian.auiplugin:aui-avatars/com.atlassian.auiplugin:aui-avatars.css" data-wrm-key="com.atlassian.auiplugin:aui-avatars" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/5fb89cff7cdb4d326688653fc11d5658-CDN/zh_CN/7111/6.0.6/_/download/batch/com.atlassian.auiplugin:aui-page-layout/com.atlassian.auiplugin:aui-page-layout.css" data-wrm-key="com.atlassian.auiplugin:aui-page-layout" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/5aae26cfc631423a28ee9f3eea8618b0-CDN/zh_CN/7111/6.2.1/_/download/batch/com.atlassian.confluence.editor:editor-content-styles/com.atlassian.confluence.editor:editor-content-styles.css" data-wrm-key="com.atlassian.confluence.editor:editor-content-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/5aae26cfc631423a28ee9f3eea8618b0-CDN/zh_CN/7111/6.2.1/_/download/batch/com.atlassian.confluence.editor:table-resizable-editor-content-styles/com.atlassian.confluence.editor:table-resizable-editor-content-styles.css?confluence.table.resizable=true" data-wrm-key="com.atlassian.confluence.editor:table-resizable-editor-content-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/5aae26cfc631423a28ee9f3eea8618b0-CDN/zh_CN/7111/6.2.1/_/download/batch/com.atlassian.confluence.editor:table-resizable-styles/com.atlassian.confluence.editor:table-resizable-styles.css?confluence.table.resizable=true" data-wrm-key="com.atlassian.confluence.editor:table-resizable-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/6.2.1/_/download/batch/com.atlassian.confluence.plugins.confluence-templates:variable-editor-content-styles/com.atlassian.confluence.plugins.confluence-templates:variable-editor-content-styles.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-templates:variable-editor-content-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d31cd7d2fde86846818b7c61a667b08c-CDN/zh_CN/7111/6.0.6/_/download/batch/com.atlassian.auiplugin:aui-lozenge/com.atlassian.auiplugin:aui-lozenge.css" data-wrm-key="com.atlassian.auiplugin:aui-lozenge" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/2.20/_/download/batch/com.atlassian.confluence.plugins.status-macro:view_content_status/com.atlassian.confluence.plugins.status-macro:view_content_status.css" data-wrm-key="com.atlassian.confluence.plugins.status-macro:view_content_status" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/ae5eaca555363ae3b2310da4ae3794de-CDN/zh_CN/7111/2.20/_/download/batch/com.atlassian.confluence.plugins.status-macro:editor_content_status/com.atlassian.confluence.plugins.status-macro:editor_content_status.css" data-wrm-key="com.atlassian.confluence.plugins.status-macro:editor_content_status" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d0638b94054c44b2ca8199723136b528-CDN/zh_CN/7111/1.2.8/_/download/batch/com.atlassian.confluence.plugins.confluence-fixed-headers:confluence-fixed-headers-editor-content-resources/com.atlassian.confluence.plugins.confluence-fixed-headers:confluence-fixed-headers-editor-content-resources.css?confluence.view.edit.transition=true" data-wrm-key="com.atlassian.confluence.plugins.confluence-fixed-headers:confluence-fixed-headers-editor-content-resources" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/19bbdecfa6ce3c33e1aa42dc000a8eb4-CDN/zh_CN/7111/5.0.1/_/download/batch/confluence.extra.attachments:attachments-css/confluence.extra.attachments:attachments-css.css" data-wrm-key="confluence.extra.attachments:attachments-css" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/3.5.8/_/download/batch/com.tensixtwo.conf.latexmath:styles/com.tensixtwo.conf.latexmath:styles.css" data-wrm-key="com.tensixtwo.conf.latexmath:styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/3.5.8/_/download/batch/com.tensixtwo.conf.latexmath:editor_content_latexmath/com.tensixtwo.conf.latexmath:editor_content_latexmath.css" data-wrm-key="com.tensixtwo.conf.latexmath:editor_content_latexmath" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/14.1.1/_/download/batch/com.atlassian.confluence.plugins.confluence-roadmap-plugin:roadmap-placeholder-css/com.atlassian.confluence.plugins.confluence-roadmap-plugin:roadmap-placeholder-css.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-roadmap-plugin:roadmap-placeholder-css" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/1.0/_/download/batch/confluence.web.resources:panel-styles/confluence.web.resources:panel-styles.css" data-wrm-key="confluence.web.resources:panel-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/0375cb803361ec5625dbd676f3f39b3d-CDN/zh_CN/7111/1.0/_/download/batch/confluence.web.resources:content-styles/confluence.web.resources:content-styles.css" data-wrm-key="confluence.web.resources:content-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/6.2.1/_/download/batch/com.atlassian.confluence.plugins.confluence-page-layout:editor-pagelayout-content-styles/com.atlassian.confluence.plugins.confluence-page-layout:editor-pagelayout-content-styles.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-page-layout:editor-pagelayout-content-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/5.0.1/_/download/batch/com.atlassian.confluence.plugins.confluence-business-blueprints:sharelinks-urlmacro-editor-resources/com.atlassian.confluence.plugins.confluence-business-blueprints:sharelinks-urlmacro-editor-resources.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-business-blueprints:sharelinks-urlmacro-editor-resources" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/7.1.12/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:inline-tasks-styles/com.atlassian.confluence.plugins.confluence-inline-tasks:inline-tasks-styles.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-inline-tasks:inline-tasks-styles" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/7.1.12/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css" data-wrm-batch-type="resource" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/7.1.12/_/download/batch/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css/com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css.css?conditionalComment=lte+IE+9" data-wrm-key="com.atlassian.confluence.plugins.confluence-inline-tasks:editor-autocomplete-date-css" data-wrm-batch-type="resource" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/a2fe3d9fc9c4f868b370b15b14e137af-CDN/zh_CN/7111/2.0.3/_/download/batch/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-editor-content-resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-editor-content-resources.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-editor-content-resources" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7111/4.0.2/_/download/batch/com.atlassian.confluence.plugins.confluence-software-blueprints:common-resources/com.atlassian.confluence.plugins.confluence-software-blueprints:common-resources.css" data-wrm-key="com.atlassian.confluence.plugins.confluence-software-blueprints:common-resources" data-wrm-batch-type="resource" media="all">
+<link type="text/css" rel="stylesheet" href="/s/zh_CN/7111/72/_/styles/custom.css" media="all">
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+<div class="editor-container">
+
+        
+            
+
+<div id="link-browser-tab-items" class="hidden">
+                <div title="搜索" data-weight="10">search</div>
+            <div title="最近浏览过" data-weight="20">recentlyviewed</div>
+            <div title="文件" data-weight="30">attachments</div>
+            <div title="Web链接" data-weight="40">weblink</div>
+            <div title="高级" data-weight="50">advanced</div>
+    </div>
+            <div id="image-properties-tab-items" class="hidden">
+                <div title="效果" data-weight="10">image-effects</div>
+            <div title="标题" data-weight="20">image-attributes</div>
+    </div>
+            
+
+ 
+
+
+
+
+
+
+
+
+
+
+        <div id="toolbar">
+        <div id="rte-toolbar" class="aui-toolbar aui-toolbar2">
+
+            <div class="aui-toolbar2-primary toolbar-primary">
+                <ul class="aui-buttons rte-toolbar-group-formatting">
+                                        <li id="format-dropdown" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a id="format-dropdown-display" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar-trigger aui-dd-trigger aui-button" data-control-id="formatselect">
+                                <span class="dropdown-text">正文</span>
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-dropdown "></span>
+                            </a>
+                            <ul id="format-dropdown-display-menu" class="aui-dropdown hidden">
+                                    <li class="dropdown-item format-p" data-format="p" data-tooltip="正文 (Ctrl+0)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">正文</a>
+    </li>
+                                    <li class="dropdown-item format-h1" data-format="h1" data-tooltip="标题 1 (Ctrl+1)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 1</a>
+    </li>
+                                    <li class="dropdown-item format-h2" data-format="h2" data-tooltip="标题 2 (Ctrl+2)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 2</a>
+    </li>
+                                    <li class="dropdown-item format-h3" data-format="h3" data-tooltip="标题 3 (Ctrl+3)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 3</a>
+    </li>
+                                    <li class="dropdown-item format-h4" data-format="h4" data-tooltip="标题 4 (Ctrl+4)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 4</a>
+    </li>
+                                    <li class="dropdown-item format-h5" data-format="h5" data-tooltip="标题 5 (Ctrl+5)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 5</a>
+    </li>
+                                    <li class="dropdown-item format-h6" data-format="h6" data-tooltip="标题 6 (Ctrl+6)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">标题 6</a>
+    </li>
+                                    <li class="dropdown-item format-pre" data-format="pre" data-tooltip="预格式化 (Ctrl+7)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">预格式化</a>
+    </li>
+                                    <li class="dropdown-item format-blockquote" data-format="blockquote" data-tooltip="引用 (Ctrl+8)">
+        <a class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">引用</a>
+    </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons rte-toolbar-group-style">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-bold" data-tooltip="粗体 (Ctrl+B)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="bold">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-bold ">粗体</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-italic" data-tooltip="斜体 (Ctrl+I)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="italic">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-italic ">斜体</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-underline" data-tooltip="下划线 (Ctrl+U)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="underline">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-underline ">下划线</span>
+        </a>
+    </li>
+                                        <li id="color-picker-control" class="toolbar-item toolbar-splitbutton">
+                        <a class="toolbar-trigger aui-button" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" id="rte-button-color" data-color="003366" data-tooltip="颜色"><span class="icon aui-icon aui-icon-small aui-iconfont-editor-color ">颜色选取器</span><span class="selected-color"></span></a><div class="aui-dd-parent"><a class="toolbar-trigger aui-dd-trigger aui-button" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" id="rte-button-color-selector" data-control-id="colorSelector" data-tooltip="更多颜色"><span class="icon aui-icon aui-icon-small aui-iconfont-dropdown ">更多颜色</span></a><div class="color-picker-container"><div class="color-picker aui-dropdown hidden"><ul><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #000000" data-color="000000">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #993300" data-color="993300">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #333300" data-color="333300">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #003300" data-color="003300">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #003366" data-color="003366">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #000080" data-color="000080">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #333399" data-color="333399">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #333333" data-color="333333">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #800000" data-color="800000">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FF6600" data-color="FF6600">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #808000" data-color="808000">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #008000" data-color="008000">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #008080" data-color="008080">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #0000FF" data-color="0000FF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #666699" data-color="666699">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #808080" data-color="808080">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FF0000" data-color="FF0000">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FF9900" data-color="FF9900">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #99CC00" data-color="99CC00">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #339966" data-color="339966">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #33CCCC" data-color="33CCCC">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #3366FF" data-color="3366FF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #800080" data-color="800080">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #999999" data-color="999999">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FF00FF" data-color="FF00FF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FFCC00" data-color="FFCC00">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FFFF00" data-color="FFFF00">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #00FF00" data-color="00FF00">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #00FFFF" data-color="00FFFF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #00CCFF" data-color="00CCFF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #993366" data-color="993366">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #C0C0C0" data-color="C0C0C0">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FF99CC" data-color="FF99CC">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FFCC99" data-color="FFCC99">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FFFF99" data-color="FFFF99">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #CCFFCC" data-color="CCFFCC">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #CCFFFF" data-color="CCFFFF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #99CCFF" data-color="99CCFF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #CC99FF" data-color="CC99FF">&nbsp;</a></li><li><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" style="background-color: #FFFFFF" data-color="FFFFFF">&nbsp;</a></li></ul></div></div></div>
+                    </li>
+                    <li id="more-menu" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a id="rte-button-more" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar-trigger aui-dd-trigger aui-button" data-tooltip="更多">
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-styles ">格式</span>
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-dropdown "></span>
+                            </a>
+                            <div id="rte-button-more-menu" class="aui-dropdown grouped hidden">
+                                <div class="grouped-dropdown-item">
+                                    <ul>
+                                                                <li class="dropdown-item more-menu-trigger" data-control-id="strikethrough" data-tooltip="删除线 (Ctrl+Shift+S)">
+        <a id="rte-strikethrough" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+删除线
+        </a>
+    </li>
+                                                                 <li class="dropdown-item more-menu-trigger" data-control-id="sub" data-tooltip="">
+        <a id="rte-sub" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+下标
+        </a>
+    </li>
+                                                                 <li class="dropdown-item more-menu-trigger" data-control-id="sup" data-tooltip="">
+        <a id="rte-sup" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+上标
+        </a>
+    </li>
+                                                        <li class="dropdown-item more-menu-trigger" data-control-id="monospace" data-tooltip="用等宽字体格式化文本">
+        <a id="rte-monospace" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+等宽
+        </a>
+    </li>
+
+                                                                                                                    </ul>
+                                </div>
+                                <div class="grouped-dropdown-item">
+                                    <ul>
+                                            <li class="dropdown-item more-menu-trigger no-icon" data-format="removeformat" data-tooltip="当前选中文本清除格式">
+        <a id="rte-removeformat" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+            清除格式
+        </a>
+    </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons rte-toolbar-group-lists">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-bullist" data-tooltip="无序列表 (Ctrl+Shift+B)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="bullist">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-list-bullet ">无序列表</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-numlist" data-tooltip="有序列表 (Ctrl+Shift+N)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="numlist">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-list-number ">有序列表</span>
+        </a>
+    </li>
+                </ul>
+                                <ul class="aui-buttons rte-toolbar-group-task-lists">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-tasklist" data-tooltip="任务列表 ( )">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="tasklist">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-task ">任务列表</span>
+        </a>
+    </li>
+                </ul>
+                
+                <ul class="aui-buttons rte-toolbar-group-indentation">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-outdent" data-tooltip="减小缩进">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="outdent">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-outdent ">减小缩进</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-indent" data-tooltip="增大缩进">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="indent">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-indent ">增大缩进</span>
+        </a>
+    </li>
+                </ul>
+
+                <ul class="aui-buttons rte-toolbar-group-justification">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifyleft" data-tooltip="左对齐">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="justifyleft">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-align-left ">左对齐</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifycenter" data-tooltip="居中">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="justifycenter">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-align-center ">居中</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-justifyright" data-tooltip="右对齐">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="justifyright">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-align-right ">右对齐</span>
+        </a>
+    </li>
+                </ul>
+
+                                <ul class="aui-buttons hidden" id="page-layout-2-group">
+                    <li id="page-layout-2" class="toolbar-item" data-tooltip="页面布局">
+                        <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="aui-button toolbar-trigger" id="rte-button-pagelayout-2">
+                                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-layout ">页面布局</span>
+                        </a>
+                    </li>
+                </ul>
+                
+
+                <ul class="aui-buttons rte-toolbar-group-files hidden"></ul>
+
+                <ul class="aui-buttons rte-toolbar-group-link no-separator">
+                    <li class="toolbar-item" data-tooltip="插入链接 (Ctrl+K)">
+                        <a id="rte-button-link" class="toolbar-trigger aui-button" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="linkbrowserButton">
+                                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-link "></span>
+                            <span class="trigger-text">链接</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="aui-buttons rte-toolbar-group-table no-separator">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-table-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-insert-table" data-tooltip="插入表格">
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-table "></span>
+                                <span class="dropdown-text">表格</span>
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-dropdown "></span>
+                            </a>
+
+                            <div id="table-picker-container" class="hidden aui-box-shadow">
+                                <div class="table-picker-box" data-tooltip="按住 SHIFT键，创建无表头表格 。">
+                                    <div class="table-picker-background">
+                                        <div class="picker picker-cell"></div>
+                                        <div class="picker picker-heading heading"></div>
+                                        <div class="picker picker-selected-cell"></div>
+                                        <div class="picker picker-selected-heading heading"></div>
+                                    </div>
+                                    <p class="desc"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                                                                
+                
+                <ul class="aui-buttons rte-toolbar-group-insert no-separator">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu">
+                        <div class="aui-dd-parent">
+                            <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-insert" data-tooltip="插入更多内容">
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-add "></span>
+                                <span class="dropdown-text">插入</span>
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-dropdown "></span>
+                            </a>
+
+                            <div id="insert-menu-options" class="aui-dropdown grouped hidden">
+                                <div class="grouped-dropdown-item">
+                                    <span class="assistive">插入内容</span>
+                                    <ul id="content-insert-list">
+                                        
+        
+        <li class="dropdown-item content-image" data-command="mceConfimage" data-tooltip="插入文件和图片 (Ctrl+M)">
+        <a id="rte-insert-image" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 文件和图片
+        </a>
+    </li>
+                                        
+        
+        <li class="dropdown-item content-link" data-control-id="linkbrowserButton" data-tooltip="插入链接 (Ctrl+K)">
+        <a id="rte-insert-link" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 链接
+        </a>
+    </li>
+                                        
+    
+        <li class="dropdown-item content-symbol" data-command="confCharmap" data-tooltip="插入符号">
+        <a id="rte-insert-symbol" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 符号
+        </a>
+    </li>
+                                        
+    
+        <li class="dropdown-item content-emoticon" data-command="mceEmotion" data-tooltip="插入表情">
+        <a id="rte-insert-emoticon" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 表情符号
+        </a>
+    </li>
+                                        
+        
+        <li class="dropdown-item content-wikimarkup" data-command="InsertWikiMarkup" data-tooltip="插入Wiki标记 (Ctrl+Shift+D)">
+        <a id="rte-insert-wikimarkup" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ Wiki标记
+        </a>
+    </li>
+                                        
+    
+        <li class="dropdown-item content-hr" data-command="InsertHorizontalRule" data-tooltip="插入水平线(----)">
+        <a id="rte-insert-hr" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 水平线
+        </a>
+    </li>
+                                                                                    
+        
+        <li class="dropdown-item content-tasklist" data-command="InsertInlineTaskListNoToggle" data-tooltip="插入任务列表 ( )">
+        <a id="rte-insert-tasklist" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 任务列表
+        </a>
+    </li>
+                                                                            </ul>
+                                </div>
+                                <div class="grouped-dropdown-item">
+                                    <span class="assistive">插入宏</span>
+                                    <ul id="macro-insert-list">
+                                                                                                                                                                                <li class="dropdown-item macro-insertmention-button" data-macro-name="insertmention-button" data-tooltip="插入&#39;用户提及&#39;宏">
+        <a id="insertmention-button" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 用户提及
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-jiralink" data-macro-name="jiralink" data-tooltip="插入&#39;JIRA问题/过滤器&#39;宏">
+        <a id="jiralink" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ JIRA问题/过滤器
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-info" data-macro-name="info" data-tooltip="插入&#39;信息&#39;宏">
+        <a id="info" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 信息
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-status" data-macro-name="status" data-tooltip="插入&#39;状态&#39;宏">
+        <a id="status" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 状态
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-gallery" data-macro-name="gallery" data-tooltip="插入&#39;画廊&#39;宏">
+        <a id="gallery" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 画廊
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-toc" data-macro-name="toc" data-tooltip="插入&#39;目录&#39;宏">
+        <a id="toc" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 目录
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-mathblock" data-macro-name="mathblock" data-tooltip="插入&#39;LaTeX Math Block&#39;宏">
+        <a id="mathblock" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ LaTeX Math Block
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-mathinline" data-macro-name="mathinline" data-tooltip="插入&#39;LaTeX Math Inline&#39;宏">
+        <a id="mathinline" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ LaTeX Math Inline
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-unit" data-macro-name="unit" data-tooltip="插入&#39;LaTeX Unit&#39;宏">
+        <a id="unit" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ LaTeX Unit
+        </a>
+    </li>
+                                                                                                <li class="dropdown-item macro-calendar" data-macro-name="calendar" data-tooltip="插入&#39;Team Calendar&#39;宏">
+        <a id="calendar" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ Team Calendar
+        </a>
+    </li>
+                                                                                                                            
+        
+        <li class="dropdown-item content-macro" data-command="mceConfMacroBrowser" data-tooltip="打开宏浏览器 (Ctrl+Shift+A)">
+        <a id="rte-insert-macro" class="item-link" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#">
+                
+    
+    <span class="icon "></span>
+ 其它宏
+        </a>
+    </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                                <ul class="aui-buttons rte-toolbar-group-page-layouts-section-types">
+                    <li id="pagelayout-menu" class="toolbar-item toolbar-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="toolbar-trigger aui-dd-trigger aui-button" id="rte-button-pagelayout" data-tooltip="页面布局">
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-default">页面布局</span>
+                                    
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-dropdown "></span>
+                            </a>
+
+                            <ul id="pagelayout-menu-options" class="aui-dropdown hidden">
+                                <li class="dropdown-item" data-tooltip="无布局">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-none&quot;, &quot;columns&quot;: 0   }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-none">无布局</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏 (简单)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;]   }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two-simple">两栏 (简单)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏 (简单，左侧栏)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple-left&quot;, &quot;columns&quot;: [&quot;aside&quot;, &quot;large&quot;]   }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two-simple-left">两栏 (简单，左侧栏)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏 (简单，右侧栏)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-simple-right&quot;, &quot;columns&quot;: [&quot;large&quot;, &quot;aside&quot;]   }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two-simple-right">两栏 (简单，右侧栏)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="三栏 (简单)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three-simple&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;]   }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-three-simple">三栏 (简单)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two">两栏</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏 (左侧栏)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-left&quot;, &quot;columns&quot;: [&quot;aside&quot;, &quot;large&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two-left">两栏 (左侧栏)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="两栏 (右侧栏)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-two-right&quot;, &quot;columns&quot;: [&quot;large&quot;, &quot;aside&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-two-right">两栏 (右侧栏)</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="三栏">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three&quot;, &quot;columns&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-three">三栏</span>
+    </a>
+</li>
+                                <li class="dropdown-item" data-tooltip="三栏 (左边和右侧栏)">
+    <a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="item-link" data-atlassian-layout="{&quot;name&quot;: &quot;pagelayout-three-sidebars&quot;, &quot;columns&quot;: [&quot;sidebars&quot;, &quot;large&quot;, &quot;sidebars&quot;] , &quot;header&quot;: true  , &quot;footer&quot;:true  }">
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-check hidden"></span>
+            
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-layout pagelayout-three-sidebars">三栏 (左边和右侧栏)</span>
+    </a>
+</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                
+                                                
+                <ul class="aui-buttons rte-toolbar-group-undo">
+                    
+                <li class="toolbar-item aui-button" id="rte-button-undo" data-tooltip="回退 (Ctrl+Z)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="undo">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-undo ">回退</span>
+        </a>
+    </li>
+                    
+                <li class="toolbar-item aui-button" id="rte-button-redo" data-tooltip="重做 (Ctrl+Y)">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="redo">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-redo ">重做</span>
+        </a>
+    </li>
+                </ul>
+            </div>                                                                                                <div id="draft-status" style="display:none"></div>
+                            <div class="aui-toolbar2-secondary">
+                <ul class="aui-buttons rte-toolbar-group-searchreplace">
+                        <li class="toolbar-item aui-button" id="rte-button-searchreplace" data-tooltip="查找/替换">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="searchreplace">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-search ">查找/替换</span>
+        </a>
+    </li>
+                </ul>
+                <ul class="aui-buttons rte-toolbar-group-help">
+                        <li class="toolbar-item aui-button" id="rte-button-help" data-tooltip="帮助">
+        <a class="toolbar-trigger" href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" data-control-id="help">
+                
+    
+    <span class="icon aui-icon aui-icon-small aui-iconfont-editor-help ">键盘快捷方式帮助</span>
+        </a>
+    </li>
+                </ul>
+            </div>        </div>    </div>
+        
+        
+                                <div id="editor-notifications-container"><div id="all-messages"><div id="action-messages"></div></div></div><div id="editor-precursor"><div class="cell"><div class="aui-buttons aui-toolbar2"><button class="aui-button aui-button-subtle" type="button" data-tooltip="标签" id="rte-button-labels" data-explicit-restrictions="" data-inherited-restrictions=""><span class="icon aui-icon aui-icon-small aui-iconfont-devtools-tag"></span></button><button class="aui-button aui-button-subtle" type="button" data-tooltip="权限限制" id="rte-button-restrictions" data-explicit-restrictions="false" data-inherited-restrictions="true"><span class="icon aui-icon aui-icon-small aui-iconfont-unlocked icon-red"></span></button></div><div id="content-title-div" class=""><input type="text" name="title" id="content-title" tabindex="1" class="text pagetitle" autocomplete="off" value="1.1.2.1.2 使用maven bom引用第三方包" placeholder="页面标题"></div></div></div>
+            
+    <div id="wysiwyg">
+        <div id="rte" class="cell editor-default ">
+            <textarea id="wysiwygTextarea" name="wysiwygContent" class="hidden tinymce-editor"></textarea>
+        </div>
+    </div>
+    <div id="editor-html-source-container" class="hidden">
+        <textarea id="editor-html-source" class="monospaceInput"></textarea>
+    </div>
+
+    <div id="preview">
+                        <div id="previewArea" class="cell">
+        </div>
+    </div>
+
+            <div id="savebar-container"><div id="rte-savebar" class="aui-toolbar aui-toolbar2"><div class="toolbar-split toolbar-split-row"><div class="toolbar-split toolbar-split-left"><div class="aui-buttons"></div></div><div class="toolbar-split toolbar-split-right"><div id="pluggable-status-container" class="toolbar-item rte-toolbar-pluggable-status"><div id="pluggable-status"></div></div><div class="aui-buttons" id="rte-savebar-tinymce-plugin-point"></div><div class="aui-buttons"><span id="rte-spinner" class="toolbar-item ">&nbsp;</span></div><div class="aui-buttons toolbar-group-edit assistive"><button id="rte-button-edit" class="aui-button" title="返回编辑模式" type="button"><span class="trigger-text">编辑</span></button></div><div class="aui-buttons toolbar-group-preview"><button class="aui-button toolbar-item aui-button-light" id="rte-button-preview" title="预览" type="button"><span class="trigger-text">预览</span></button></div><div class="save-button-container"><button class="aui-button aui-button-primary" type="submit" id="rte-button-publish" name="confirm" value="Save" title="保存"><span class="trigger-text">保存</span></button></div><button class="toolbar-item-link aui-button aui-button-link" type="submit" id="rte-button-cancel" name="cancel" value="cancel">取消</button></div></div></div></div>
+    
+
+    
+</div>
+
+
+
+<script type="text/x-template" title="dynamic-editor-metadata" id="dynamic-editor-metadata-template">
+            <meta name="ajs-use-watch" content="true">
+            <meta name="ajs-attachment-source-content-id" content="207815222">
+            <meta name="ajs-use-inline-tasks" content="true">
+            <meta name="ajs-heartbeat" content="true">
+            <meta name="ajs-action-locale" content="zh_CN">
+            <meta name="ajs-editor-plugin-resource-prefix" content="/s/zh_CN/7111/6.2.1/_">
+            <meta name="ajs-edit-mode" content="legacy">
+            <meta name="ajs-user-watching-own-content" content="true">
+            <meta name="ajs-new-page" content="false">
+            <meta name="ajs-editor-mode" content="richtext">
+            <meta name="ajs-auto-start" content="false">
+            <meta name="ajs-conf-revision" content="confluence$content$207815222.15">
+            <meta name="ajs-sync-revision-source" content="">
+            <meta name="ajs-draft-id" content="0">
+            <meta name="ajs-draft-share-id" content="">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-collaborative-editor-status" content="">
+            <meta name="ajs-existing-draft-id" content="0">
+            <meta name="ajs-content-id" content="207815222">
+            <meta name="ajs-form-name" content="inlinecommentform">
+            <meta name="ajs-can-attach-files" content="false">
+            <meta name="ajs-show-draft-message" content="false">
+            <meta name="ajs-shared-drafts" content="false">
+            <meta name="ajs-collaborative-content" content="false">
+            <meta name="ajs-min-editor-height" content="150">
+            <meta name="ajs-version-comment" content="">
+            <meta name="ajs-draft-type" content="page">
+                
+                <meta name="ajs-synchrony-token" content="">
+    <meta name="ajs-synchrony-base-url" content="">
+    <meta name="ajs-synchrony-app-id" content="">
+    <meta name="ajs-synchrony-expiry" content="">
+    <meta name="ajs-use-xhr-fallback" content="">
+
+            		    <meta name="ajs-max-thumb-width" content="300">
+		    <meta name="ajs-max-thumb-height" content="300">
+		    <meta name="ajs-can-send-email" content="false">
+		    <meta name="ajs-is-dev-mode" content="false">
+		    <meta name="ajs-draft-save-interval" content="30000">
+		    <meta name="ajs-show-hidden-user-macros" content="false">
+		    <meta name="ajs-is-admin" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autocomplete" content="false">
+		    <meta name="ajs-confluence.prefs.editor.disable.autoformat" content="false">
+		    <meta name="ajs-heartbeat-interval" content="30000">
+	
+    </script>
+
+<script type="text/x-template" title="tableForm" id="table-form-template">
+    <form id="tinymce-table-form" class="aui">
+        <div class="field-group">
+            <label for="rows">行</label>
+            <input id="rows" name="rows" type="text" size="3" autocomplete="off" value="{0}">
+        </div>
+        <div class="field-group">
+            <label for="cols">列</label>
+            <input id="cols" name="cols" type="text" size="3" autocomplete="off" value="{1}">
+        </div>
+        <div class="field-group hidden">
+            <input id="width" type="hidden" name="width" value="">
+            <label for="width">宽</label>
+        </div>
+        <div class="group">
+            <div class="checkbox">
+                <input id="table-heading-checkbox" class="checkbox" type="checkbox" name="heading" checked="checked" value="true">
+                <label for="table-heading-checkbox">首行设为表头</label>
+            </div>
+        </div>
+        <div class="group hidden">
+            <div class="checkbox">
+                <input id="table-equal-width-columns-checkbox" class="checkbox" type="checkbox" name="equal-width-columns" value="false">
+                <label for="table-equal-width-columns-checkbox">等宽列</label>
+            </div>
+        </div>
+    </form>
+</script>
+<input type="hidden" name="draftId" value="0" id="draftId"><input type="hidden" name="originalVersion" value="7" id="originalVersion">
+<input type="hidden" name="syncRev" value="dummy-sync-rev" id="syncRev">    <input type="hidden" name="atl_token" value="e0e1f54c81d8a076983830eb8e33fcd0b13eafd9">
+</div><div class="aui-popup aui-dialog" style="margin-top: -325px; margin-left: -400px; width: 800px; height: 650px; z-index: 3004; display: none;"><div class="dialog-components"><ul class="dialog-page-menu" style="height: 599px; display: none;"><li class="page-menu-item selected"><button class="item-button">Panel</button></li></ul><div class="dialog-page-body"><div class="dialog-panel-body panel-body" style="height: 599px;"><form action="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="aui">    <div class="macro-desc" id="mathblock-ref-macro-desc">Inserts reference with link to the Math Block with the given anchor.</div>    <div class="macro-param-div field-group" id="mathblock-ref-page-div">      <label for="mathblock-ref-page-helper">Confluence page</label>      <input type="text" class="text autocomplete-page macro-param-input" id="mathblock-ref-page-helper" placeholder="This page" autocomplete="off" data-none-message="Not found" data-autocomplete-content-bound="true"><div class="aui-dd-parent autocomplete"></div>      <input type="text" class="hidden" id="mathblock-ref-page">      <div class="description">The page containing the math block (leave blank for this page).</div>    </div>    <div class="macro-param-div field-group required" id="mathblock-ref-anchor-div">      <label for="mathblock-ref-anchor">Anchor name<span class="aui-icon icon-required">required</span></label>      <input type="text" class="text macro-param-input" id="mathblock-ref-anchor" list="mathblock-ref-anchor-list" autocomplete="off"><datalist id="mathblock-ref-anchor-list"></datalist>      <div class="description">The anchor used for linking to the math block.</div>    </div>    <div class="macro-param-div field-group" id="mathblock-ref-displaytext-div">      <label for="mathblock-ref-displaytext">Link text</label>      <input type="text" class="text macro-param-input" id="mathblock-ref-displaytext" autocomplete="off">      <div class="description">Leave blank to use the number from the math block.</div>    </div>  </form><h4 id="mathblock-ref-preview-heading">预览:</h4><div class="mathblock-ref-preview" id="mathblock-ref-preview"></div></div></div><div class="dialog-button-panel"><button class="button-panel-button button-panel-submit-button">保存</button><a href="https://wiki.zte.com.cn/pages/viewpage.action?pageId=207815222#" class="button-panel-link">取消</a></div></div></div><div id="content-hover-0" class="ajs-content-hover aui-box-shadow" style="display: none;"><div class="contents" style="width: 300px;"></div></div><div id="content-hover-1" class="ajs-content-hover aui-box-shadow" style="display: none;"><div class="contents" style="width: 300px;"></div></div></body></html>

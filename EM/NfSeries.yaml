@@ -1,0 +1,132 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: UMEBN NFLCM 接口
+  description: |
+    本文件描述部署在UME NFLCM 中的相关接口定义
+
+tags:
+  - name: NF_SERIES
+    description: 网元模型相关接口 
+    
+schemes:
+  - http
+host: 127.0.0.1:8080
+basePath: /api/umebn_em_platform/v1
+
+
+paths:
+  /nfserries/:
+    get:
+      description: 查询设备系列信息
+      tags:
+        - NF_SERIES
+      operationId: getSeries
+      produces:
+        - application/json
+      parameters:
+        - name: nfMoc
+          in: query
+          description: 需要查询设备类型
+          required: false
+          type: string
+        - name: nfVersion
+          in: query
+          description: 需要查询设备版本号
+          required: false
+          type: string
+        - name: onlyLeaf
+          in: query
+          description: 是否只返回设备类型直接关联的设备系列，既叶子系列；
+                      <br> true —— 默认选项；只返回设备类型直接关联的叶子系列；应答结果的列表中只有一个元素；
+                      <br> false —— 返回与设备类型相关的所有上级设备系列，具体的返回顺序在 order 中指定
+          required: false
+          type: boolean
+        - name: order
+          in: query
+          description: 返回设备系列的顺序是从根到叶子，还是从叶子到根；只有在 onlyLeaf 设置为 false才有效；
+                      <br> branchFirst —— 从叶子到根
+                      <br> rootFirst —— 从根到叶子
+          required: false
+          type: string
+          enum:
+            - branchFirst
+            - rootFirst
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: "#/definitions/NfSerriesList"
+        500:
+          description: 服务器内部错误
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+  
+  /nfseries/{seriesType}/nfmocs/: 
+    get:
+      description: 查询某个设备系列下配置的所有设备类型和版本号信息
+      tags:
+        - NF_SERIES
+      operationId: getNfMocs
+      produces:
+        - application/json
+      parameters:
+        - name: seriesType
+          in: path
+          description: 需要查询设备系列；
+                  <br> 如果该系列是叶子，则查询出该叶子上配置的所有设备；
+                  <br> 如果该系列是非叶子系列，则查询出其下所有叶子系列下包含的设备类型并集；
+          required: true
+          type: string
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: "#/definitions/NfMocList"
+        500:
+          description: 服务器内部错误
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+                  
+definitions:
+
+  ErrorMsg:
+    properties:
+      errCode:
+        type: string
+      errMsg:
+        type: string
+        
+  NfSerriesList:
+    type: array
+    items:
+      type: string
+      
+  NFMoc:
+    properties:
+      moc:
+        type: string
+      version:
+        type: string
+      
+  NfMocList:
+    type: array
+    items:
+      $ref: "#/definitions/NFMoc"
+    
+
+
+        
+      
+      
+    
+        
+      
+        
+  
+    

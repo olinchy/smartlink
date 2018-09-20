@@ -1,0 +1,286 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: UMEBN NFLCM 鎺ュ彛
+  description: |
+    鏈枃浠舵弿杩癊M鏈嶅姟鍒嗗彂鎺ュ彛绀轰緥
+
+tags:
+  - name: DISPATCH
+    description: 缃戝厓鍒嗗彂鐩稿叧鎺ュ彛
+    
+schemes:
+  - http
+host: 127.0.0.1:8080
+basePath: /api/umebn_em_dispatch/v1/dispatch
+
+
+paths:
+  /{emVersion}/nfs/{nfuid}/{resourceType}:
+    get:
+      description: 鍗曠綉鍏冨懡浠ゆ煡璇�
+      tags:
+        - DISPATCH
+      operationId: getBySingleNF
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/nfuid"
+        - $ref: "#/parameters/resourceType"
+      responses:
+        200:
+          description: 鎴愬姛
+          schema:
+            type: object
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            type: object
+  
+    post:
+      description: 鍗曠綉鍏冨懡浠よ缃�
+      tags:
+        - DISPATCH
+      operationId: setBySingleNF
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/nfuid"
+        - $ref: "#/parameters/resourceType"
+        - name: obj
+          in: body
+          required: true
+          schema: 
+            type: object
+      responses:
+        201:
+          description: 鎴愬姛
+          schema:
+            type: object
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            type: object
+            
+    put:
+      description: 鍗曠綉鍏冨懡浠や慨鏀�
+      tags:
+        - DISPATCH
+      operationId: modifyBySingleNF
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/nfuid"
+        - $ref: "#/parameters/resourceType"
+        - name: obj
+          in: body
+          required: true
+          schema: 
+            type: object
+      responses:
+        201:
+          description: 鎴愬姛
+          schema:
+            type: object
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            type: object
+            
+    delete:
+      description: 鍗曠綉鍏冨懡浠ゅ垹闄�
+      tags:
+        - DISPATCH
+      operationId: deleteBySingleNF
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/nfuid"
+        - $ref: "#/parameters/resourceType"
+      responses:
+        204:
+          description: 鎴愬姛
+          schema:
+            type: object
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            type: object
+  
+  /{emVersion}/{resourceType}:
+    get:
+      description: 澶氱綉鍏冨懡浠ゆ煡璇�
+      tags:
+        - DISPATCH
+      operationId: getByMultiNF
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/resourceType"
+        - $ref: "#/parameters/nfuidsInHeader"
+      responses:
+        200:
+          description: 鎴愬姛
+          schema:
+            $ref: "#/definitions/NfRespList"
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�浠呮寚鍒嗗彂鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+            
+    post:
+      description: 澶氱綉鍏冨懡浠よ缃�
+      tags:
+        - DISPATCH
+      operationId: setByMultiNF
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/resourceType"
+        - $ref: "#/parameters/nfuidsInHeader"
+        - name: obj
+          in: body
+          required: true
+          schema: 
+            type: object
+      responses:
+        201:
+          description: 鎴愬姛
+          schema:
+            $ref: "#/definitions/NfRespList"
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�浠呮寚鍒嗗彂鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+          
+    put:
+      description: 澶氱綉鍏冨懡浠や慨鏀�
+      tags:
+        - DISPATCH
+      operationId: modifyByMultiNF
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/resourceType"
+        - $ref: "#/parameters/nfuidsInHeader"
+        - name: obj
+          in: body
+          required: true
+          schema: 
+            type: object
+      responses:
+        201:
+          description: 鎴愬姛
+          schema:
+            $ref: "#/definitions/NfRespList"
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�浠呮寚鍒嗗彂鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+          
+    delete:
+      description: 澶氱綉鍏冨懡浠ゅ垹闄�
+      tags:
+        - DISPATCH
+      operationId: deleteByMultiNF
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/emVersion"
+        - $ref: "#/parameters/resourceType"
+        - $ref: "#/parameters/nfuidsInHeader"
+      responses:
+        204:
+          description: 鎴愬姛
+          schema:
+            $ref: "#/definitions/NfRespList"
+        500:
+          description: 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�浠呮寚鍒嗗彂鍣ㄥ唴閮ㄩ敊璇�
+          schema:
+            $ref: "#/definitions/ErrorMsg"
+  
+   
+parameters:
+  emVersion:
+    name: emVersion
+    in: path
+    description: em鏈嶅姟鎺ュ彛鐗堟湰鍙�
+    required: true
+    type: string
+  
+  nfuid:
+    name: nfuid
+    in: path
+    description: 缃戝厓ID
+    required: true
+    type: string
+    
+  resourceType:
+    name: resourceType
+    in: path
+    description: em鎻愪緵鐨勮祫婧愮被鍨嬶紝渚嬪 ltps銆乪qs 绛�
+    required: true
+    type: string
+      
+  nfuidsInHeader:
+    name: nfuids
+    in: header
+    description: nf鐨剈id锛岀敤閫楀彿鍒嗛殧澶氫釜id
+    required: true
+    type: string
+    
+    
+definitions:
+
+  ErrorMsg:
+    properties:
+      errCode:
+        type: string
+      errMsg:
+        type: string
+        
+  NfResp:
+    properties:
+      nfuid: 
+        type: string
+        description: 缃戝厓uid
+      status:
+        type: string
+        description: REST搴旂瓟鐘舵�鐮�
+      resp:
+        type: string
+        description: REST搴旂瓟瀵硅薄
+  
+  NfRespList:
+    description: 澶氱綉鍏冨簲绛旂粨鏋�
+    type: array
+    items: 
+      $ref: "#/definitions/NfResp"
+  
+              
+    
+        
+      
+        
+  
+    

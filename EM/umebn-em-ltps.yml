@@ -1,0 +1,150 @@
+template: Hello, %s!
+
+server:
+  type: simple
+  rootPath: '/*'
+  applicationContextPath: /
+  connector:
+    type: http
+    port: 9088      
+ 
+
+microServiceInfo:
+  serviceName: umebn-em-ltps
+  version: v1
+  url: /
+  protocol: REST
+  visualRange: 1|0 
+         
+msbClientConfig:
+  msbSvrIp: 10.8.9.193 
+  msbSvrPort: 10081  
+  
+   
+zkConfig:
+  connectString: 10.8.9.193:2181
+  sessionTimeout: 60
+  connectionTimeout: 15
+  autoDiscover: false
+  zkServiceName: zk
+  zkServiceVersion: v1
+
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: ALL
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    org.openo.orchestrator.nfv.nsoc.LifecycleApp: INFO
+
+  appenders:
+    - type: console
+      threshold: INFO
+      timeZone: UTC
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: ./logs/ume-inventory-baseres.log
+      archivedLogFilenamePattern: ./logs/application-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+
+
+emServiceRegisterInfo:
+  - emServiceName: umebn-em-ltps
+    emServiceVersion: v1
+    deviceSubSeries:
+      - deviceSeries: 9000V2.14
+        resInfoList:
+          - name: ltps
+          - name: eq
+        deviceTypeList:
+          - name: ZXCTN 9002
+            softVersion: V2.14
+            resInfoList:
+              - name: ltps
+          - name: ZXCTN 9004
+            softVersion: V2.14
+            resInfoList:
+              - name: ltps
+          - name: ZXCTN 9008
+            softVersion: V2.14
+            resInfoList:
+              - name: ltps  
+      - deviceSeries: 9000V2.20
+        resInfoList:
+          - name: ltps
+          - name: eq
+        deviceTypeList:
+          - name: ZXCTN 9002
+            softVersion: V2.20
+            resInfoList:
+              - name: ltps
+          - name: ZXCTN 9004
+            softVersion: V2.20
+            resInfoList:
+              - name: ltps
+          - name: ZXCTN 9008
+            softVersion: V2.20
+            resInfoList:
+              - name: ltps
+          - name: ZXCTN 6130-PTN
+            softVersion: V2.20
+            resInfoList:
+              - name: ltps    
+      - deviceSeries: 6000V1.12
+        resInfoList:
+          - name: ltps
+          - name: eq
+        deviceSubSeries:
+          - deviceSeries: 61V1.12
+            resInfoList:
+              - name: ltps
+              - name: eq
+            deviceTypeList:
+              - name: ZXCTN 6110
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+              - name: ZXCTN 6120
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+              - name: ZXCTN 6150
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+          - deviceSeries: 6263V1.12
+            resInfoList:
+              - name: ltps
+              - name: eq
+            deviceTypeList:
+              - name: ZXCTN 6200
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+              - name: ZXCTN 6220
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+              - name: ZXCTN 6300
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq 
+              - name: ZXCTN 6320
+                softVersion: V1.12
+                resInfoList:
+                  - name: ltps
+                  - name: eq
+              
+

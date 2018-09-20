@@ -1,0 +1,1 @@
+##### [maven archetype](http://gitlab.zte.com.cn/dexcloud/dexcloud-maven-archtype)

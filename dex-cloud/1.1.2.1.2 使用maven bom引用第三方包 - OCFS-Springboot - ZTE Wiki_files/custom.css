@@ -1,0 +1,18 @@
+
+.greyboxfilled .aui[name=removespaceform] {  
+    display: none;  
+}  
+#custom-content-header p {
+    margin-bottom: 10px;
+}
+#custom-content-header p,
+.custom-sidebar-content .content p,
+#custom-content-footer p {
+    color: #C74A48;
+    border: 1px solid #EED3D7;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: #F2DEDE;
+}
+
+
