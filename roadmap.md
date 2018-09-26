@@ -6,7 +6,7 @@
 ![component view of UME](component_ume.png)
 0. code
     0. projects
-        - smart link <span style="color:888888">*communication component which can be associate with multiple implementations*</span>
+        - smart link <span style="color:888888" size="">*communication component which can be associate with multiple implementations*</span>
             - restful address
             - rmi address 
     0. UT
@@ -47,6 +47,7 @@
 - todo
 
 ###### Applications provided by OTCP
-- todo
+- todo 
+
 ###### Applications provided by UME
 - todo
