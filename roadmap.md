@@ -15,11 +15,13 @@
         - rules : 
     0. CI
 
+###### infrastructure 
+0. smart link based communication architecture
+
+
 ###### ME-LCM
 
 0. sU31-EM
-
-0. smart link based communication architecture
 
 0. south oriented service
 
