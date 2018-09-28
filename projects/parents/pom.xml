@@ -5,7 +5,7 @@
     <groupId>com.zte.mw.parents</groupId>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>parent</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <version>1.0.0-SNAPSHOT</version>
     <build>

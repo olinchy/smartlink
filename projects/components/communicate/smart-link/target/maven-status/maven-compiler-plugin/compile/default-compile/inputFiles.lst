@@ -1,78 +1,9 @@
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/CpuUsingLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/CounterFactor.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/SmartLinkNodeStarter.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/SenderStorage.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/MemoryLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ServiceSendDelNodeThread.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/MsgServiceInCacheAdaptor.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/CommandSender.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/ServiceHolder.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/AddressService.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/Executing.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ServiceAddressBook.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressServiceSyncTimer.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/AsyncMethod.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/ServiceAliveTimerTask.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/UrlAddress.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/DependenceList.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddSender.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/DelNodeMsg.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/NodeOp.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/MsgMask.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/MsgHolder.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/DefaultDeliver.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/IdBasedObjectHolder.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/NodeAddressVisitor.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/DelSender.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/SmartLinkRepository.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressServiceStore.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/LongComparator.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/NodeLink.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/CheckMsgFailedException.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/Address.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/IndicateMsgWithTime.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/AddNodeMsg.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/EventAsyncSendThread.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/Deliver.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressClientProcess.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/RpcMethod.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/SmartLink.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/AddressBook.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/SmartLinkNode.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/AddressServiceImpl.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/SendNodeThread.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/AddressClientAliveTimer.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/Dependable.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressServiceAliveTimer.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressClientService.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/BatchIndicationLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/EventOrIndiTaskMaker.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ServiceNotAvaliableException.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/SendMethod.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/AddressClientServiceImpl.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ClientAddress.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/BatchIndicateMsgWithTime.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/ThreadsMonitorLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/SendAddNodeTimerTask.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/SmartLinkMsgService.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ClientAliveTimerTask.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/IndAndEventCostObj.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/MsgHandlingLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/LocalAddressBook.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/Sending.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/BatchIndicationCostObj.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/JMSAddress.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/ServiceSendAddNodeThread.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/IndicationSender.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/Counter.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/NodeAddress.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/LoggerToRemote.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/client/ClientAddr.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/mos/smartlink/addressbook/service/StartSmartlinkServer.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/EventMonitorLog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/DeliverService.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/addressbook/service/AddressKeyComparator.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/RMILog.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/MoMsgGhost.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/log/IndiAndEventLogBase.java
-/home/olinchy/workspace/gerrit/mos-ems/develop/source-code/tools/smart_link/src/com/zte/smartlink/deliver/IdBasedObject.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/AddressClient.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/AddressServer.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/message/RegisterMsg.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/message/AddNodeMsg.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/message/AddressSyncMsg.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/Address.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/message/DelNodeMsg.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/model/Message.java
+/home/olinchy/Documents/2018-3 PaaS and Better EMS/projects/components/communicate/smart-link/src/java/com/zte/mw/components/communicate/smartlink/addressBook/AddressBook.java

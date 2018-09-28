@@ -4,12 +4,36 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zte.mw.components</groupId>
     <artifactId>components-parent</artifactId>
-    <version>${env.version}</version>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <parent>
         <groupId>com.zte.mw.parents</groupId>
         <artifactId>module-parent</artifactId>
         <relativePath>../parents/module-parent</relativePath>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+    <properties>
+        <publish.version>1.0.0-SNAPSHOT</publish.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.zte.mos.code4lib</groupId>
+                <artifactId>standalone_logger</artifactId>
+                <version>${publish.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.tools</groupId>
+                <artifactId>logger</artifactId>
+                <version>${publish.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.tools</groupId>
+                <artifactId>infrastructure</artifactId>
+                <version>${publish.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
