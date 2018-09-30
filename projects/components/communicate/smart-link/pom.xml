@@ -16,11 +16,11 @@
     <dependencies>
         <dependency>
             <groupId>com.zte.mw.components.tools</groupId>
-            <artifactId>logger</artifactId>
+            <artifactId>infrastructure</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.zte.mw.components.tools</groupId>
-            <artifactId>infrastructure</artifactId>
+            <groupId>com.zte.mw.components.tools.test</groupId>
+            <artifactId>env-provider</artifactId>
         </dependency>
     </dependencies>
 

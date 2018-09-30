@@ -33,6 +33,22 @@
                 <artifactId>infrastructure</artifactId>
                 <version>${publish.version}</version>
             </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.tools.test</groupId>
+                <artifactId>env-provider</artifactId>
+                <version>${public.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.tools.environment</groupId>
+                <artifactId>env-define</artifactId>
+                <version>${public.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

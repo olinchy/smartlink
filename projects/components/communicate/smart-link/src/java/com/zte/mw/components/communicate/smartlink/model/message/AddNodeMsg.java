@@ -19,4 +19,9 @@ public class AddNodeMsg extends AddressSyncMsg {
     public void update(final AddressBook addressBook) {
         addressBook.merge(this.addressBook);
     }
+
+    @Override
+    public String key() {
+        return "add node";
+    }
 }

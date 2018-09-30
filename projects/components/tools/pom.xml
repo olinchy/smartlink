@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zte.mw.components.tools</groupId>
     <artifactId>tools-parent</artifactId>
@@ -11,9 +12,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-  <modules>
-    <module>logger</module>
-    <module>infrastructure</module>
-    <module>logger-suite-log4j</module>
-  </modules>
+    <modules>
+        <module>logger</module>
+        <module>infrastructure</module>
+        <module>logger-suite-log4j</module>
+        <module>environment</module>
+    </modules>
 </project>

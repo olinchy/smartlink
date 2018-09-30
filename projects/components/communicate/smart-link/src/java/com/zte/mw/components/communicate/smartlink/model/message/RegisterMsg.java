@@ -14,19 +14,24 @@ import com.zte.mw.components.communicate.smartlink.model.Message;
 
 public class RegisterMsg implements Message {
     public RegisterMsg(
-            final AddressBook addressBook, final Address<AddressSyncMsg> message) {
+            final AddressBook addressBook, final Address message) {
         this.addressBook = addressBook;
         this.message = message;
     }
 
     private AddressBook addressBook;
-    private Address<AddressSyncMsg> message;
+    private Address message;
 
-    public Address<AddressSyncMsg> clientAddress() {
+    public Address clientAddress() {
         return message;
     }
 
     public AddressBook addressBook() {
         return addressBook;
+    }
+
+    @Override
+    public String key() {
+        return "address sync";
     }
 }

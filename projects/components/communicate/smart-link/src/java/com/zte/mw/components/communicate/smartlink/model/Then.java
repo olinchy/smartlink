@@ -1,5 +1,5 @@
 package com.zte.mw.components.communicate.smartlink.model;
 
-public interface Message {
-    String key();
+public interface Then {
+    void on();
 }

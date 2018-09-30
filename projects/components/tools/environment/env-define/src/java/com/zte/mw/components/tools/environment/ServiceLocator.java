@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.tools.infrastructure;
+package com.zte.mw.components.tools.environment;
 
 import java.util.concurrent.ConcurrentHashMap;
 

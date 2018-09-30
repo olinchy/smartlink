@@ -19,4 +19,9 @@ public class DelNodeMsg extends AddressSyncMsg {
     public void update(final AddressBook addressBook) {
         addressBook.purge(this.addressBook);
     }
+
+    @Override
+    public String key() {
+        return "del node";
+    }
 }
