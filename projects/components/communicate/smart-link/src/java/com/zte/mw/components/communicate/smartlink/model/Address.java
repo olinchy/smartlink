@@ -1,9 +1,7 @@
 package com.zte.mw.components.communicate.smartlink.model;
 
-public interface Address {
-    void on(Message message, final Callback callback);
+public interface Address extends MsgService {
+    void bind(MsgService service);
 
-    void publish();
-
-    Response on(Message msg);
+    Address publish(SmartLinkNode smartLinkNode);
 }

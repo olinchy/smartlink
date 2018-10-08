@@ -22,7 +22,9 @@ import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Callback;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import com.zte.mw.components.tools.environment.TestBuilder;
 
 import static org.junit.Assert.assertFalse;
@@ -31,16 +33,6 @@ import static org.junit.Assert.assertTrue;
 public class TestDeliver extends TestBuilder {
     @Before
     public void setUpByCase() throws Exception {
-        LinkRepository.add(new Link("fake", "trail-run", "test"));
-    }
-
-    @Test
-    public void name() {
-        List<Response> responses = new Deliver("fake").send(new FakeMessage());
-    }
-
-    @Test
-    public void test_groupBy() {
         HashMap<String, List<Address>> mapTarget = new HashMap<>();
         mapTarget.computeIfAbsent("test2", s -> Arrays.asList(sa("111"), sa("222")));
         mapTarget.computeIfAbsent("test3", s -> Arrays.asList(sa("333"), sa("444"), sa("555")));
@@ -51,7 +43,7 @@ public class TestDeliver extends TestBuilder {
                 return mapTarget.get(name);
             }
         });
-
+        LinkRepository.add(new Link("fake", "trail-run", "test"));
         LinkRepository.add(new Link("fake", "trail-run", "test1"));
         LinkRepository.add(new Link("fake1", "trail-run", "test2"));
         LinkRepository.add(new Link("fake1", "trail-run", "test3"));
@@ -59,7 +51,24 @@ public class TestDeliver extends TestBuilder {
         LinkRepository.add(new Link("fake1", "trail-run2", "test4"));
         LinkRepository.add(new Link("fake1", "trail-run3", "test5"));
         LinkRepository.add(new Link("fake1", "trail-run4", "test6"));
+    }
 
+    private StubAddress sa(final String name) {
+        return new StubAddress(name);
+    }
+
+    @Test
+    public void name() {
+        List<Response> responses = new Deliver("fake").send(new FakeMessage());
+        ArrayList<String> reps = responses.stream().map(response -> response.toString()).collect(
+                Collectors.toCollection(ArrayList::new));
+        assertTrue(reps.contains("777"));
+        assertTrue(reps.contains("888"));
+        assertTrue(reps.contains("999"));
+    }
+
+    @Test
+    public void test_groupBy() {
         List<String> targets = LinkRepository.get("fake1", "trail-run").stream()
                 .map(Object::toString).collect(Collectors.toCollection(ArrayList::new));
 
@@ -71,10 +80,6 @@ public class TestDeliver extends TestBuilder {
         assertFalse(targets.contains("777"));
         assertFalse(targets.contains("888"));
         assertFalse(targets.contains("999"));
-    }
-
-    private StubAddress sa(final String name) {
-        return new StubAddress(name);
     }
 
     private class FakeMessage implements Message {
@@ -92,17 +97,32 @@ public class TestDeliver extends TestBuilder {
         private final String name;
 
         @Override
+        public int hashCode() {
+            return name != null ? name.hashCode() : 0;
+        }
+
+        @Override
         public void on(final Message message, final Callback callback) {
 
         }
 
         @Override
-        public void publish() {
+        public Response on(final Message msg) {
+            return new Response() {
+                @Override
+                public String toString() {
+                    return name;
+                }
+            };
+        }
+
+        @Override
+        public void bind(final MsgService service) {
 
         }
 
         @Override
-        public Response on(final Message msg) {
+        public Address publish(final SmartLinkNode smartLinkNode) {
             return null;
         }
 

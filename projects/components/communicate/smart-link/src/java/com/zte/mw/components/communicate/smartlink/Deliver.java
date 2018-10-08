@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Callback;
 import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.Response;
@@ -30,6 +31,18 @@ public class Deliver {
 
     public List<Response> send(Message msg) {
         return Objects.requireNonNull(LinkRepository.get(senderName, msg.key())).stream().map(
-                address -> address.on(msg)).collect(Collectors.toCollection(ArrayList::new));
+                address -> {
+                    try {
+                        return address.on(msg);
+                    } catch (SmartLinkException e) {
+                        e.printStackTrace();
+                        return new Response() {
+                            @Override
+                            public String toString() {
+                                return super.toString();
+                            }
+                        };
+                    }
+                }).collect(Collectors.toCollection(ArrayList::new));
     }
 }

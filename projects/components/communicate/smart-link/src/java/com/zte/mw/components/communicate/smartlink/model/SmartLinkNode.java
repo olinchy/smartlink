@@ -6,4 +6,6 @@ public interface SmartLinkNode extends Dependable {
     void start();
 
     void post();
+
+    MsgService service();
 }
