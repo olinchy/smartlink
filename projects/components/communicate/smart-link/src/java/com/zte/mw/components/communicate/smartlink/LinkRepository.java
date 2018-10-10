@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 
@@ -24,7 +24,6 @@ import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toCollection;
 
 public class LinkRepository {
-    private static AddressBook addressBook;
     private static ConcurrentLinkedQueue<Link> links = new ConcurrentLinkedQueue<>();
 
     public static List<Address> get(final String senderName, final String key) {
@@ -32,13 +31,9 @@ public class LinkRepository {
         Map<String, Map<String, HashSet<String>>> map = links.stream().collect(
                 groupingByConcurrent(
                         Link::from, groupingBy(Link::keyword, mapping(Link::to, toCollection(HashSet::new)))));
-        return map.get(senderName).get(key).stream().filter(name -> addressBook.get(name) != null).map(
-                name -> addressBook.get(name)).collect(
+        return map.get(senderName).get(key).stream().filter(name -> AddressBookHolder.addressBook().get(name) != null).map(
+                name -> AddressBookHolder.addressBook().get(name)).collect(
                 ArrayList::new, ArrayList::addAll, ArrayList::addAll);
-    }
-
-    public static void init(final AddressBook addressBook) {
-        LinkRepository.addressBook = addressBook;
     }
 
     public static void add(Link link) {

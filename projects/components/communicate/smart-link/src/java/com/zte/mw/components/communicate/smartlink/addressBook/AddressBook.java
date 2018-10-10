@@ -8,24 +8,35 @@
 
 package com.zte.mw.components.communicate.smartlink.addressBook;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.zte.mw.components.communicate.smartlink.model.Address;
 
 public class AddressBook {
-    public void merge(final AddressBook addressBook) {
+    private ConcurrentHashMap<String, HashSet<Address>> addressMap = new ConcurrentHashMap<>();
 
+    public void merge(final AddressBook addressBook) {
+        addressBook.addressMap.forEach(
+                (key, value) -> this.addressMap.computeIfAbsent(key, s -> new HashSet<>()).addAll(value));
     }
 
     public void purge(final AddressBook addressBook) {
-
+        addressBook.addressMap.forEach((key, value) -> this.addressMap.computeIfPresent(
+                key, (s, addresses) -> {
+                    addresses.removeAll(value);
+                    return addresses;
+                }));
     }
 
-    public void add(final String name, final Address address) {
-
+    public void add(final String name, final Address... addresses) {
+        addressMap.computeIfAbsent(name, s -> new HashSet<>()).addAll(Arrays.asList(addresses));
     }
 
     public List<Address> get(final String name) {
-        return null;
+        return new ArrayList<>(addressMap.getOrDefault(name, new HashSet<>()));
     }
 }
