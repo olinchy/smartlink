@@ -30,8 +30,9 @@ import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
+import com.zte.mw.components.communicate.smartlink.stub.SpyClient;
 
-public class TestClientToServer {
+public class Test_1_3_ClientToServer {
     private static Server server;
 
     @BeforeClass
@@ -40,12 +41,18 @@ public class TestClientToServer {
     }
 
     @Test
-    public void name() {
-        Client client1 = startClient("1", "node2-1", "node2-2");
+    public void test_all_clients_know_each_other() {
+        SpyClient client1 = startClient("1", "node1-1", "node1-2");
+        SpyClient client2 = startClient("2", "node2-1", "node2-2");
+
+        client1.has("node2-1");
+        client1.has("node2-2");
+        client2.has("node1-1");
+        client2.has("node1-2");
     }
 
-    private Client startClient(final String name, final String... nodes) {
-        Client client = new Client(new RMIAddress("localhost", 54322, name), Arrays.stream(nodes).map(
+    private SpyClient startClient(final String name, final String... nodes) {
+        return new SpyClient(new RMIAddress("localhost", 54322, name), Arrays.stream(nodes).map(
                 x -> new SmartLinkNode() {
                     @Override
                     public void start() {
@@ -72,7 +79,23 @@ public class TestClientToServer {
                         return null;
                     }
                 }).collect(Collectors.toCollection(ArrayList::new)));
-        return client;
+    }
+
+    @Test
+    public void test_remove_1_client_should_clear_all() throws InterruptedException {
+        SpyClient client1 = startClient("1", "node1-1", "node1-2");
+        SpyClient client2 = startClient("2", "node2-1", "node2-2");
+
+        client1.has("node2-1");
+        client1.has("node2-2");
+        client2.has("node1-1");
+        client2.has("node1-2");
+
+        client1.stop();
+        // wait till server remove no responding client
+        Thread.sleep(30000);
+
+        client2.donotHave("node1-2");
     }
 
     private static class RMIAddress implements Address, Serializable {
