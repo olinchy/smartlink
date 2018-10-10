@@ -39,6 +39,3 @@
 
 ###### references
 - [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
-
-###### ume structure
-![component view of ume](component_ume.png) 
