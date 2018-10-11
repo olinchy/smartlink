@@ -1,5 +1,7 @@
 package com.zte.mw.components.communicate.smartlink.model;
 
-public interface Message {
+import java.io.Serializable;
+
+public interface Message extends Serializable {
     String key();
 }

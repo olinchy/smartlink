@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.zte.mw.components.communicate.smartlink.model.Link;
@@ -25,9 +25,10 @@ import static com.zte.mw.components.communicate.smartlink.stub.StubAddress.sa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class Test_1_2_Deliver extends TestBuilder {
-    @Before
-    public void setUpByCase() throws Exception {
+public class Test_1_2_Deliver {
+    @BeforeClass
+    public static void setUp() throws Exception {
+        TestBuilder.setUp();
         addressBook().add("test1", sa("111"), sa("222"));
         addressBook().add("test2", sa("333"), sa("444"), sa("555"));
         addressBook().add("test3", sa("777"), sa("888"), sa("999"));
@@ -57,12 +58,14 @@ public class Test_1_2_Deliver extends TestBuilder {
                 .map(Object::toString).collect(Collectors.toCollection(ArrayList::new));
 
         assertTrue(targets.contains("333"));
-
         assertTrue(targets.contains("444"));
         assertTrue(targets.contains("555"));
-        assertFalse(targets.contains("777"));
-        assertFalse(targets.contains("888"));
-        assertFalse(targets.contains("999"));
+        assertTrue(targets.contains("777"));
+        assertTrue(targets.contains("888"));
+        assertTrue(targets.contains("999"));
+
+        assertFalse(targets.contains("111"));
+        assertFalse(targets.contains("222"));
     }
 
     private class FakeMessage implements Message {

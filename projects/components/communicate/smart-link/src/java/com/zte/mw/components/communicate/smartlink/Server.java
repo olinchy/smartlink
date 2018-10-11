@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Callback;
 import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
@@ -31,7 +30,7 @@ public class Server implements MsgService {
             public void run() {
                 log.info("current clients are : " + clients);
             }
-        }, 20, 600000);
+        }, 20, 10000);
     }
 
     private static ThreadPoolExecutor pool = Objects.requireNonNull(ServiceLocator.find(ResourceProvider.class)).get(
@@ -43,10 +42,16 @@ public class Server implements MsgService {
     private ConcurrentHashMap<Address, AddressBook> clients = new ConcurrentHashMap<>();
 
     @Override
-    public void on(final Message msg, final Callback callback) {
+    public Response on(final Message msg) {
         if (msg instanceof RegisterMsg) {
             register(((RegisterMsg) msg));
         }
+        return new Response() {
+            @Override
+            public String toString() {
+                return super.toString();
+            }
+        };
     }
 
     private void register(final RegisterMsg message) {
@@ -61,18 +66,5 @@ public class Server implements MsgService {
                 }));
 
         clients.put(message.clientAddress(), message.addressBook());
-    }
-
-    @Override
-    public Response on(final Message msg) {
-        if (msg instanceof RegisterMsg) {
-            register(((RegisterMsg) msg));
-        }
-        return new Response() {
-            @Override
-            public String toString() {
-                return super.toString();
-            }
-        };
     }
 }

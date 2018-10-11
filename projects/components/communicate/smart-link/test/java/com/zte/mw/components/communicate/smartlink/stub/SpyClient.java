@@ -27,7 +27,7 @@ public class SpyClient extends Client {
         assertNotNull(addressBook().get(nodeName));
     }
 
-    public void donotHave(String nodeName) {
+    public void doNotHave(String nodeName) {
         assertNull(addressBook().get(nodeName));
     }
 

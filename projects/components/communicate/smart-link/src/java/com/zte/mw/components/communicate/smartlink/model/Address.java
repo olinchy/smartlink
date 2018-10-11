@@ -1,7 +1,7 @@
 package com.zte.mw.components.communicate.smartlink.model;
 
 public interface Address extends MsgService {
-    void bind(MsgService service);
+    void bind(Service service);
 
     Address publish(SmartLinkNode smartLinkNode);
 }

@@ -13,19 +13,20 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import com.zte.mw.components.tools.environment.TestBuilder;
 import com.zte.mw.components.tools.infrastructure.structure.Dependable;
 import com.zte.mw.components.tools.infrastructure.structure.DependableSorter;
-import com.zte.mw.components.tools.environment.TestBuilder;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
-public class TestDependableSort extends TestBuilder {
+public class TestDependableSort {
     public TestDependableSort(final String input, final String[] expected) {
         this.input = input;
         this.expected = expected;
@@ -33,6 +34,11 @@ public class TestDependableSort extends TestBuilder {
 
     private String input;
     private String[] expected;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        TestBuilder.setUp();
+    }
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {

@@ -8,6 +8,7 @@
 
 package com.zte.mw.components.communicate.smartlink.addressBook;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.zte.mw.components.communicate.smartlink.model.Address;
 
-public class AddressBook {
+public class AddressBook implements Serializable {
     private ConcurrentHashMap<String, HashSet<Address>> addressMap = new ConcurrentHashMap<>();
 
     public void merge(final AddressBook addressBook) {
@@ -38,5 +39,12 @@ public class AddressBook {
 
     public List<Address> get(final String name) {
         return new ArrayList<>(addressMap.getOrDefault(name, new HashSet<>()));
+    }
+
+    @Override
+    public String toString() {
+        return "AddressBook{"
+                + " addresses=" + addressMap
+                + '}';
     }
 }

@@ -9,10 +9,9 @@
 package com.zte.mw.components.communicate.smartlink.stub;
 
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Callback;
 import com.zte.mw.components.communicate.smartlink.model.Message;
-import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
 public class StubAddress implements Address {
@@ -46,11 +45,6 @@ public class StubAddress implements Address {
     }
 
     @Override
-    public void on(final Message message, final Callback callback) {
-
-    }
-
-    @Override
     public Response on(final Message msg) {
         return new Response() {
             @Override
@@ -61,7 +55,7 @@ public class StubAddress implements Address {
     }
 
     @Override
-    public void bind(final MsgService service) {
+    public void bind(final Service service) {
 
     }
 

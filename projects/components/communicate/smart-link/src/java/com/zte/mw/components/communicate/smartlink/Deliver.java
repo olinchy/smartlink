@@ -14,7 +14,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
-import com.zte.mw.components.communicate.smartlink.model.Callback;
 import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 
@@ -25,12 +24,18 @@ public class Deliver {
 
     private String senderName;
 
-    public void notify(Message msg, Callback callback) {
-        Objects.requireNonNull(LinkRepository.get(senderName, msg.key())).forEach(target -> target.on(msg, callback));
+    public void notify(Message msg) {
+        Objects.requireNonNull(LinkRepository.get(senderName, msg.key())).forEach(target -> {
+            try {
+                target.on(msg);
+            } catch (SmartLinkException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public List<Response> send(Message msg) {
-        return Objects.requireNonNull(LinkRepository.get(senderName, msg.key())).stream().map(
+        return LinkRepository.get(senderName, msg.key()).stream().map(
                 address -> {
                     try {
                         return address.on(msg);

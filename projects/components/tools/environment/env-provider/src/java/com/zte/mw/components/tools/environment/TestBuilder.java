@@ -8,13 +8,10 @@
 
 package com.zte.mw.components.tools.environment;
 
-import org.junit.BeforeClass;
-
 import com.zte.mw.components.tools.logger.Logger;
 import com.zte.mw.components.tools.logger.LoggingService;
 
-public class TestBuilder {
-    @BeforeClass
+public final class TestBuilder {
     public static void setUp() throws Exception {
         ServiceLocator.register(LoggingService.class, clazz -> new Logger() {
             @Override
@@ -72,5 +69,6 @@ public class TestBuilder {
                 System.out.println(msg);
             }
         });
+        ServiceLocator.register(ResourceProvider.class, new TestResourceProvider());
     }
 }
