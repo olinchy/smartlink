@@ -57,15 +57,10 @@ public class Test_1_2_Deliver {
         List<String> targets = LinkRepository.get("fake1", "trail-run").stream()
                 .map(Object::toString).collect(Collectors.toCollection(ArrayList::new));
 
-        assertTrue(targets.contains("333"));
-        assertTrue(targets.contains("444"));
-        assertTrue(targets.contains("555"));
-        assertTrue(targets.contains("777"));
-        assertTrue(targets.contains("888"));
-        assertTrue(targets.contains("999"));
+        assertTrue(targets.contains("test2"));
+        assertTrue(targets.contains("test3"));
 
-        assertFalse(targets.contains("111"));
-        assertFalse(targets.contains("222"));
+        assertFalse(targets.contains("test1"));
     }
 
     private class FakeMessage implements Message {
