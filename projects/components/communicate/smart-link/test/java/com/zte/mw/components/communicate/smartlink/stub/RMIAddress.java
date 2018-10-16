@@ -18,10 +18,12 @@ import java.rmi.registry.LocateRegistry;
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
+import com.zte.mw.components.communicate.smartlink.model.Request;
+import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
-public class RMIAddress implements Address<FakeRequest, FakeResponse>, Serializable {
+public class RMIAddress implements Address<Request<Response>, Response>, Serializable {
     public RMIAddress(String ip, int port, final String name) {
         this(port, "//" + ip + ":" + port + "/" + name);
     }
@@ -66,7 +68,8 @@ public class RMIAddress implements Address<FakeRequest, FakeResponse>, Serializa
     }
 
     @Override
-    public FakeResponse on(final FakeRequest msg) {
+    public Response on(
+            final Request<Response> msg) {
         try {
             return ((RMIMsgService) Naming.lookup(this.url)).on(msg);
         } catch (NotBoundException | MalformedURLException | RemoteException | SmartLinkException e) {
