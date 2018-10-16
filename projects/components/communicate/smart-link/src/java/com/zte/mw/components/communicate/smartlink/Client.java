@@ -7,10 +7,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import com.zte.mw.components.communicate.smartlink.model.message.RegisterMsg;
+import com.zte.mw.components.communicate.smartlink.model.message.RegisterResponse;
 import com.zte.mw.components.tools.environment.ResourceProvider;
 import com.zte.mw.components.tools.environment.ServiceLocator;
 
@@ -30,8 +31,10 @@ public class Client {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                List<Response> list = new Deliver(Client.this.name()).send(new RegisterMsg(addressBook(), address));
-                // TODO: 10/10/18 add into addressbook
+                List<RegisterResponse> list = new Deliver(Client.this.name()).send(
+                        new RegisterMsg(addressBook(), address));
+                // TODO: 10/10/18 add into address book
+                list.forEach(response -> addressBook().merge(response.fetch("addressBook", AddressBook.class)));
             }
         }, 20000, 5000);
     }

@@ -17,13 +17,11 @@ import java.rmi.registry.LocateRegistry;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
-import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
-public class RMIAddress implements Address, Serializable {
+public class RMIAddress implements Address<FakeRequest, FakeResponse>, Serializable {
     public RMIAddress(String ip, int port, final String name) {
         this(port, "//" + ip + ":" + port + "/" + name);
     }
@@ -37,30 +35,10 @@ public class RMIAddress implements Address, Serializable {
     private String url;
 
     @Override
-    public Response on(final Message msg) throws SmartLinkException {
-        try {
-            return ((RMIMsgService) Naming.lookup(this.url)).on(msg);
-        } catch (NotBoundException | MalformedURLException | RemoteException e) {
-            throw new SmartLinkException();
-        }
-    }
-
-    @Override
     public int hashCode() {
         int result = port;
         result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
-    }    @Override
-    public void bind(final Service service) {
-        try {
-            LocateRegistry.createRegistry(port);
-        } catch (RemoteException e) {
-        }
-        try {
-            Naming.rebind(this.url, new RMIProxyService((MsgService) service));
-        } catch (MalformedURLException | RemoteException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -78,11 +56,6 @@ public class RMIAddress implements Address, Serializable {
             return false;
         }
         return url != null ? url.equals(that.url) : that.url == null;
-    }    @Override
-    public Address publish(final SmartLinkNode node) {
-        RMIAddress address = new RMIAddress(port, this.url + "/" + node.name());
-        address.bind(node.service());
-        return address;
     }
 
     @Override
@@ -92,7 +65,32 @@ public class RMIAddress implements Address, Serializable {
                 + '}';
     }
 
+    @Override
+    public FakeResponse on(final FakeRequest msg) {
+        try {
+            return ((RMIMsgService) Naming.lookup(this.url)).on(msg);
+        } catch (NotBoundException | MalformedURLException | RemoteException | SmartLinkException e) {
+            return new FakeResponse();
+        }
+    }
 
+    @Override
+    public void bind(final Service service) {
+        try {
+            LocateRegistry.createRegistry(port);
+        } catch (RemoteException ignore) {
+        }
+        try {
+            Naming.rebind(this.url, new RMIProxyService((MsgService) service));
+        } catch (MalformedURLException | RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    @Override
+    public Address publish(final SmartLinkNode node) {
+        RMIAddress address = new RMIAddress(port, this.url + "/" + node.name());
+        address.bind(node.service());
+        return address;
+    }
 }

@@ -8,13 +8,10 @@
 
 package com.zte.mw.components.communicate.smartlink.stub;
 
-import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
-import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
-import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.tools.infrastructure.LoggerLocator;
 
-public class StubService implements MsgService {
+public class StubService implements MsgService<FakeRequest, FakeResponse> {
     public StubService(final String name) {
         this.name = name;
     }
@@ -22,9 +19,9 @@ public class StubService implements MsgService {
     private final String name;
 
     @Override
-    public Response on(final Message msg) throws SmartLinkException {
+    public FakeResponse on(final FakeRequest msg) {
         LoggerLocator.logger(StubService.class).info("executing " + msg + " with callback");
-        return new Response() {
+        return new FakeResponse() {
             @Override
             public String toString() {
                 return super.toString();

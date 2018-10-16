@@ -9,9 +9,9 @@
 package com.zte.mw.components.communicate.smartlink.model.message;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 
-public abstract class AddressSyncMsg implements Message {
+public abstract class AddressSyncMsg implements Request {
     public AddressSyncMsg(final AddressBook addressBook) {
         this.addressBook = addressBook;
     }

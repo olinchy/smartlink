@@ -9,7 +9,7 @@
 package com.zte.mw.components.communicate.smartlink.stub;
 
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
@@ -45,8 +45,8 @@ public class StubAddress implements Address {
     }
 
     @Override
-    public Response on(final Message msg) {
-        return new Response() {
+    public Response on(final Request msg) {
+        return new FakeResponse() {
             @Override
             public String toString() {
                 return name;

@@ -16,8 +16,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.zte.mw.components.communicate.smartlink.model.Link;
-import com.zte.mw.components.communicate.smartlink.model.Message;
-import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.stub.FakeRequest;
+import com.zte.mw.components.communicate.smartlink.stub.FakeResponse;
 import com.zte.mw.components.tools.environment.TestBuilder;
 
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
@@ -45,7 +45,7 @@ public class Test_1_2_Deliver {
 
     @Test
     public void name() {
-        List<Response> responses = new Deliver("fake").send(new FakeMessage());
+        List<FakeResponse> responses = new Deliver("fake").send(new FakeRequest());
         ArrayList<String> reps = responses.stream().map(Object::toString).collect(
                 Collectors.toCollection(ArrayList::new));
         assertTrue(reps.contains("111"));
@@ -61,12 +61,5 @@ public class Test_1_2_Deliver {
         assertTrue(targets.contains("test3"));
 
         assertFalse(targets.contains("test1"));
-    }
-
-    private class FakeMessage implements Message {
-        @Override
-        public String key() {
-            return "trail-run";
-        }
     }
 }

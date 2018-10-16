@@ -13,8 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
-import com.zte.mw.components.communicate.smartlink.model.Callback;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.Service;
@@ -29,7 +28,7 @@ public class RMIProxyService extends UnicastRemoteObject implements Service, RMI
     private final MsgService service;
 
     @Override
-    public Response on(final Message msg) throws SmartLinkException, RemoteException {
+    public Response on(final Request msg) throws SmartLinkException, RemoteException {
         return service.on(msg);
     }
 }

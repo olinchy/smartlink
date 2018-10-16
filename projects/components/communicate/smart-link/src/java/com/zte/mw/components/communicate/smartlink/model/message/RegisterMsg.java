@@ -10,9 +10,9 @@ package com.zte.mw.components.communicate.smartlink.model.message;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 
-public class RegisterMsg implements Message {
+public class RegisterMsg implements Request<RegisterResponse> {
     public RegisterMsg(
             final AddressBook addressBook, final Address message) {
         this.addressBook = addressBook;

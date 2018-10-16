@@ -1,5 +1,6 @@
 package com.zte.mw.components.communicate.smartlink;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,11 +10,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
-import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Message;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
-import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.message.RegisterResponse;
 import com.zte.mw.components.communicate.smartlink.model.message.AddNodeMsg;
 import com.zte.mw.components.communicate.smartlink.model.message.RegisterMsg;
 import com.zte.mw.components.tools.environment.ResourceProvider;
@@ -22,7 +21,7 @@ import com.zte.mw.components.tools.logger.Logger;
 
 import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
 
-public class Server implements MsgService {
+public class Server implements MsgService<RegisterMsg, RegisterResponse> {
     public Server(final Address address) {
         address.bind(this);
         timer.schedule(new TimerTask() {
@@ -42,29 +41,21 @@ public class Server implements MsgService {
     private ConcurrentHashMap<Address, AddressBook> clients = new ConcurrentHashMap<>();
 
     @Override
-    public Response on(final Message msg) {
-        if (msg instanceof RegisterMsg) {
-            register(((RegisterMsg) msg));
-        }
-        return new Response() {
-            @Override
-            public String toString() {
-                return super.toString();
-            }
-        };
+    public RegisterResponse on(final RegisterMsg msg) {
+        return register(msg);
     }
 
-    private void register(final RegisterMsg message) {
+    private RegisterResponse register(final RegisterMsg message) {
+        final ArrayList<AddressBook> list = new ArrayList<>();
         clients.keySet().stream().filter(
                 addressSyncMsgAddress -> !addressSyncMsgAddress.equals(message.clientAddress())).forEach(
-                address -> pool.execute(() -> {
-                    try {
-                        address.on(new AddNodeMsg(message.addressBook()));
-                    } catch (SmartLinkException e) {
-                        e.printStackTrace();
-                    }
-                }));
+                address -> {
+                    pool.execute(() -> address.on(new AddNodeMsg(message.addressBook())));
+                    list.add(clients.get(address));
+                });
 
         clients.put(message.clientAddress(), message.addressBook());
+
+        return new RegisterResponse(list);
     }
 }

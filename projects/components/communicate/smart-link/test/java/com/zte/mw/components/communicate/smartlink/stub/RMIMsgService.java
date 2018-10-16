@@ -4,9 +4,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 
 public interface RMIMsgService extends Remote {
-    Response on(Message msg) throws SmartLinkException, RemoteException;
+    <T extends Response> T on(Request<T> msg) throws SmartLinkException, RemoteException;
 }

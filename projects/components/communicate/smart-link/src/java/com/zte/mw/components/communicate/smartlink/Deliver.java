@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
-import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Message;
+import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 
 import static java.util.stream.Collectors.toCollection;
@@ -26,21 +25,10 @@ public class Deliver {
 
     private String senderName;
 
-    public List<Response> send(Message msg) {
+    public <T extends Response> List<T> send(Request<T> msg) {
         return LinkRepository.get(senderName, msg.key()).stream().map(
                 nodeName -> AddressBookHolder.addressBook().get(nodeName))
-                .collect(ArrayList<Address>::new, ArrayList::addAll, ArrayList::addAll).stream().map(address -> {
-                    try {
-                        return address.on(msg);
-                    } catch (SmartLinkException e) {
-                        e.printStackTrace();
-                        return new Response() {
-                            @Override
-                            public String toString() {
-                                return super.toString();
-                            }
-                        };
-                    }
-                }).collect(toCollection(ArrayList::new));
+                .collect(ArrayList<Address>::new, ArrayList::addAll, ArrayList::addAll).stream().map(
+                        address -> (T) address.on(msg)).collect(toCollection(ArrayList::new));
     }
 }

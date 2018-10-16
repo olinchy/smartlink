@@ -2,8 +2,6 @@ package com.zte.mw.components.communicate.smartlink.model;
 
 import java.io.Serializable;
 
-import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
-
-public interface MsgService extends Service, Serializable {
-    Response on(Message msg) throws SmartLinkException;
+public interface MsgService<T extends Request<R>, R extends Response> extends Service, Serializable {
+    R on(T msg);
 }
