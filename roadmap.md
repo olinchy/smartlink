@@ -7,8 +7,11 @@
 0. code
     0. projects
         - smart link <span style="color:888888" size="">*communication component which can be associate with multiple implementations*</span>
+            - low level structure![](diagrams/low-level-structure.png)
+            - class view ![](diagrams/smartlink-classes.png)
             - restful address
             - rmi address 
+        - 
     0. UT
         - rules : 
     0. FT
