@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink;
+package com.zte.mw.components.communicate.smartlink.unit_test;
 
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ import static com.zte.mw.components.communicate.smartlink.stub.StubAddress.sa;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Test_1_1_AddressBook {
+public class UT_SmartLink_1_AddressBook {
     @Test
     public void test_purge() {
         AddressBook bookBase = new AddressBook();

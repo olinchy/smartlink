@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink;
+package com.zte.mw.components.communicate.smartlink.function_test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.zte.mw.components.communicate.smartlink.LinkRepository;
+import com.zte.mw.components.communicate.smartlink.Server;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
@@ -25,7 +27,7 @@ import com.zte.mw.components.tools.environment.TestBuilder;
 
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 
-public class Test_1_3_ClientToServer {
+public class FT_SmartLink_1_ClientToServer {
     private static Server server;
 
     @BeforeClass

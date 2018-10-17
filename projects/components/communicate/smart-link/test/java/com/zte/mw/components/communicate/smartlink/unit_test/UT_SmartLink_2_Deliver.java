@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink;
+package com.zte.mw.components.communicate.smartlink.unit_test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.zte.mw.components.communicate.smartlink.Deliver;
+import com.zte.mw.components.communicate.smartlink.LinkRepository;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.stub.FakeRequest;
 import com.zte.mw.components.communicate.smartlink.stub.FakeResponse;
@@ -25,7 +27,7 @@ import static com.zte.mw.components.communicate.smartlink.stub.StubAddress.sa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class Test_1_2_Deliver {
+public class UT_SmartLink_2_Deliver {
     @BeforeClass
     public static void setUp() throws Exception {
         TestBuilder.setUp();
