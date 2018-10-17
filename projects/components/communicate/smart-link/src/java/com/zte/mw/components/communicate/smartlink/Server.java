@@ -49,9 +49,9 @@ public class Server implements MsgService<RegisterMsg, RegisterResponse> {
         final ArrayList<AddressBook> list = new ArrayList<>();
         clients.keySet().stream().filter(
                 addressSyncMsgAddress -> !addressSyncMsgAddress.equals(message.clientAddress())).forEach(
-                address -> {
-                    pool.execute(() -> address.on(new AddNodeMsg(message.addressBook())));
-                    list.add(clients.get(address));
+                client -> {
+                    pool.execute(() -> client.on(new AddNodeMsg(message.addressBook())));
+                    list.add(clients.get(client));
                 });
 
         clients.put(message.clientAddress(), message.addressBook());
