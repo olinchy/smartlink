@@ -17,7 +17,10 @@ import org.junit.Test;
 
 import com.zte.mw.components.communicate.smartlink.Deliver;
 import com.zte.mw.components.communicate.smartlink.LinkRepository;
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
 import com.zte.mw.components.communicate.smartlink.model.Link;
+import com.zte.mw.components.communicate.smartlink.model.SmartLinkNodeAdaptor;
 import com.zte.mw.components.communicate.smartlink.stub.FakeRequest;
 import com.zte.mw.components.communicate.smartlink.stub.FakeResponse;
 import com.zte.mw.components.tools.environment.TestBuilder;
@@ -31,9 +34,10 @@ public class UT_SmartLink_2_Deliver {
     @BeforeClass
     public static void setUp() throws Exception {
         TestBuilder.setUp();
-        addressBook().add("test1", sa("111"), sa("222"));
-        addressBook().add("test2", sa("333"), sa("444"), sa("555"));
-        addressBook().add("test3", sa("777"), sa("888"), sa("999"));
+        AddressBookHolder.register("fake", new AddressBook());
+        addressBook("fake").add("test1", sa("111"), sa("222"));
+        addressBook("fake").add("test2", sa("333"), sa("444"), sa("555"));
+        addressBook("fake").add("test3", sa("777"), sa("888"), sa("999"));
 
         LinkRepository.add(new Link("fake", "trail-run", "test"));
         LinkRepository.add(new Link("fake", "trail-run", "test1"));
@@ -47,7 +51,12 @@ public class UT_SmartLink_2_Deliver {
 
     @Test
     public void name() {
-        List<FakeResponse> responses = new Deliver("fake").send(new FakeRequest());
+        List<FakeResponse> responses = new Deliver(new SmartLinkNodeAdaptor() {
+            @Override
+            public String name() {
+                return "fake";
+            }
+        }).send(new FakeRequest());
         ArrayList<String> reps = responses.stream().map(Object::toString).collect(
                 Collectors.toCollection(ArrayList::new));
         assertTrue(reps.contains("111"));

@@ -8,14 +8,16 @@
 
 package com.zte.mw.components.communicate.smartlink.addressBook;
 
-public class AddressBookHolder {
-    private AddressBookHolder() {
+import java.util.concurrent.ConcurrentHashMap;
+
+public abstract class AddressBookHolder {
+    private static ConcurrentHashMap<String, AddressBook> addressBooks = new ConcurrentHashMap<>();
+
+    public static AddressBook addressBook(final String name) {
+        return addressBooks.getOrDefault(name, new AddressBook());
     }
 
-    private static AddressBookHolder self = new AddressBookHolder();
-    private AddressBook addressBook = new AddressBook();
-
-    public static AddressBook addressBook() {
-        return self.addressBook;
+    public static void register(final String name, final AddressBook addressBook) {
+        addressBooks.putIfAbsent(name, addressBook);
     }
 }

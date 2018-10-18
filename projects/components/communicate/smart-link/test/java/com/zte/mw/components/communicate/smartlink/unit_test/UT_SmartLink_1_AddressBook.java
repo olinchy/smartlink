@@ -34,19 +34,21 @@ public class UT_SmartLink_1_AddressBook {
 
     @Test
     public void test_get() {
-        addressBook().add("test1", sa("111"), sa("222"));
-        addressBook().add("test1", sa("333"), sa("444"));
+        AddressBook addressBook = new AddressBook();
+        addressBook.add("test1", sa("111"), sa("222"));
+        addressBook.add("test1", sa("333"), sa("444"));
 
-        assertEquals(4, addressBook().get("test1").size());
-        assertTrue(addressBook().get("test1").contains(sa("111")));
-        assertTrue(addressBook().get("test1").contains(sa("222")));
-        assertTrue(addressBook().get("test1").contains(sa("333")));
-        assertTrue(addressBook().get("test1").contains(sa("444")));
+        assertEquals(4, addressBook.get("test1").size());
+        assertTrue(addressBook.get("test1").contains(sa("111")));
+        assertTrue(addressBook.get("test1").contains(sa("222")));
+        assertTrue(addressBook.get("test1").contains(sa("333")));
+        assertTrue(addressBook.get("test1").contains(sa("444")));
     }
 
     @Test
     public void test_get_null() {
-        assertEquals(0, addressBook().get("nothing").size());
+
+        assertEquals(0, new AddressBook().get("nothing").size());
     }
 
     @Test

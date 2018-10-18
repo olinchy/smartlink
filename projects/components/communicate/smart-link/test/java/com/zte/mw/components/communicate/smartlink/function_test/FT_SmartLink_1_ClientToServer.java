@@ -36,7 +36,7 @@ public class FT_SmartLink_1_ClientToServer {
         RMIAddress address;
         server = new Server(address = new RMIAddress("127.0.0.1", 33445, "server"));
         LinkRepository.add(new Link("smart-link client", "address sync", "smart-link server"));
-        addressBook().add("smart-link server", address);
+        addressBook("smart-link client").add("smart-link server", address);
     }
 
     @Test

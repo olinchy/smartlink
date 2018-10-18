@@ -15,19 +15,20 @@ import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
 import static java.util.stream.Collectors.toCollection;
 
 public class Deliver {
-    public Deliver(final String senderName) {
-        this.senderName = senderName;
+    public Deliver(SmartLinkNode node) {
+        this.sender = node;
     }
 
-    private String senderName;
+    private SmartLinkNode sender;
 
     public <T extends Response> List<T> send(Request<T> msg) {
-        return LinkRepository.get(senderName, msg.key()).stream().map(
-                nodeName -> AddressBookHolder.addressBook().get(nodeName))
+        return LinkRepository.get(sender.name(), msg.key()).stream().map(
+                nodeName -> AddressBookHolder.addressBook(sender.name()).get(nodeName))
                 .collect(ArrayList<Address>::new, ArrayList::addAll, ArrayList::addAll).stream().map(
                         address -> (T) address.on(msg)).collect(toCollection(ArrayList::new));
     }

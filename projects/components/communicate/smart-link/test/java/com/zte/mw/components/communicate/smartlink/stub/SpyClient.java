@@ -24,11 +24,11 @@ public class SpyClient extends Client {
     }
 
     public void has(String nodeName) {
-        assertNotNull(addressBook().get(nodeName));
+        assertNotNull(addressBook("smart-link client").get(nodeName));
     }
 
     public void doNotHave(String nodeName) {
-        assertNull(addressBook().get(nodeName));
+        assertNull(addressBook("smart-link client").get(nodeName));
     }
 
     public void stop() {

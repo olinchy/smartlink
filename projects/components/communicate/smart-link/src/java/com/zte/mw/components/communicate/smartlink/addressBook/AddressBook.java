@@ -35,6 +35,7 @@ public class AddressBook implements Serializable {
 
     public void add(final String name, final Address... addresses) {
         addressMap.computeIfAbsent(name, s -> new HashSet<>()).addAll(Arrays.asList(addresses));
+        AddressBookHolder.register(name, this);
     }
 
     public List<Address> get(final String name) {
