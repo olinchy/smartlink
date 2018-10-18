@@ -23,10 +23,15 @@ import com.zte.mw.components.tools.environment.ServiceLocator;
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 import static com.zte.mw.components.tools.infrastructure.structure.DependableSorter.sort;
 import static com.zte.mw.components.tools.infrastructure.structure.Pair.pair;
+import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toCollection;
 
 public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
+    public Client(Address address, SmartLinkNode... nodes) {
+        this(address, stream(nodes).collect(toCollection(ArrayList::new)));
+    }
+
     public Client(Address address, List<SmartLinkNode> nodes) {
         addressBook = AddressBookHolder.addressBook(node.name());
 
