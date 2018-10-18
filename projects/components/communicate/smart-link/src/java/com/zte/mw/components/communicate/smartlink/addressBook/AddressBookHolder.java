@@ -14,7 +14,7 @@ public abstract class AddressBookHolder {
     private static ConcurrentHashMap<String, AddressBook> addressBooks = new ConcurrentHashMap<>();
 
     public static AddressBook addressBook(final String name) {
-        return addressBooks.getOrDefault(name, new AddressBook());
+        return addressBooks.computeIfAbsent(name, s -> new AddressBook());
     }
 
     public static void register(final String name, final AddressBook addressBook) {

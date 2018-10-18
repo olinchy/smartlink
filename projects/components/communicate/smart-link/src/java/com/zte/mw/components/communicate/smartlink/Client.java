@@ -27,14 +27,12 @@ import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toCollection;
 
 public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
-    private AddressBook addressBook = new AddressBook();
-
     public Client(Address address, List<SmartLinkNode> nodes) {
+        addressBook = AddressBookHolder.addressBook(node.name());
+
         sort(requireNonNull(nodes).stream().filter(Objects::nonNull).collect(toCollection(ArrayList::new))).stream()
                 .map(node -> pair(node.name(), address.publish(this.map.computeIfAbsent(node.name(), name -> node))))
-                .forEach(pair -> {
-                    addressBook.add(pair.first(), pair.second());
-                });
+                .forEach(pair -> addressBook.add(pair.first(), pair.second()));
         map.forEach((key, value) -> value.post());
 
         timer.schedule(new TimerTask() {
@@ -51,6 +49,7 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
     protected static Timer timer = requireNonNull(
             ServiceLocator.find(ResourceProvider.class)).get(
             "smart-link timer", Timer.class, () -> new Timer("smart-link timer", true));
+    private AddressBook addressBook;
     private SmartLinkNode node = new SmartLinkNodeAdaptor() {
         @Override
         public MsgService service() {
