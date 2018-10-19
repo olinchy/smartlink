@@ -8,16 +8,9 @@
 
 package com.zte.mw.components.communicate.smartlink.model.message;
 
+import java.util.List;
+
 import com.zte.mw.components.communicate.smartlink.model.Successful;
 
 public class AddNodeResponse extends AddressSyncResponse {
-    @Override
-    public <T> T fetch(final String name, final Class<T> tClass) {
-        return null;
-    }
-
-    @Override
-    public Successful result() {
-        return null;
-    }
 }

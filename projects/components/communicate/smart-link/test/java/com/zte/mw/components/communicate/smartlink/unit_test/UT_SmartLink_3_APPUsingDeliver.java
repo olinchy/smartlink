@@ -34,7 +34,7 @@ public class UT_SmartLink_3_APPUsingDeliver {
             @Override
             public MsgService service() {
                 return (MsgService<FakeRequest, FakeResponse>) msg -> findDeliver().send(
-                        (Request<FakeResponse>) new FakeRequest()).get(0);
+                        (Request<FakeResponse>) new FakeRequest()).getContent().get(0);
             }
 
             private Deliver findDeliver() {

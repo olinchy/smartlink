@@ -8,7 +8,9 @@
 
 package com.zte.mw.components.communicate.smartlink.model;
 
-public class Failure extends Successful {
+import java.util.List;
+
+public class Failure<T> implements Response<T> {
     public Failure(final Exception ex) {
         this.ex = ex;
     }
@@ -16,7 +18,17 @@ public class Failure extends Successful {
     private final Exception ex;
 
     @Override
-    public boolean isSuccessful() {
+    public List<T> getContent() {
+        return null;
+    }
+
+    @Override
+    public Boolean isSuccess() {
         return false;
+    }
+
+    @Override
+    public Exception ex() {
+        return ex;
     }
 }

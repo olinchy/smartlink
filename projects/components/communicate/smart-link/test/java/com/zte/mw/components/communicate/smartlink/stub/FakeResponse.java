@@ -8,17 +8,13 @@
 
 package com.zte.mw.components.communicate.smartlink.stub;
 
-import com.zte.mw.components.communicate.smartlink.model.Response;
+import java.util.List;
+
 import com.zte.mw.components.communicate.smartlink.model.Successful;
 
-public class FakeResponse implements Response {
+public class FakeResponse extends Successful<String> {
     @Override
-    public <T> T fetch(final String name, final Class<T> tClass) {
-        return null;
-    }
-
-    @Override
-    public Successful result() {
+    public List<String> getContent() {
         return null;
     }
 }

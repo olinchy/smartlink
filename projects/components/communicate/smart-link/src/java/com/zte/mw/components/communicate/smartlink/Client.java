@@ -11,6 +11,7 @@ import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
+import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNodeAdaptor;
 import com.zte.mw.components.communicate.smartlink.model.message.AddressSyncMsg;
@@ -21,6 +22,7 @@ import com.zte.mw.components.tools.environment.ResourceProvider;
 import com.zte.mw.components.tools.environment.ServiceLocator;
 
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
+import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
 import static com.zte.mw.components.tools.infrastructure.structure.DependableSorter.sort;
 import static com.zte.mw.components.tools.infrastructure.structure.Pair.pair;
 import static java.util.Arrays.stream;
@@ -43,12 +45,17 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                List<RegisterResponse> list = new Deliver(Client.this.node).send(
-                        new RegisterMsg(addressBook(Client.this.node.name()), address));
+                AddressBook addressBook = addressBook(Client.this.node.name());
+                Response<RegisterResponse> resp = new Deliver(Client.this.node).send(
+                        new RegisterMsg(addressBook, address));
                 // TODO: 10/10/18 add into address book
-                //                list.forEach(response -> addressBook().merge(response.fetch("addressBook", AddressBook.class)));
+                if (resp.isSuccess()) {
+                    resp.getContent().forEach(response -> response.getContent().forEach(addressBook::merge));
+                } else {
+                    logger(Client.class).warn("register to server failed", resp.ex());
+                }
             }
-        }, 20000, 5000);
+        }, 1000, 30000);
     }
 
     protected static Timer timer = requireNonNull(

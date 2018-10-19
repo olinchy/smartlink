@@ -20,6 +20,7 @@ import com.zte.mw.components.communicate.smartlink.LinkRepository;
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
 import com.zte.mw.components.communicate.smartlink.model.Link;
+import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNodeAdaptor;
 import com.zte.mw.components.communicate.smartlink.stub.FakeRequest;
 import com.zte.mw.components.communicate.smartlink.stub.FakeResponse;
@@ -51,13 +52,13 @@ public class UT_SmartLink_2_Deliver {
 
     @Test
     public void name() {
-        List<FakeResponse> responses = new Deliver(new SmartLinkNodeAdaptor() {
+        Response<FakeResponse> responses = new Deliver(new SmartLinkNodeAdaptor() {
             @Override
             public String name() {
                 return "fake";
             }
         }).send(new FakeRequest());
-        ArrayList<String> reps = responses.stream().map(Object::toString).collect(
+        ArrayList<String> reps = responses.getContent().stream().map(Object::toString).collect(
                 Collectors.toCollection(ArrayList::new));
         assertTrue(reps.contains("111"));
         assertTrue(reps.contains("222"));

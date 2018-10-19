@@ -8,8 +8,14 @@
 
 package com.zte.mw.components.communicate.smartlink.model;
 
-public class Successful {
-    public boolean isSuccessful() {
+public abstract class Successful<T> implements Response<T> {
+    @Override
+    public Boolean isSuccess() {
         return true;
+    }
+
+    @Override
+    public Exception ex() {
+        return null;
     }
 }

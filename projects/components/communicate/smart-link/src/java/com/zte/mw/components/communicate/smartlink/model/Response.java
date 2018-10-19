@@ -1,9 +1,12 @@
 package com.zte.mw.components.communicate.smartlink.model;
 
 import java.io.Serializable;
+import java.util.List;
 
-public interface Response extends Serializable {
-    <T> T fetch(String name, Class<T> tClass);
+public interface Response<T> extends Serializable {
+    List<T> getContent();
 
-    Successful result();
+    Boolean isSuccess();
+
+    Exception ex();
 }

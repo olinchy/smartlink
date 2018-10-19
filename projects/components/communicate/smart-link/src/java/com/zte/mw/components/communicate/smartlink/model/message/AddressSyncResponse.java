@@ -8,17 +8,24 @@
 
 package com.zte.mw.components.communicate.smartlink.model.message;
 
-import com.zte.mw.components.communicate.smartlink.model.Response;
-import com.zte.mw.components.communicate.smartlink.model.Successful;
+import java.util.List;
 
-public class AddressSyncResponse implements Response {
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
+import com.zte.mw.components.communicate.smartlink.model.Response;
+
+public class AddressSyncResponse implements Response<AddressBook> {
     @Override
-    public <T> T fetch(final String name, final Class<T> tClass) {
+    public List<AddressBook> getContent() {
         return null;
     }
 
     @Override
-    public Successful result() {
+    public Boolean isSuccess() {
+        return null;
+    }
+
+    @Override
+    public Exception ex() {
         return null;
     }
 }
