@@ -43,12 +43,12 @@ public class FT_SmartLink_1_ClientToServer {
         //        SpyClient client2 = startClient("2", "node2-1", "node2-2");
         SpyClient client2 = startClient("2", "node2-1", "node2-2");
 
+        Thread.sleep(50000);
+
         client1.has("node2-1");
         client1.has("node2-2");
-        //        client2.has("node1-1");
-        //        client2.has("node1-2");
-
-        Thread.sleep(100000);
+        client2.has("node1-1");
+        client2.has("node1-2");
     }
 
     private SpyClient startClient(final String name, final String... nodes) {
