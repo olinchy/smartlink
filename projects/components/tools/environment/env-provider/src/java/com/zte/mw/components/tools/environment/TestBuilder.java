@@ -16,57 +16,57 @@ public final class TestBuilder {
         ServiceLocator.register(LoggingService.class, clazz -> new Logger() {
             @Override
             public void info(final String msg) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
             }
 
             @Override
             public void info(final String msg, final Throwable e) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
                 e.printStackTrace();
             }
 
             @Override
             public void info(final Object message) {
-                System.out.println(message);
+                System.out.println(clazz.getSimpleName() + ":" + message);
             }
 
             @Override
             public void error(final Object msg, final Throwable e) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
                 e.printStackTrace();
             }
 
             @Override
             public void error(final String msg) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
             }
 
             @Override
             public void error(final String msg, final Throwable e) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
                 e.printStackTrace();
             }
 
             @Override
             public void warn(final String msg) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
             }
 
             @Override
             public void warn(final String msg, final Throwable e) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
                 e.printStackTrace();
             }
 
             @Override
             public void debug(final String msg, final Throwable e) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
                 e.printStackTrace();
             }
 
             @Override
             public void debug(final String msg) {
-                System.out.println(msg);
+                System.out.println(clazz.getSimpleName() + ":" + msg);
             }
         });
         ServiceLocator.register(ResourceProvider.class, new TestResourceProvider());

@@ -8,9 +8,7 @@
 
 package com.zte.mw.components.communicate.smartlink.function_test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -43,6 +41,7 @@ public class FT_SmartLink_1_ClientToServer {
     public void test_all_clients_know_each_other() throws InterruptedException {
         SpyClient client1 = startClient("1", "node1-1", "node1-2");
         //        SpyClient client2 = startClient("2", "node2-1", "node2-2");
+        SpyClient client2 = startClient("2", "node2-1", "node2-2");
 
         client1.has("node2-1");
         client1.has("node2-2");
@@ -79,7 +78,7 @@ public class FT_SmartLink_1_ClientToServer {
                     public String name() {
                         return x;
                     }
-                }).collect(Collectors.toCollection(ArrayList::new)));
+                }).toArray(SmartLinkNode[]::new));
     }
 
     @Test

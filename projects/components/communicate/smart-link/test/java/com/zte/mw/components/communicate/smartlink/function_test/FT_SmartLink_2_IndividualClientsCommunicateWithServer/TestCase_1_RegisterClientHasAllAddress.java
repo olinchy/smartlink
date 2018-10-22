@@ -8,9 +8,7 @@
 
 package com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +28,7 @@ public class TestCase_1_RegisterClientHasAllAddress {
 
     @Test
     public void test_all_clients_know_each_other() throws InterruptedException {
-        // TODO: 10/19/18 start client_b as spuClient
+        // TODO: 10/19/18 start client_b as spyClient
         // TODO: client_b has node addresses from client_a
         SpyClient client1 = startClient("1", "node1-1", "node1-2");
         //        SpyClient client2 = startClient("2", "node2-1", "node2-2");
@@ -70,6 +68,6 @@ public class TestCase_1_RegisterClientHasAllAddress {
                     public String name() {
                         return x;
                     }
-                }).collect(Collectors.toCollection(ArrayList::new)));
+                }).toArray(SmartLinkNode[]::new));
     }
 }

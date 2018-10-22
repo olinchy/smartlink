@@ -48,7 +48,6 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
                 AddressBook addressBook = addressBook(Client.this.node.name());
                 Response<RegisterResponse> resp = new Deliver(Client.this.node).send(
                         new RegisterMsg(addressBook, address));
-                // TODO: 10/10/18 add into address book
                 if (resp.isSuccess()) {
                     resp.getContent().forEach(response -> response.getContent().forEach(addressBook::merge));
                 } else {
@@ -61,7 +60,7 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
     protected static Timer timer = requireNonNull(
             ServiceLocator.find(ResourceProvider.class)).get(
             "smart-link timer", Timer.class, () -> new Timer("smart-link timer", true));
-    private AddressBook addressBook;
+    protected AddressBook addressBook;
     private SmartLinkNode node = new SmartLinkNodeAdaptor() {
         @Override
         public MsgService service() {
