@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
@@ -49,7 +50,8 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
                 Response<RegisterResponse> resp = new Deliver(Client.this.node).send(
                         new RegisterMsg(addressBook, address));
                 if (resp.isSuccess()) {
-                    resp.getContent().forEach(response -> response.getContent().forEach(addressBook::merge));
+                    resp.getContent().stream().filter((Predicate<Response>) Response::isSuccess).forEach(
+                            response -> response.getContent().forEach(addressBook::merge));
                 } else {
                     logger(Client.class).warn("register to server failed", resp.ex());
                 }

@@ -17,6 +17,7 @@ import java.rmi.registry.LocateRegistry;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 import com.zte.mw.components.communicate.smartlink.model.Address;
+import com.zte.mw.components.communicate.smartlink.model.Failure;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
@@ -73,7 +74,7 @@ public class RMIAddress implements Address<Request<Response>, Response>, Seriali
         try {
             return ((RMIMsgService) Naming.lookup(this.url)).on(msg);
         } catch (NotBoundException | MalformedURLException | RemoteException | SmartLinkException e) {
-            return new FakeResponse();
+            return new Failure(e);
         }
     }
 
