@@ -22,7 +22,11 @@ public class UT_SmartLink_1_AddressBook {
     public void test_purge() {
         AddressBook bookBase = new AddressBook();
         bookBase.add("app_ne", sa("111"), sa("222"), sa("333"));
-        bookBase.add("app_pm", sa("444"), sa("555"), sa("666"));
+
+        AddressBook bookToMerge = new AddressBook();
+        bookToMerge.add("app_pm", sa("444"), sa("555"), sa("666"));
+
+        bookBase.merge(bookToMerge);
 
         AddressBook bookToPurge = new AddressBook();
         bookToPurge.add("app_pm", sa("444"), sa("555"), sa("666"));

@@ -14,19 +14,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 import com.zte.mw.components.communicate.smartlink.model.Address;
 
 public class AddressBook implements Serializable {
-    private ConcurrentHashMap<String, HashSet<Address>> addressMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, HashSet<Address>> local = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, HashSet<Address>> remote = new ConcurrentHashMap<>();
 
     public void merge(final AddressBook addressBook) {
-        addressBook.addressMap.forEach(
-                (key, value) -> this.addressMap.computeIfAbsent(key, s -> new HashSet<>()).addAll(value));
+        addressBook.local.forEach(
+                (key, value) -> this.remote.computeIfAbsent(key, s -> new HashSet<>()).addAll(value));
     }
 
     public void purge(final AddressBook addressBook) {
-        addressBook.addressMap.forEach((key, value) -> this.addressMap.computeIfPresent(
+        addressBook.local.forEach((key, value) -> this.remote.computeIfPresent(
                 key, (s, addresses) -> {
                     addresses.removeAll(value);
                     return addresses;
@@ -34,18 +36,20 @@ public class AddressBook implements Serializable {
     }
 
     public void add(final String name, final Address... addresses) {
-        addressMap.computeIfAbsent(name, s -> new HashSet<>()).addAll(Arrays.asList(addresses));
+        local.computeIfAbsent(name, s -> new HashSet<>()).addAll(Arrays.asList(addresses));
         AddressBookHolder.register(name, this);
     }
 
     public List<Address> get(final String name) {
-        return new ArrayList<>(addressMap.getOrDefault(name, new HashSet<>()));
+        return new ArrayList<>(Stream.of(local, remote).map(map -> map.getOrDefault(name, new HashSet<>())).collect(
+                HashSet::new, HashSet::addAll, HashSet::addAll));
     }
 
     @Override
     public String toString() {
         return "AddressBook{"
-                + " addresses=" + addressMap
+                + " local=" + local
+                + ", remote=" + remote
                 + '}';
     }
 }
