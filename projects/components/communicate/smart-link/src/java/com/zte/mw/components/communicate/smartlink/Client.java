@@ -15,8 +15,7 @@ import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNodeAdaptor;
-import com.zte.mw.components.communicate.smartlink.model.message.AddressSyncMsg;
-import com.zte.mw.components.communicate.smartlink.model.message.AddressSyncResponse;
+import com.zte.mw.components.communicate.smartlink.model.message.DelNodeMsg;
 import com.zte.mw.components.communicate.smartlink.model.message.RegisterMsg;
 import com.zte.mw.components.communicate.smartlink.model.message.RegisterResponse;
 import com.zte.mw.components.tools.environment.ResourceProvider;
@@ -30,7 +29,7 @@ import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toCollection;
 
-public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
+public class Client implements MsgService<DelNodeMsg, Response> {
     public Client(Address address, SmartLinkNode... nodes) {
         this(address, stream(nodes).collect(toCollection(ArrayList::new)));
     }
@@ -77,7 +76,7 @@ public class Client implements MsgService<AddressSyncMsg, AddressSyncResponse> {
     private ConcurrentHashMap<String, SmartLinkNode> map = new ConcurrentHashMap<>();
 
     @Override
-    public AddressSyncResponse on(final AddressSyncMsg msg) {
-        return null;
+    public Response on(final DelNodeMsg msg) {
+        return msg.update(addressBook);
     }
 }

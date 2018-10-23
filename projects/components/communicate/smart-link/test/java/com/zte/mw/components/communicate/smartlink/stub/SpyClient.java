@@ -14,8 +14,6 @@ import java.util.TimerTask;
 import com.zte.mw.components.communicate.smartlink.Client;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
-import com.zte.mw.components.communicate.smartlink.model.message.AddressSyncMsg;
-import com.zte.mw.components.communicate.smartlink.model.message.AddressSyncResponse;
 
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
@@ -30,17 +28,10 @@ public class SpyClient extends Client {
             public void run() {
                 logger(SpyClient.class).info(addressBook.toString());
             }
-        }, 10, 1000);
+        }, 10, 10000);
     }
 
     private Timer timer = new Timer("client address printer", true);
-
-    @Override
-    public AddressSyncResponse on(
-            final AddressSyncMsg msg) {
-        logger(SpyClient.class).info("AddressSyncMsg received");
-        return new AddressSyncResponse();
-    }
 
     public void has(String nodeName) {
         assertNotNull(addressBook("smart-link client").get(nodeName));

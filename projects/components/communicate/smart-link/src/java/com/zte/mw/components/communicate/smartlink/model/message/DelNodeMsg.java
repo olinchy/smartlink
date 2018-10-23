@@ -8,16 +8,28 @@
 
 package com.zte.mw.components.communicate.smartlink.model.message;
 
-import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
+import java.util.List;
 
-public class DelNodeMsg extends AddressSyncMsg {
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
+import com.zte.mw.components.communicate.smartlink.model.Request;
+import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.Successful;
+
+public class DelNodeMsg implements Request<Response> {
     public DelNodeMsg(final AddressBook addressBook) {
-        super(addressBook);
+        this.addressBook = addressBook;
     }
 
-    @Override
-    public void update(final AddressBook addressBook) {
+    private final AddressBook addressBook;
+
+    public Response update(final AddressBook addressBook) {
         addressBook.purge(this.addressBook);
+        return new Successful() {
+            @Override
+            public List getContent() {
+                return null;
+            }
+        };
     }
 
     @Override

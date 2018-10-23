@@ -28,6 +28,11 @@
             <groupId>com.zte.mw.components.tools.environment</groupId>
             <artifactId>env-define</artifactId>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
     </dependencies>
 
 </project>
