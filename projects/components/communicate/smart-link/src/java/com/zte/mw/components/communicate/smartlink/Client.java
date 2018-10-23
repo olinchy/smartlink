@@ -35,10 +35,15 @@ public class Client implements MsgService<DelNodeMsg, Response> {
     }
 
     public Client(Address address, List<SmartLinkNode> nodes) {
+        address.bind(node.service());
+
         addressBook = AddressBookHolder.addressBook(node.name());
 
         sort(requireNonNull(nodes).stream().filter(Objects::nonNull).collect(toCollection(ArrayList::new))).stream()
-                .map(node -> pair(node.name(), address.publish(this.map.computeIfAbsent(node.name(), name -> node))))
+                .map(node -> {
+                    node.start();
+                    return pair(node.name(), address.publish(this.map.computeIfAbsent(node.name(), name -> node)));
+                })
                 .forEach(pair -> addressBook.add(pair.first(), pair.second()));
         map.forEach((key, value) -> value.post());
 
@@ -77,6 +82,7 @@ public class Client implements MsgService<DelNodeMsg, Response> {
 
     @Override
     public Response on(final DelNodeMsg msg) {
+        logger(this.getClass()).info("remove " + msg.toString());
         return msg.update(addressBook);
     }
 }

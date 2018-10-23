@@ -1,8 +1,16 @@
-testcase: client_register
-process:
-  - StartServer
-  - StartClient_A
-  - StartClient_B
-check:
-  - log: StartClient_A.remote.contains('node_b_1', 'node_b_2')
-  - log: StartClient_B.remote.contains('node_a_1', 'node_a_2')
+testcase: client register
+  id: 1
+  - process:
+    - StartServer
+    - StartClient_A
+    - StartClient_B
+  - check:
+    - log: StartClient_A.remote.contains('node_b_1', 'node_b_2')
+    - log: StartClient_B.remote.contains('node_a_1', 'node_a_2')
+
+testcase: client offline
+  - process:
+    - StartServer
+    - StartClient_A
+    - StartClient_B
+    - stop(StartClient_B, in(20))

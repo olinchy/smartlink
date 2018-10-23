@@ -36,4 +36,11 @@ public class DelNodeMsg implements Request<Response> {
     public String key() {
         return "del node";
     }
+
+    @Override
+    public String toString() {
+        return "DelNodeMsg{"
+                + " addressBook=" + addressBook
+                + '}';
+    }
 }
