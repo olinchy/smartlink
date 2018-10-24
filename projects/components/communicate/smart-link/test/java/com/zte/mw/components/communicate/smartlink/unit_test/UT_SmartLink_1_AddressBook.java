@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import com.zte.mw.components.communicate.smartlink.addressBook.AddressBook;
 
-import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 import static com.zte.mw.components.communicate.smartlink.stub.StubAddress.sa;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

@@ -17,5 +17,8 @@
 
         <!--smart link-->
         <module>components/communicate</module>
+
+        <!--show case-->
+        <module>showcase/mos-on-restful</module>
     </modules>
 </project>

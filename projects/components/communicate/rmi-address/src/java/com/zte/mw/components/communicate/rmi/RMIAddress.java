@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.stub;
+package com.zte.mw.components.communicate.rmi;
 
 import java.io.Serializable;
 import java.net.MalformedURLException;

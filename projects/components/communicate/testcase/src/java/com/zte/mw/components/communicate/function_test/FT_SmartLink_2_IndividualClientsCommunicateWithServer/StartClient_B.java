@@ -6,20 +6,20 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
+package com.zte.mw.components.communicate.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.zte.mw.components.communicate.function_test.stub.SpyClient;
+import com.zte.mw.components.communicate.rmi.RMIAddress;
 import com.zte.mw.components.communicate.smartlink.Deliver;
 import com.zte.mw.components.communicate.smartlink.LinkRepository;
-import com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer.messages.SimpleMsg;
+import com.zte.mw.components.communicate.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer.messages.SimpleMsg;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNodeAdaptor;
-import com.zte.mw.components.communicate.smartlink.stub.RMIAddress;
-import com.zte.mw.components.communicate.smartlink.stub.SpyClient;
 
 public class StartClient_B extends StartClientBase {
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");

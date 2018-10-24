@@ -41,13 +41,23 @@
             <dependency>
                 <groupId>com.zte.mw.components.tools.test</groupId>
                 <artifactId>env-provider</artifactId>
-                <version>${public.version}</version>
+                <version>${publish.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.zte.mw.components.tools.environment</groupId>
                 <artifactId>env-define</artifactId>
-                <version>${public.version}</version>
+                <version>${publish.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.communicate</groupId>
+                <artifactId>smart-link</artifactId>
+                <version>${publish.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.communicate</groupId>
+                <artifactId>rmi-address</artifactId>
+                <version>${publish.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

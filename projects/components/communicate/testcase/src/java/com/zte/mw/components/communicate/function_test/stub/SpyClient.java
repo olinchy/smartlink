@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.stub;
+package com.zte.mw.components.communicate.function_test.stub;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,7 +18,6 @@ import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class SpyClient extends Client {
     public SpyClient(final Address address, final SmartLinkNode... nodes) {
@@ -35,13 +34,5 @@ public class SpyClient extends Client {
 
     public void has(String nodeName) {
         assertNotNull(addressBook("smart-link client").get(nodeName));
-    }
-
-    public void doNotHave(String nodeName) {
-        assertNull(addressBook("smart-link client").get(nodeName));
-    }
-
-    public void stop() {
-        timer.cancel();
     }
 }

@@ -6,20 +6,19 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
+package com.zte.mw.components.communicate.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
 
+import com.zte.mw.components.communicate.function_test.stub.StubService;
+import com.zte.mw.components.communicate.rmi.RMIAddress;
 import com.zte.mw.components.communicate.smartlink.LinkRepository;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
-import com.zte.mw.components.communicate.smartlink.stub.RMIAddress;
-import com.zte.mw.components.communicate.smartlink.stub.StubService;
 import com.zte.mw.components.tools.environment.TestBuilder;
 
 import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 
 public class StartClientBase {
-
     static {
         try {
             setup();
@@ -27,6 +26,7 @@ public class StartClientBase {
             e.printStackTrace();
         }
     }
+
     protected static void setup() throws Exception {
         TestBuilder.setUp();
         // add links

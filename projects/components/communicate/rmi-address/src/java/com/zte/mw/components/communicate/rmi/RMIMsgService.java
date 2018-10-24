@@ -1,4 +1,4 @@
-package com.zte.mw.components.communicate.smartlink.stub;
+package com.zte.mw.components.communicate.rmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

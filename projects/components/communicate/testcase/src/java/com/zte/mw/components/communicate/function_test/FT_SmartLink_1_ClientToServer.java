@@ -6,24 +6,23 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.function_test;
+package com.zte.mw.components.communicate.function_test;
 
 import java.util.Arrays;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.zte.mw.components.communicate.function_test.stub.SpyClient;
+import com.zte.mw.components.communicate.function_test.stub.StubService;
+import com.zte.mw.components.communicate.rmi.RMIAddress;
 import com.zte.mw.components.communicate.smartlink.LinkRepository;
 import com.zte.mw.components.communicate.smartlink.Server;
+import com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder;
 import com.zte.mw.components.communicate.smartlink.model.Link;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
-import com.zte.mw.components.communicate.smartlink.stub.RMIAddress;
-import com.zte.mw.components.communicate.smartlink.stub.SpyClient;
-import com.zte.mw.components.communicate.smartlink.stub.StubService;
 import com.zte.mw.components.tools.environment.TestBuilder;
-
-import static com.zte.mw.components.communicate.smartlink.addressBook.AddressBookHolder.addressBook;
 
 public class FT_SmartLink_1_ClientToServer {
     private static Server server;
@@ -34,7 +33,7 @@ public class FT_SmartLink_1_ClientToServer {
         RMIAddress address;
         server = new Server(address = new RMIAddress("127.0.0.1", 33445, "server"));
         LinkRepository.add(new Link("smart-link client", "address sync", "smart-link server"));
-        addressBook("smart-link client").add("smart-link server", address);
+        AddressBookHolder.addressBook("smart-link client").add("smart-link server", address);
     }
 
     @Test
@@ -79,22 +78,5 @@ public class FT_SmartLink_1_ClientToServer {
                         return x;
                     }
                 }).toArray(SmartLinkNode[]::new));
-    }
-
-    @Test
-    public void test_remove_1_client_should_clear_all() throws InterruptedException {
-        SpyClient client1 = startClient("1", "node1-1", "node1-2");
-        SpyClient client2 = startClient("2", "node2-1", "node2-2");
-
-        client1.has("node2-1");
-        client1.has("node2-2");
-        client2.has("node1-1");
-        client2.has("node1-2");
-
-        client1.stop();
-        // wait till server remove no responding client
-        Thread.sleep(30000);
-
-        client2.doNotHave("node1-2");
     }
 }

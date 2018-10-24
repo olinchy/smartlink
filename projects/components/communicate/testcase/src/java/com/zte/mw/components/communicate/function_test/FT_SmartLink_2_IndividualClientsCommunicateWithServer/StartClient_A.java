@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
+package com.zte.mw.components.communicate.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer;
 
 import java.awt.*;
 import java.util.Collections;
@@ -14,13 +14,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.*;
 
-import com.zte.mw.components.communicate.smartlink.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer.messages.SimpleMsg;
+import com.zte.mw.components.communicate.function_test.stub.SpyClient;
+import com.zte.mw.components.communicate.rmi.RMIAddress;
+import com.zte.mw.components.communicate.function_test.FT_SmartLink_2_IndividualClientsCommunicateWithServer.messages.SimpleMsg;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 import com.zte.mw.components.communicate.smartlink.model.Successful;
-import com.zte.mw.components.communicate.smartlink.stub.RMIAddress;
-import com.zte.mw.components.communicate.smartlink.stub.SpyClient;
 
 public class StartClient_A extends StartClientBase {
     public static void main(String[] args) throws Exception {

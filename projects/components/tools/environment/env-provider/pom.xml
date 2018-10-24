@@ -7,7 +7,7 @@
     <artifactId>env-provider</artifactId>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
-    <version>${public.version}</version>
+    <version>${publish.version}</version>
 
     <parent>
         <artifactId>components-parent</artifactId>

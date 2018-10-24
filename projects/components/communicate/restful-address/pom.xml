@@ -2,9 +2,9 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>com.zte.mw.components.tools.environment</groupId>
+    <groupId>com.zte.mw.components.communicate</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>env-define</artifactId>
+    <artifactId>restful-address</artifactId>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <version>${publish.version}</version>
@@ -13,7 +13,7 @@
         <artifactId>components-parent</artifactId>
         <groupId>com.zte.mw.components</groupId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
 </project>
