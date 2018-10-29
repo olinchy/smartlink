@@ -14,10 +14,48 @@
     </parent>
     <properties>
         <publish.version>1.0.0-SNAPSHOT</publish.version>
+        <eclipse.jetty.version>8.1.0.RC5</eclipse.jetty.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--
+             | eclipse.jetty dependencies
+             +-->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${eclipse.jetty.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>javax.servlet</artifactId>
+                        <groupId>org.eclipse.jetty.orbit</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlet</artifactId>
+                <version>${eclipse.jetty.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>javax.servlet</artifactId>
+                        <groupId>org.eclipse.jetty.orbit</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>${eclipse.jetty.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>javax.servlet</artifactId>
+                        <groupId>org.eclipse.jetty.orbit</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--LOCAL DEPENDENCIES -->
             <dependency>
                 <groupId>com.zte.mos.code4lib</groupId>
                 <artifactId>standalone_logger</artifactId>
