@@ -3,7 +3,7 @@
 ###### overview
 
 0. structure
-![component view of UME](component_ume.png)
+![component view of UME](diagrams/component_ume.png)
 0. code
     0. projects
         - smart link <span style="color:888888" size="">*communication component which can be associate with multiple implementations*</span>

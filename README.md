@@ -1,6 +1,6 @@
 ##### OVERVIEW
 - Components Structure
-![component structure](component_view.png)
+![component structure](diagrams/component_view.png)
 - what is CPaaS?
     - <b>A PaaS custom by UEP based on Open PaaS</b>
 
@@ -12,7 +12,7 @@
 - what is UME?
     - components or microservices provided by sub production line(e.g. BN, MW)
     
-###### [road map](./roadmap.md)    
+###### [Road map](./roadmap.md)    
 
 ###### Using CPaaS with OTCP component package 
 
@@ -29,9 +29,14 @@
 - ps: UME release with OTCP since 2018Q1 
 
 ###### how to work with it
-- [administration](http://ip/portaladmin/) admin/111111
-- [project view](http://ip/portal/) project user or admin
-- [msb view](http://ip/msb/)
+- [administration http://ip/portal/](http://10.86.110.251/portaladmin/) admin/111111
+- [project view http://ip/portal/](http://10.86.110.251/portal/) project user or admin
+- [msb view http://ip/msb/](http://10.86.110.251/msb/)
+- [ume https://ip:28001/spt-portal-omc](https://10.86.110.251:28001/spt-portal-omc) admin/Zenap_123
+
+###### issue encountered
+- [scale up pods limit](./how_to_scale_up_pod_limits.md)
+- [cannot login as admin to ume portal](./fix_ume_login)
 
 ###### develop framework
 - [https://spring.io/guides/gs/rest-service/](https://spring.io/guides/gs/rest-service/)

@@ -1,5 +1,5 @@
 #### networking plan
-![networking plan pic.1](../networking.png)
+![networking plan pic.1](../diagrams/networking.png)
 ##### prepare ip address (<b>FINISH IT IN LOCAL TERMINAL</b>) 
 - 3 IPs at least
     1. temporary <b>PUBLIC</b> ip for version downloading 
@@ -7,7 +7,7 @@
 
 - 2 network interface at least
 
-    ![networking structure](../networking_structure.png)
+    ![networking structure](../diagrams/networking_structure.png)
     1. physnet0 : flat, public access
     2. physnet1 : vlan, internal switch(open virtual switch will override it), for internal exchange
     3. physnet...: vlan, just like physnet1
@@ -26,7 +26,7 @@
     ```
 
 - create static route for admin connections (ps: current route would be reset during setup process) (<b>version repository deployed locally</b>)
-![necessary connections](../route.png) 
+![necessary connections](../diagrams/route.png) 
     ```
     ## admin connection from terminal to controller
     route add -net [xxx.xxx.xxx.xxx/xx] gw [local gateway]
