@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: smartlink-eureka-client
+server:
+  port: 8074
+
+management:
+  server:
+    port: 8072
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.105:8761/eureka/
+      aaaZone: http://localhost:8762/eureka/
+    availability-zones:
+      us-east-1: defaultZone
+      china: aaaZone
+    region: china
+

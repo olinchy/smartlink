@@ -8,20 +8,15 @@
 
 package com.zte.mw.components.communicate.restful;
 
+import java.io.Serializable;
+
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
-import com.zte.mw.components.communicate.smartlink.model.Service;
-import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
-public abstract class AddressAdaptor implements Address<Request<Response>, Response> {
+public abstract class RestfulAddress implements Address<Request<Response>, Response>, Serializable {
     @Override
-    public void bind(final Service service) {
-
-    }
-
-    @Override
-    public Address publish(final SmartLinkNode smartLinkNode) {
+    public Response on(final Request<Response> msg) {
         return null;
     }
 }

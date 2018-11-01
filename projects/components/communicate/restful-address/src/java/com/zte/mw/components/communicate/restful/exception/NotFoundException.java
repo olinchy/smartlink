@@ -6,9 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.restful;
+package com.zte.mw.components.communicate.restful.exception;
 
-import javax.servlet.http.HttpServlet;
-
-public class ApplicationServlet extends HttpServlet {
+public class NotFoundException extends Exception {
 }

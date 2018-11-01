@@ -8,38 +8,38 @@
 
 package com.zte.mw.components.communicate.restful;
 
-import java.io.Serializable;
-
-import org.eclipse.jetty.servlet.ServletContextHandler;
-
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
 import com.zte.mw.components.communicate.smartlink.model.Address;
-import com.zte.mw.components.communicate.smartlink.model.Request;
+import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
+import com.zte.mw.components.communicate.smartlink.model.message.DelNodeMsg;
 
-public class RestfulClientAddress implements Address<Request<Response>, Response>, Serializable {
-    private ServletContextHandler context;
+public class RestfulClientAddress implements Address<DelNodeMsg, Response> {
+    public RestfulClientAddress(final EurekaClient discoveryClient) {this.discoveryClient = discoveryClient;}
+
+    private EurekaClient discoveryClient;
+    private MsgService<DelNodeMsg, Response> msgService;
 
     @Override
+    @SuppressWarnings("unchecked")
     public void bind(final Service service) {
-        try {
-            context = JettyServer.start();
-            context.addServlet(ClientServlet.class, "/client");
-        } catch (Exception ignored) {
-        }
+        this.msgService = (MsgService<DelNodeMsg, Response>) service;
     }
 
     @Override
     public Address publish(final SmartLinkNode smartLinkNode) {
-        String url;
-        context.addServlet(ApplicationServlet.class, url = "/client/" + smartLinkNode.name());
-        return new RestfulAppAddress(url, smartLinkNode.service());
+        return new RestfulAppAddress(discoveryClient, smartLinkNode);
     }
 
     @Override
-    public Response on(final Request msg) {
-        // TODO: 10/29/18 toObject(jerseyClient.send(toJson(Request)))
+    public Response on(final DelNodeMsg msg) {
+        InstanceInfo instance = discoveryClient.getNextServerFromEureka("client", false);
+        String url = instance.getHomePageUrl();
+        // TODO: 10/31/18 send msg via jersey to sync address
+
         return null;
     }
 }

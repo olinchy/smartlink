@@ -8,22 +8,27 @@
 
 package com.zte.mw.components.communicate.restful;
 
-import com.zte.mw.components.communicate.smartlink.model.MsgService;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
+import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
 public class RestfulAppAddress extends AddressAdaptor {
-    public RestfulAppAddress(final String url, final MsgService service) {
-        this.service = service;
-        this.url = url;
+    public RestfulAppAddress(final EurekaClient discoveryClient, final SmartLinkNode smartLinkNode) {
+
+        this.discoveryClient = discoveryClient;
+        this.smartLinkNode = smartLinkNode;
     }
 
-    private final MsgService service;
-    private final String url;
+    private final SmartLinkNode smartLinkNode;
+    private final EurekaClient discoveryClient;
 
     @Override
     public Response on(final Request<Response> msg) {
-        // TODO: 10/29/18 using jersey
+        InstanceInfo instance = discoveryClient.getNextServerFromEureka("client", false);
+        String url = instance.getHomePageUrl();
+        // TODO: 11/1/18 send msg via jersey to locate service
         return null;
     }
 }

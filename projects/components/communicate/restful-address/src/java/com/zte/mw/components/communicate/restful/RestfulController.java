@@ -8,20 +8,19 @@
 
 package com.zte.mw.components.communicate.restful;
 
-import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
-import com.zte.mw.components.communicate.smartlink.model.Service;
-import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
+import com.zte.mw.components.communicate.smartlink.model.message.DelNodeMsg;
 
-public abstract class AddressAdaptor implements Address<Request<Response>, Response> {
+public class RestfulController implements ClientOnRest {
     @Override
-    public void bind(final Service service) {
+    public void delNode(final DelNodeMsg msg) {
 
     }
 
     @Override
-    public Address publish(final SmartLinkNode smartLinkNode) {
+    public <T> Response<T> onMsg(
+            final Request<Response<T>> request) {
         return null;
     }
 }
