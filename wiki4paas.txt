@@ -57,3 +57,11 @@ physical_pf_mappings=physnet3:ens1f0                        #对应paasnw_driver
 然后重启nw的某些服务才能生效，这个具体事宜请咨询李钊。
 
 git clone ssh://10121897@gerritro.zte.com.cn:29418/umebn/em/su31 && git config --global url."ssh://10121897@gerrit.zte.com.cn".pushInsteadOf ssh://10121897@gerritro.zte.com.cn
+
+sed "s/--kube-reserved=cpu=500m,memory=500Mi/--kube-reserved=cpu=8,memory=16G/g" -i /etc/kubernetes/kubelet
+sed "s/--minimum-container-ttl-duration=1m/--minimum-container-ttl-duration=1m --max-pods=200/g" -i /etc/kubernetes/kubelet
+systemctl restart kube-apiserver.service
+systemctl restart kube-controller-manager.service
+systemctl restart kube-scheduler.service
+systemctl restart kubelet.service
+systemctl restart kube-proxy
