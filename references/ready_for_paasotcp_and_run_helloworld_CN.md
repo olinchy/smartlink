@@ -449,8 +449,8 @@ http://10.86.110.251/portaladmin/#/main/resourcemanager/sharednetwork/list
 这个错误，经验证发现，这个错误是因为ume部分的问题，并不是部署的原因，具体因为在otcp包中/app/umebn-unified-servicecenter/umebn-unified-servicecenter-v12.19.10.b06/umebn-unified-servicecenter的目录下找不到snctunnel-center-ui的镜像导致umebn-unified-servicecenter无法部署成功，解决办法：安装相应补丁即可，补丁地址：\\10.8.9.82\版本发布\测试版本\UMEBN\v12.19.10.b06-patch\umebn\umebn-unified-servicecenter
 #Hello World!
 - 编写Spring boot项目
-  1. DockerApplication.java如下
-  ```Java
+1. DockerApplication.java如下
+``` java
   import org.springframework.boot.SpringApplication;
   import org.springframework.boot.autoconfigure.SpringBootApplication;
   @SpringBootApplication
@@ -459,9 +459,9 @@ http://10.86.110.251/portaladmin/#/main/resourcemanager/sharednetwork/list
           SpringApplication.run(DockerApplication.class, args);
       }
   }
-  ```
-  2. DockerController.java如下
-  ```Java
+```
+2. DockerController.java如下
+``` java
   import org.springframework.web.bind.annotation.RequestMapping;
   import org.springframework.web.bind.annotation.RestController;
   @RestController
@@ -471,63 +471,59 @@ http://10.86.110.251/portaladmin/#/main/resourcemanager/sharednetwork/list
           return "Hello World";
       }
   }
-  ```
-  3. pom.xml文件如下
-  ```XML
+```
+3. pom.xml文件如下
+  ``` xml
   <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.zte</groupId>
-    <artifactId>testPaas</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
-    </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
-</project>
+  <project xmlns="http://maven.apache.org/POM/4.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      <modelVersion>4.0.0</modelVersion>
+      <groupId>com.zte</groupId>
+      <artifactId>testPaas</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <parent>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-parent</artifactId>
+          <version>2.0.0.RELEASE</version>
+      </parent>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-web</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-test</artifactId>
+              <scope>test</scope>
+          </dependency>
+      </dependencies>
+      <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-maven-plugin</artifactId>
+              </plugin>
+          </plugins>
+      </build>
+  </project>
   ```
   4. 执行```mvn package```
 - 将Spring boot 项目通过docker打包成tar镜像
   1. 编写dockerfile文件用于描述要打包的镜像
-  ```
-  FROM openjdk:8-jdk-alpine
-  MAINTAINER testPaasAuthor
-  ENV http_proxy=http://proxy/zte.com.cn:80/
-  ADD testPaas-1.0-SNAPSHOT.jar app.jar
-  EXPOSE 8080
-  ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar","/app.jar"]
-  ```
+    ```
+    FROM openjdk:8-jdk-alpine
+    MAINTAINER testPaasAuthor
+    ENV http_proxy=http://proxy/zte.com.cn:80/
+    ADD testPaas-1.0-SNAPSHOT.jar app.jar
+    EXPOSE 8080
+    ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar","/app.jar"]
+    ```
   2. 深入命令构建镜像并导出
-  ```
-  sudo docker build -t testpaasauthor/testpaas .
-  sudo docker save -o testpaas.tar testpaasauthor/testpaas
-  ```
+    ```
+    sudo docker build -t testpaasauthor/testpaas .
+    sudo docker save -o testpaas.tar testpaasauthor/testpaas
+    ```
 - 将tar镜像上传
 - 构建蓝图，部署，提供访问地址
   1. 在http://[ip]/portal登录，此处使用(admintest/111111为新建的账户),填写项目名称，其他保持默认。
