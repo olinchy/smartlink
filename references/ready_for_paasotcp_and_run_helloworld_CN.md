@@ -1,7 +1,7 @@
-#Paas的安装及配置
-####准备：装系统的U盘一个，刀片服务器一个，三个未被分配的IP地址
+# Paas的安装及配置
+#### 准备：装系统的U盘一个，刀片服务器一个，三个未被分配的IP地址
 >注：3个IP其中两个为连续IP，另一个IP是安装时使用的临时IP，安装后完成后会被释放。
-####安装步骤：
+#### 安装步骤：
 -  将U盘插到刀片上，按del进入bios设置从U盘启动，然后重启自动安装系统，选择Install images
 > 注:安装系统时如卡住出现Attached SCSI removable disk提示，大概率是连接刀片的数据线出现了问题，需要更换数据线重新安装。安装系统时如出现多次的链接，断开USB设备，建议更换数据线重试，大概率是数据线路出现了问题。
 - 系统安装完成后，首先进入系统配置网络设置
@@ -44,7 +44,7 @@
 ```
 - 等待大约3分钟后相关文件就安装好了，然后需要修改3个配置文件，新增1个配置文件
 
-1.修改/etc/pdm/conf/vnm_network.conf 如下
+1. 修改/etc/pdm/conf/vnm_network.conf 如下
 ```
 	[neutron]
 	bridge_mappings = physnet0:br-phy0,physnet1:br-phy1
@@ -56,7 +56,7 @@
 	l3agent_type=neutron
 ```
 >注:在1830的版本里，vnm_network.conf的文件内容比这个要多一些，可以将多的配置删除，在这个版本的部署过程中暂未出现问题。
-2.修改/etc/pdm/conf/conf.json 
+2. 修改/etc/pdm/conf/conf.json
 >注:此文件修改部分较多，建议直接删除，然后拷贝现成配置好的文件进去。
 ```
     {
@@ -371,11 +371,11 @@
 ```
 - 安装完成后，此时可以打开浏览器输入http://[ip]/portal/#/login验证一下，此ip是前面准备的两个连续ip，如果看见登录页面，就代表安装成功了。
 
-#otcp的安装及配置
-####权限控制描述
+# otcp的安装及配置
+#### 权限控制描述
 在PaaS1820中，浏览器打开有两个模式，http://[ip]/portal打开的是用户模式，用户登录用户模式可以建立项目，上传镜像，建立蓝图等等。http://[ip]/portaladmin打开的是管理者模式，可以使用默认用户(用户名:admin,密码11111)登录，在管理者模式下可以对用户进行管理，但注意如果步进入项目中是无法进行构建蓝图等操作的。
 >admin/111111这个默认用户是无法登录http://[ip]/portal，如果使用admin对项目进行操作，在管理这模式下管理所有项目可以对项目进行管理。
-####配置步骤
+#### 配置步骤
 - 首先登录paas配置net_hmf和net_ne
 打开浏览器输入http://10.86.110.251/portaladmin进行登录
 帐号:admin 密码:111111
@@ -419,9 +419,9 @@ http://10.86.110.251/portaladmin/#/main/resourcemanager/sharednetwork/list
 	##使用下列命令查看是否生效成功
 	kubectl describe node
 ```
-####otcp安装步骤：
+#### otcp安装步骤：
 注意在早版本的otcp中是不集成ume的相关内容的，假如部署后发现不存在umebn的项目，说明部署的版本没有集成ume的相关构件，建议重头开始。重新安装，如果发现在部署otcp的开始过程中出现无法创建租户的错误，说明PaaS版本没有和otcp版本匹配，建议重装PaaS平台以适应otcp的版本。
-- 接下来，从ftp上获取otcp文件(可在ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/otcp_1830下载)，将otcp文件拷贝到/home/ubuntu/paasdata目录下，然后解压缩，接下来进入到/oki-tools/tools/bin目录下，执行如下命令
+- 接下来，从ftp上获取otcp文件(可在ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/otcp_1830下载)，将otcp文件拷贝到/home/ubuntu/paasdata目录下，然后解压缩，接下来进入到/home/ubuntu/paasdata/oki-tools/tools/bin目录下，执行如下命令
 ```
 	chmod a+x oki-cli
 	# disable gbase
@@ -447,7 +447,7 @@ http://10.86.110.251/portaladmin/#/main/resourcemanager/sharednetwork/list
     ===== install component services finish =====
 ```
 这个错误，经验证发现，这个错误是因为ume部分的问题，并不是部署的原因，具体因为在otcp包中/app/umebn-unified-servicecenter/umebn-unified-servicecenter-v12.19.10.b06/umebn-unified-servicecenter的目录下找不到snctunnel-center-ui的镜像导致umebn-unified-servicecenter无法部署成功，解决办法：安装相应补丁即可，补丁地址：\\10.8.9.82\版本发布\测试版本\UMEBN\v12.19.10.b06-patch\umebn\umebn-unified-servicecenter
-#Hello World!
+# Hello World!
 - 编写Spring boot项目
 1. DockerApplication.java如下
 ``` java
