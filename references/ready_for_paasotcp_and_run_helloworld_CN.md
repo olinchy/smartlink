@@ -1,9 +1,12 @@
 # Paas的安装及配置
 #### 准备：装系统的U盘一个，刀片服务器一个，三个未被分配的IP地址  
 > 注：3个IP其中两个为连续IP，另一个IP是安装时使用的临时IP，安装后完成后会被释放。  
+
 #### 安装步骤：  
 -   将U盘插到刀片上，按del进入bios设置从U盘启动，然后重启自动安装系统，选择Install images  
+
     > 注:安装系统时如卡住出现Attached SCSI removable disk提示，大概率是连接刀片的数据线出现了问题，需要更换数据线重新安装。安装系统时如出现多次的链接，断开USB设备，建议更换数据线重试，大概率是数据线路出现了问题。  
+    
 -   系统安装完成后，首先进入系统配置网络设置  
     默认帐号:ubuntu  
     默认密码:cloud  
@@ -33,7 +36,9 @@
 	route add -net 10.67.18.0/24 gw 10.86.110.1
     ```  
 -   进行完网络配置后，从ftp上找到PaaS package文件拷贝到/home/ubuntu/paasdata目录下(此处使用的PaaS版本为18.20,可以在ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/paas_offline_1820下载）  
+    
     > 注：拷贝完成后注意查看一下拷贝后的文件是否完整，大小是否一致  
+
 -   然后运行如下命令  
     ```
 	## cd [upload directory]
@@ -57,7 +62,7 @@
         ```  
         >注:在1830的版本里，vnm_network.conf的文件内容比这个要多一些，可以将多的配置删除，在这个版本的部署过程中暂未出现问题。  
     2.  修改/etc/pdm/conf/conf.json  
-        >注:此文件修改部分较多，建议直接删除，然后拷贝现成配置好的文件进去。  
+        >注:此文件修改部分较多，建议直接删除，然后拷贝现成配置好的文件进去。
         ```
         {
           "region": {
@@ -347,7 +352,9 @@
         iapi=enp129s0f1
         ```  
     4.  新建配置文件 /etc/pdm/OCSA_VM.conf 添加如下内容  
-        >注意，此处文件名不能写错，否则在部署的过程中回无法找到paas控制器的配置，在Deploy initial component: posd.时会发生ERROR - Execute initial component: posd rear hook failed!的错误  
+      
+        > 注意，此处文件名不能写错，否则在部署的过程中回无法找到paas控制器的配置，在Deploy initial component: posd.时会发生ERROR - Execute initial component: posd rear hook failed!的错误  
+
         ```
         {"paas_controller":
              [
@@ -367,13 +374,14 @@
         ```  
 -   都修改完成后就可以直接离线安装了，大约1-2个小时，命令如下  
     ```pdm-cli deploy --offline```  
--   安装完成后，此时可以打开浏览器输入  
-    ```http://[ip]/portal/#/login```  
+-   安装完成后，此时可以打开浏览器输入http://[ip]/portal/#/login  
     验证一下，此ip是前面准备的两个连续ip，如果看见登录页面，就代表安装成功了。  
 # otcp的安装及配置  
 #### 权限控制描述  
 在PaaS1820中，浏览器打开有两个模式，http://[ip]/portal打开的是用户模式，用户登录用户模式可以建立项目，上传镜像，建立蓝图等等。http://[ip]/portaladmin打开的是管理者模式，可以使用默认用户(用户名:admin,密码11111)登录，在管理者模式下可以对用户进行管理，但注意如果步进入项目中是无法进行构建蓝图等操作的。  
->admin/111111这个默认用户是无法登录http://[ip]/portal，如果使用admin对项目进行操作，在管理这模式下管理所有项目可以对项目进行管理。  
+
+> admin/111111这个默认用户是无法登录http://[ip]/portal，如果使用admin对项目进行操作，在管理这模式下管理所有项目可以对项目进行管理。  
+
 #### 配置步骤  
 -   首先登录paas配置net_hmf和net_ne  
     打开浏览器输入http://10.86.110.251/portaladmin进行登录  
@@ -417,6 +425,7 @@
 	##使用下列命令查看是否生效成功
 	kubectl describe node
     ```  
+
 #### otcp安装步骤：  
 注意在早版本的otcp中是不集成ume的相关内容的，假如部署后发现不存在umebn的项目，说明部署的版本没有集成ume的相关构件，建议重头开始。重新安装，如果发现在部署otcp的开始过程中出现无法创建租户的错误，说明PaaS版本没有和otcp版本匹配，建议重装PaaS平台以适应otcp的版本。  
 -   接下来，从ftp上获取otcp文件(可在ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/otcp_1830下载)，将otcp文件拷贝到/home/ubuntu/paasdata目录下，然后解压缩，接下来进入到/home/ubuntu/paasdata/oki-tools/tools/bin目录下，执行如下命令  
@@ -537,4 +546,4 @@
     8.  单击镜像进行配置，选择Advanced settings-Port，在Protocol选择TCP，并填入docker镜像暴露的接口。  
     9.  单击EndPoint，在Port中选择刚刚配置的端口。protocol选择HTTP，Visual range选择External。  
     10. 再次拖动一个Nic到蓝图最外框，点击进行配置，Attach to network 输入lan  
-    11. 保存并部署  
+    11. 保存并部署
