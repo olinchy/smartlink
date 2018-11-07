@@ -22,7 +22,7 @@
 4. [OTCP package ver.1.18.10.06.p01 ](https://artxa.zte.com.cn/artifactory/oes_tcp-release-generic/VERSION/v1.18.10.06.p01)
 
 ###### installation instruction
-
+- [whole_instrction & "Hello World Demo" in CN](ready_for_paasotcp_and_run_helloworld_CN.md)
 - [bare metal](./bare_scenario/README.md)
 - [preset node](./preset_scenario/README.md)
 - [install OTCP after install PaaS](./otcp/README.md)
@@ -35,7 +35,7 @@
 - [ume https://ip:28001/spt-portal-omc](https://10.86.110.251:28001/spt-portal-omc) admin/Zenap_123
 
 ###### issue encountered
-- [scale up pods limit](./how_to_scale_up_pod_limits.md)
+- [scale up pods limit](references/how_to_scale_up_pod_limits.md)
 - [cannot login as admin to ume portal](./fix_ume_login)
 
 ###### develop framework
