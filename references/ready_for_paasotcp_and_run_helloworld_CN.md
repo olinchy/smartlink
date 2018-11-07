@@ -58,7 +58,7 @@
         flat_networks = physnet0
         network_vlan_ranges = physnet0:1000:1030,physnet1:1000:1030
         external_network_bridge = br-iapi
-        l3agent_type=neutron
+        l3agent_type = neutron
         ```  
         >注:在1830的版本里，vnm_network.conf的文件内容比这个要多一些，可以将多的配置删除，在这个版本的部署过程中暂未出现问题。  
     2.  修改/etc/pdm/conf/conf.json  
