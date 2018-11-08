@@ -1,5 +1,5 @@
-## PICT PaaS Contacts
-##### maintainer 
+##  PICT PaaS Contacts
+####   maintainer 
 - 王国强 10162373    
 PaaS平台   
 问题：1. Execute initial component: posd rear hook failed. 2.新建蓝图被移除。 3.不可上传镜像   
@@ -19,27 +19,33 @@ redis公共服务
 - 张振兴 10072017
 版本对应
 问题：询问PaaS和redis版本对应关系
-结果：解决
-##### CMO
-- unkonwn     
-##### Project Leader
+结果：解决  
+
+####   CMO
 - unkonwn     
 
-## OTCP PaaS Contacts
+####   Project Leader
+- unkonwn     
+
+##  OTCP PaaS Contacts
 ##### maintainer 
 - 叶大明 10084519
 - 唐渝 10144605
+
 ##### Project Leader
 - 刘学生 10019830
+
 ##### Development Framework
 - 胡锐 10071214 
+
 ##### CMO
 - 刘敏 00032305     
-    
+
 ## UME BN Contacts
 ##### maintainer 
 - 蒋书轶 10045466 (PORTAL)
 - 孟彬 10065029 (EM)
+
 ##### Integrate Tester
 - 张洪军 00075157    
 UME  
@@ -53,13 +59,17 @@ UME
 UME(umebn-unified-servicecenter组件团队)  
 问题：集成UME的OTCP部署后，umebn-unified-servicecenter没有部署成功  
 结果：缺少镜像，需要打补丁
+
 ##### CMO 
 - 丁虹 00103784
+
 ##### Project Leader
 - 张曰明 10017591 (PTN)
+
 ##### SA
 - 张晓东 10033733  
-   
+
+  
 ## Version Privilege Request
 - PICT PaaS Offline
     ```
