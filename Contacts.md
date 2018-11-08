@@ -63,7 +63,7 @@ UME(umebn-unified-servicecenter组件团队)
 ## Version Privilege Request
 - PICT PaaS Offline
     ```
-    https://artnj.zte.com.cn/artifactory/webapp/#/artifacts/browse/tree/General/zxnp_pict-snapshot-generic/
+    https://artnj.zte.com.cn/artifactory/webapp/#/artifacts/browse/simple/General/zxnp_pict-snapshot-generic/official_latest_pkg/v1.18.20.11/paas
     username : zxnp_pict-ci 
     password : bR0H94X1mnlb
     ```
