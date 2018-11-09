@@ -9,12 +9,12 @@
 package com.zte.mw.components.communicate.restful.client;
 
 import java.util.concurrent.ConcurrentHashMap;
-import javax.management.ServiceNotFoundException;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zte.mw.components.communicate.restful.exception.ServiceNotFoundException;
 import com.zte.mw.components.communicate.restful.server.ShrankRestfulAddress;
 import com.zte.mw.components.communicate.smartlink.Client;
 import com.zte.mw.components.communicate.smartlink.model.Address;

@@ -11,4 +11,7 @@ package com.zte.mw.components.communicate.restful.exception;
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 
 public class ServiceNotFoundException extends SmartLinkException {
+    public ServiceNotFoundException(final String s) {
+        super(s);
+    }
 }
