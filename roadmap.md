@@ -27,7 +27,9 @@
 ###### ME-LCM
 
 0. sU31-EM
-
+ - inherit from BN
+ - register device series and device types of Microwave
+  
 0. south oriented service
 
 
