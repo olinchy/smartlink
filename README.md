@@ -42,7 +42,8 @@
 - [initial component failed during the process of deploying paas after edit config file](issues/initial_component_failed_while_deploying_paas.md)
 - [deploy UME success, but one of component failed-umebn_unified_servicecenter](issues/umebn_unified_servicecenter_component_failed.md)
 - [create tenant failed during deploying the otcp with ume](issues/failed_to_create_tenant_deploying_otcp)
-- [create volumn failed furing deploying the otcp with ume](issues/failed_to_create_volumn_deploying_otcp.md)
+- [create volumn failed during deploying the otcp with ume](issues/failed_to_create_volumn_deploying_otcp.md)
+- [cannot find commonservice during deploying the otcp wit ume](issues/cannot_find_commonservice_while_deploying_otcp.md)
 
 ###### develop framework
 - [https://spring.io/guides/gs/rest-service/](https://spring.io/guides/gs/rest-service/)
