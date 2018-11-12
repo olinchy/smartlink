@@ -80,6 +80,7 @@ UME(umebn-unified-servicecenter组件团队)
 - OTCP PaaS
     ```
     https://wiki.zte.com.cn/pages/viewpage.action?pageId=433987588
+    https://artxa.zte.com.cn/artifactory/oes_tcp-release-generic/embpaas/both/
     ```
 - UMEBN 
     ```
