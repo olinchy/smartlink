@@ -97,6 +97,11 @@
                 <artifactId>rmi-address</artifactId>
                 <version>${publish.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.zte.mw.components.communicate</groupId>
+                <artifactId>restful-address</artifactId>
+                <version>${publish.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

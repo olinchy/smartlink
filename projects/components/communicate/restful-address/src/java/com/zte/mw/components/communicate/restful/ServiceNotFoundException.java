@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package com.zte.mw.components.communicate.restful.exception;
+package com.zte.mw.components.communicate.restful;
 
 import com.zte.mw.components.communicate.smartlink.exception.SmartLinkException;
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zte.mw.components.communicate.restful.ShrankRestfulAddress;
 import com.zte.mw.components.communicate.smartlink.Server;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
 import com.zte.mw.components.communicate.smartlink.model.message.RegisterMsg;
