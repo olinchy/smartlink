@@ -29,10 +29,10 @@
 - ps: UME release with OTCP since 2018Q1 
 
 ###### how to work with it
-- [administration http://ip/portal/](http://10.86.110.251/portaladmin/) admin/111111
-- [project view http://ip/portal/](http://10.86.110.251/portal/) project user or admin
-- [msb view http://ip/msb/](http://10.86.110.251/msb/)
-- [ume https://ip:28001/spt-portal-omc](https://10.86.110.251:28001/spt-portal-omc) admin/Zenap_123
+- [administration http://10.86.110.251/portaladmin/](http://10.86.110.251/portaladmin/)  admin/111111
+- [project view http://10.86.110.251/portal/](http://10.86.110.251/portal/)  project user(can be set in portaladmin)
+- [msb view http://10.86.110.251/msb/](http://10.86.110.251/msb/)
+- [ume https://10.86.110.251:28002/spt-portal-omc](https://10.86.110.251:28002/spt-portal-omc) admin/Zenap_123
 
 ###### issue encountered
 - [scale up pods limit](issues/how_to_scale_up_pod_limits.md)
