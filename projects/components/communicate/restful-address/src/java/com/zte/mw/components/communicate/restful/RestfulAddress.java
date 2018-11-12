@@ -10,13 +10,19 @@ package com.zte.mw.components.communicate.restful;
 
 import java.io.Serializable;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Request;
 import com.zte.mw.components.communicate.smartlink.model.Response;
 
-public abstract class RestfulAddress implements Address<Request<Response>, Response>, Serializable {
+public abstract class RestfulAddress<T extends Request<R>, R extends Response> implements Address<T, R>, Serializable {
+    private static Client client = Client.create();
+    protected String url;
+
     @Override
-    public Response on(final Request<Response> msg) {
-        return null;
+    public R on(final T msg) {
+        WebResource resource = client.resource(url);
+        return resource.get(msg.getRespClass());
     }
 }
