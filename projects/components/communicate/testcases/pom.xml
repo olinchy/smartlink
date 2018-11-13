@@ -3,19 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zte.mw.components.communicate</groupId>
-    <artifactId>communicate-parent</artifactId>
+    <artifactId>testcases</artifactId>
     <parent>
         <groupId>com.zte.mw.parents</groupId>
         <artifactId>aggregator-parent</artifactId>
-        <relativePath>../../parents/aggregator-parent</relativePath>
+        <relativePath>../../../parents/aggregator-parent</relativePath>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <packaging>pom</packaging>
     <modules>
-        <module>smart-link</module>
-        <module>rmi-address</module>
-        <module>restful-address</module>
-        <module>testcases</module>
+        <module>testcase-eureka</module>
+        <module>testcase-rmi</module>
     </modules>
 
 </project>

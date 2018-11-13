@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zte.mw.components.communicate.restful.exception.ServiceNotFoundException;
-import com.zte.mw.components.communicate.restful.server.ShrankRestfulAddress;
+import com.zte.mw.components.communicate.restful.ServiceNotFoundException;
+import com.zte.mw.components.communicate.restful.ShrankRestfulAddress;
 import com.zte.mw.components.communicate.smartlink.Client;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Failure;
