@@ -22,7 +22,8 @@
 4. [OTCP package ver.1.18.10.06.p01 ](https://artxa.zte.com.cn/artifactory/oes_tcp-release-generic/VERSION/v1.18.10.06.p01)
 
 ###### installation instruction
-- [whole_instrction & "Hello World Demo" in CN](ready_for_paasotcp_and_run_helloworld_CN.md)
+- [whole_instrction & "Hello World Demo" in CN](deploying_documents/ready_for_paasotcp_and_run_helloworld_CN.md)
+- [latest install instruction](deploying_documents/deploy_paas&otcp&ume_20181112.md)
 - [bare metal](./bare_scenario/README.md)
 - [preset node](./preset_scenario/README.md)
 - [install OTCP after install PaaS](./otcp/README.md)
