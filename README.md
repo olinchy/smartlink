@@ -45,6 +45,7 @@
 - [create tenant failed during deploying the otcp with ume](issues/failed_to_create_tenant_deploying_otcp)
 - [create volumn failed during deploying the otcp with ume](issues/failed_to_create_volumn_deploying_otcp.md)
 - [cannot find commonservice during deploying the otcp wit ume](issues/cannot_find_commonservice_while_deploying_otcp.md)
+- [cannot select the latest version of redis](issues/how_to_select_redis_version.md)
 
 ###### develop framework
 - [https://spring.io/guides/gs/rest-service/](https://spring.io/guides/gs/rest-service/)
