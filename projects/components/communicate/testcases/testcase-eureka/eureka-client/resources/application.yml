@@ -2,11 +2,11 @@ spring:
   application:
     name: smartlink-eureka-client
 server:
-  port: 8074
+  port: 8075
 
 management:
   server:
-    port: 8072
+    port: 8076
 eureka:
   client:
     service-url:

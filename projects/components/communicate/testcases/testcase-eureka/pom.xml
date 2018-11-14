@@ -12,6 +12,7 @@
     </parent>
     <packaging>pom</packaging>
     <modules>
+        <module>eureka-application</module>
         <module>eureka-client</module>
         <module>eureka-server</module>
     </modules>
