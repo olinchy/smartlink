@@ -1,7 +1,7 @@
 由于上篇部署文档使用的版本较旧，使用新版本部署的时候出现种种问题，所以此处重新写部署文档。  
 ## 1. 版本描述
 - PaaS版本：CPaaS v1.18.20.13.p03.tar.gz  
-ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/CPaaS_offline_v1.18.20.13.p03_2525154_1            
+ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/paas/CPaaS_offline_v1.18.20.13.p03_2525154_1            
 - otcp&ume版本：otcp-v1.18.30.06.p01  
 ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/otcp&ume/otcp-v1.18.30.06.p01.tar.gz
 - oki-tools版本：oki-tools-v1.18.30.06.p03  

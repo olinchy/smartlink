@@ -75,6 +75,20 @@ UME(umebn-unified-servicecenter组件团队)
 - 张晓东 10033733  
 
   
+## Version Local
+以下描述的版本均可在ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata 找到  
+- PICT PaaS Offline  
+  - PICTPaaS_offline_v1.18.20.11:裸PaaS，但在部署的时候发现缺少公共服务
+- CPaaS Offline
+  - CPaaS_offline_v1.17.20.03.p05:旧版本的CPaaS,与新版本的OTPC不兼容产生租户无法创建的问题
+  - CPaaS_offline_v1.18.20.11_2449090_12:公共组件中的redis版本较低,不支持ipv6,无法登录ume portal
+  - CPaaS_offline_v1.18.20.13.p01:公共组件中的redis版本较低,不支持ipv6,无法登录ume portal
+  - CPaaS_offline_v1.18.20.13.p03_2525154_1:可用,但注意需要替换oki-tools,自带的oki-tools没有适应PaaS接口变化,持久化卷会出现问题
+- oki-tools
+  - oki-tools-v1.18.30.06.p02.tar.gz:因为无法对redis版本进行选择,没有redis-choose的配置文件
+  - oki-tools-v1.18.30.06.p03.tar.gz:可用,但注意需要修改租户名称以及redis实例的密码  
+
+
 ## Version Privilege Request
 - PICT PaaS Offline
     ```
