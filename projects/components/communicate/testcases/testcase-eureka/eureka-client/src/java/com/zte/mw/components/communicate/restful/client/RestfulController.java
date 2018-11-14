@@ -28,6 +28,7 @@ import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
 
 @RestController
 public class RestfulController implements MsgService<DelNodeMsg, Response> {
+    private ConcurrentHashMap<String, MsgService> services = new ConcurrentHashMap<>();
     private Client client = new Client(new ShrankRestfulAddress() {
         {
             this.url = "";
@@ -44,7 +45,6 @@ public class RestfulController implements MsgService<DelNodeMsg, Response> {
             };
         }
     });
-    private ConcurrentHashMap<String, MsgService> services = new ConcurrentHashMap<>();
 
     private void register(final String name, final MsgService service) {
         services.put(name, service);
