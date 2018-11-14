@@ -5,8 +5,20 @@
     ![多个redis版本](resource/redis_multi-version.png "多版本redis")  
     2.  但是可以看到运行实体的redis为3.04.05.01.03版本，这样还是没有办法使用3.04.06.01.03版本的redis  
     3.  在oki-tools新的版本中(v1.18.30.06.p03)中有配置文件oki-tools/config/install-commonservice.conf，修改其redis-choose中的default为“commsrv_inner_redis_single_bp”
-    4.  但发现这样部署会出现\[zenap_redis\]这个组件无法正常部署，因为redis的实例需要密码而没有配置，默认密码是db10$ZTE
-    5.  使用工具加密，执行```./oki-cli encrypt db10\$ZTE```得到加密后的密码
+    4.  但发现这样部署会出现\[zenap_redis\]这个组件无法正常部署，出现如下Log
+        ```
+        [zenap_redis]        ==                   10% [fail]
+        create common  instance fail (u'create commonservice instance [zenap_redis] fail',)
+        (u'create commonservice instance [zenap_redis] fail',)
+        Traceback (most recent call last):
+          File "/home/ubuntu/paasdata/oki-tools/tools/basetools/commonservice/commonserviceinstance_create.py", line 547, in <module>
+            logger.error('create commonservice instance fail,result={}'.format(a_commonservice_instance_result.get()))
+          File "/usr/lib64/python2.7/multiprocessing/pool.py", line 554, in get
+            raise self._value
+        Exception: (u'create commonservice instance [zenap_redis] fail',)
+        create common service or instance fail ((u'create commonservice instance [zenap_redis] fail',),)
+        ```
+    5.  因为redis的实例需要密码而没有配置，默认密码是db10$ZTE，使用工具加密，执行```./oki-cli encrypt db10\$ZTE```得到加密后的密码
         > 注:输入密码的$,|,\三个符号需要转意
     6.  修改配置
         ```
