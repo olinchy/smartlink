@@ -21,9 +21,12 @@
 3. [CGSL iso](http://openpalette.zte.com.cn/docs/ver/v1.17.30.03.p10/installation_guide/images_release_notes.html)
 4. [OTCP package ver.1.18.10.06.p01 ](https://artxa.zte.com.cn/artifactory/oes_tcp-release-generic/VERSION/v1.18.10.06.p01)
 
-###### installation instruction
-- [whole_instrction & "Hello World Demo" in CN](deploying_documents/ready_for_paasotcp_and_run_helloworld_CN.md)
-- [latest install instruction](deploying_documents/deploy_paas&otcp&ume_20181112.md)
+###### installation instruction for whole system
+- [How to deploy PaaS&OTCP&UME v2](deploying_documents/deploy_paas&otcp&ume_v2.md) 
+- [How to deploy PaaS&OTCP&UME v1](deploying_documents/deploy_paas&otcp&ume_v1.md)
+- [How to begin an project](deploying_documents/HelloWorld4PaaS.md)
+
+###### component describe
 - [bare metal](./bare_scenario/README.md)
 - [preset node](./preset_scenario/README.md)
 - [install OTCP after install PaaS](./otcp/README.md)

@@ -1,11 +1,11 @@
 由于上篇部署文档使用的版本较旧，使用新版本部署的时候出现种种问题，所以此处重新写部署文档。  
 ## 1. 版本描述
 - PaaS版本：CPaaS v1.18.20.13.p03.tar.gz  
-ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/            
+ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/CPaaS_offline_v1.18.20.13.p03_2525154_1            
 - otcp&ume版本：otcp-v1.18.30.06.p01  
 ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/otcp&ume/otcp-v1.18.30.06.p01.tar.gz
-- oki-tools版本：oki-tools-v1.18.30.06.p02  
-ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/oki-tools/oki-tools-v1.18.30.06.p02.tar.gz
+- oki-tools版本：oki-tools-v1.18.30.06.p03  
+ftp://10.86.96.6/a_个人使用路径__网管个人使用/qzp/paasdata/oki-tools/oki-tools-v1.18.30.06.p03.tar.gz
 
 ## 2. PaaS平台搭建
 ### 2.1 描述
@@ -94,10 +94,25 @@ PaaS平台最终搭建OpenPalette。OpenPalette是公司基于Kubernetes搭建�
 5. 修改tenant.conf中的租户ID为“umebn”
     > 注:这里如果部修改也无妨，但是umebn更清除体现为集成ume的otcp  
 
-### 3.5 禁用gbase
+### 3.5  配置redis
+1.  在oki-tools版本为v1.18.30.06.p03的情况下
+2.  修改配置文件oki-tools/config/install-commonservice.conf
+3.  修改redis-choose中的default参数为commsrv_inner_redis_single_bp
+4.  为redis的实力添加密码，使用db10$ZTE，首先执行```./oki-cli encrypt db10\$ZTE```得到加密后的密码，$,|,\\三个符号需要转意
+5.  修改配置
+    ```
+    vi /home/ubuntu/paasdata/oki-tools/config/commonservice-instance-config.xml
+    vi /home/ubuntu/paasdata/otcp/OES_Framework_GREF_SM/commonservice-instance-config.xml
+    ```
+    修改配置文件中
+    ```
+    <instance name="zenap_redis">为<instance name="zenap_redis" password="JhEIICmq97Xv1RvXUvbeRg==">
+    ```                                         
+
+### 3.6 禁用gbase
 1. 在/home/ubuntu/paasdata/oki-tools/tools/bin目录下执行```chmod a+x oki-cli```
 2. 禁用gbase，执行```./oki-cli component set --gbase=false```
 
-### 3.6 安装otcp
+### 3.7 安装otcp
 1. 执行```./oki-cli install -m all -t otcp```进行安装，部署成功控制台的日志可以参考[部署otcp&ume成功日志](../log/deploy_otcp_ume.md)  
     > 注:可以使用```./oki-cli install -m step -t otcp```分步的安装，这样可以更清除的看到部署的步骤
