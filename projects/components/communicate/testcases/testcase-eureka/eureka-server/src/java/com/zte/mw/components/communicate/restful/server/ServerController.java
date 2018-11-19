@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zte.mw.components.communicate.restful.Hello;
 import com.zte.mw.components.communicate.restful.ShrankRestfulAddress;
 import com.zte.mw.components.communicate.smartlink.Server;
 import com.zte.mw.components.communicate.smartlink.model.MsgService;
@@ -28,7 +29,13 @@ public class ServerController implements MsgService<RegisterMsg, RegisterRespons
 
     @RequestMapping("/on")
     @Override
-    public RegisterResponse on(@RequestParam final RegisterMsg msg) {
+    public RegisterResponse on(@RequestParam("msg") final RegisterMsg msg) {
         return server.on(msg);
+    }
+
+    @RequestMapping("/hello")
+    public Hello test(@RequestParam("name") String name) {
+        System.out.println("hello " + name);
+        return new Hello("Hello " + name);
     }
 }

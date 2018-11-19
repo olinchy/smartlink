@@ -65,3 +65,32 @@ systemctl restart kube-controller-manager.service
 systemctl restart kube-scheduler.service
 systemctl restart kubelet.service
 systemctl restart kube-proxy
+
+
+
+
+
+
+
+
+In JAX-RS The following annotations to extract the input values sent by the client.
+
+@PathParam
+@QueryParam
+@MatrixParam
+@FormParam
+@PathParam URL Syntax
+
+http://localhost:7001//rest/customers/100/Java4s
+
+@QueryParam URL Syntax
+
+http://localhost:7001/…/rest/customers?custNo=100&custName=Java4s
+
+@MatrixParam URL Syntax
+
+http://localhost:7001/…/rest/customers;custNo=100;custName=Java4s
+
+@FormParam URL Syntax
+
+If we have a HTML form having two input fields and submit button. Lets client enter those details and submit to the RESTful web service. Then the rest service will extract those details by using this @FormParam annotation.
