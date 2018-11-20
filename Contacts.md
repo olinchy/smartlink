@@ -54,6 +54,7 @@ PaaS平台部署
 - 周璇 (PM)
 - 陈小云 成研 (PM检测点)
 - 刘海瑞 (FM)
+- 张辉 (LinkLcm)
 
 ##### Integrate Tester
 - **张洪军** 00075157    
