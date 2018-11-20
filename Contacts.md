@@ -50,6 +50,10 @@ PaaS平台部署
 ##### maintainer 
 - 蒋书轶 10045466 (PORTAL)
 - 孟彬 10065029 (EM)
+- 史长城 (TOPO)
+- 周璇 (PM)
+- 陈小云 成研 (PM检测点)
+- 刘海瑞 (FM)
 
 ##### Integrate Tester
 - **张洪军** 00075157    
