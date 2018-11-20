@@ -3,7 +3,7 @@
     1. Icon
 
     承载未自定义，使用默认图标
-    平台功能接口wiki：
+    平台功能接口wiki：[https://wiki.zte.com.cn/pages/viewpage.action?pageId=220375016] (https://wiki.zte.com.cn/pages/viewpage.action?pageId=220375016)
     1. Status Icon
     1. tooltips
     1. menus
