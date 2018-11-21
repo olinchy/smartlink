@@ -19,7 +19,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import com.zte.mw.components.communicate.restful.Hello;
 import com.zte.mw.components.tools.environment.TestBuilder;
 
-public class TestSendingJersey {
+public class TestSendingJersey_hello {
     public static void main(String[] args) throws Exception {
         TestBuilder.setUp();
         ClientConfig config = new ClientConfig();

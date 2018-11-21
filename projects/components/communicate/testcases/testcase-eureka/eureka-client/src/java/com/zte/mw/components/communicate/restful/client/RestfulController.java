@@ -46,6 +46,8 @@ public class RestfulController implements MsgService<DelNodeMsg, Response> {
         }
     });
 
+
+
     private void register(final String name, final MsgService service) {
         services.put(name, service);
     }
