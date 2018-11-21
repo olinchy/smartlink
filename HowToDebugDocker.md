@@ -1,8 +1,13 @@
 1. 登录环境
+ 
   ssh ubuntu@10.86.110.251 密码：cloud
+
   $su   进入root模式
+  
   $pdm-cli node list 查看当前节点信息
+  
   $docker ps -a 查看各容器运行情况
+  
 1. 打开容器的调试端口
   $docker exec -it   容器id /bin/
   找到run.sh，并修改，把调试端口打开
@@ -22,4 +27,3 @@
   在Host List里点击Add Host,IP填写Node List里看到的服务节点的ip，这里的ip是刚刚在Nodes List里看到的，Port是在容器里打开的调试端口
   ![Add Host](diagrams/How2Debug/AddHost.png)
 1. Idea的远程调试端口填写Service Register里配置的对外注册的调试端口即可
-
