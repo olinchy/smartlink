@@ -22,5 +22,14 @@
 - 添加服务实例
    - 在Host List里点击Add Host,IP填写Node List里看到的服务节点的ip，这里的ip是刚刚在Nodes List里看到的，Port是在容器里打开的调试端口
       ![Add Host](diagrams/How2Debug/AddHost.png)
+      > 注：这里的端口是打开的调试端口,在run.sh中配置的,不是提供服务的端口,否则会出现shakehand failed.
 
 #### Idea的远程调试端口填写Service Register里配置的对外注册的调试端口即可
+
+#### 如果出现打开调试端口后，容器回自动stop并run一个新的容器的情况  
+这种情况是因为默认的jvm为9,但打开调试端口后,启动非常缓慢,而Zenap有超时重启的机制。如melcm的容器就会出现这种问题  
+大约重启的时间是7-8min  
+解决办法是更换jvm,在容器内的run.sh的第一行添加
+```
+JVM_TYPE=openjdk
+```
