@@ -1,4 +1,7 @@
 平台功能接口wiki：[https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871](https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871)
+承载调用该接口代码
+umebn\support\nfmgmtui\meMgmt-init\src\main\assembly\resource\conf\function.json
+umebn\support\nfmgmtui\meMgmt-init\src\main\assembly\resource\conf\mapping.json
 1. NE
    1. Icon
         承载未自定义，使用默认图标
