@@ -22,4 +22,5 @@
 - 添加服务实例
    - 在Host List里点击Add Host,IP填写Node List里看到的服务节点的ip，这里的ip是刚刚在Nodes List里看到的，Port是在容器里打开的调试端口
       ![Add Host](diagrams/How2Debug/AddHost.png)
+
 #### Idea的远程调试端口填写Service Register里配置的对外注册的调试端口即可
