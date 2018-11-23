@@ -22,14 +22,14 @@
 
 ###### infrastructure 
 0. smart link based communication architecture
-
+0. [HMF](references/hmf.md) provide access to legacy EMS
 
 ###### ME-LCM
 
 0. sU31-EM
  - inherit from BN
  - register device series and device types of Microwave
- <img src="diagrams/component_ume_em.png" width="800">
+ <img src="diagrams/component_hmf.png" width="800">
   
 0. south oriented service
 
