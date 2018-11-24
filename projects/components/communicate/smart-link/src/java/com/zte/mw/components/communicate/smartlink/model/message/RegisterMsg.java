@@ -14,19 +14,19 @@ import com.zte.mw.components.communicate.smartlink.model.Request;
 
 public class RegisterMsg implements Request<RegisterResponse> {
     public RegisterMsg(
-            final AddressBook addressBook, final Address message) {
+            final AddressBook addressBook, final Address clientAddress) {
         this.addressBook = addressBook;
-        this.message = message;
+        this.clientAddress = clientAddress;
     }
 
     private AddressBook addressBook;
-    private Address message;
+    private Address clientAddress;
 
-    public Address clientAddress() {
-        return message;
+    public Address getClientAddress() {
+        return clientAddress;
     }
 
-    public AddressBook addressBook() {
+    public AddressBook getAddressBook() {
         return addressBook;
     }
 

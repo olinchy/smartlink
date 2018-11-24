@@ -27,22 +27,14 @@ import com.zte.mw.components.communicate.smartlink.model.message.DelNodeMsg;
 import static com.zte.mw.components.tools.infrastructure.LoggerLocator.logger;
 
 @RestController
-public class RestfulController implements MsgService<DelNodeMsg, Response> {
+public class ClientRestfulController implements MsgService<DelNodeMsg, Response> {
     private ConcurrentHashMap<String, MsgService> services = new ConcurrentHashMap<>();
-    private Client client = new Client(new ShrankRestfulAddress() {
-        {
-            this.url = "";
-        }
-
+    private Client client = new Client(new ShrankRestfulAddress("") {
         @Override
         public Address publish(
                 final SmartLinkNode smartLinkNode) {
             register(smartLinkNode.name(), smartLinkNode.service());
-            return new ShrankRestfulAddress() {
-                {
-                    this.url = "" + "/" + smartLinkNode.name();
-                }
-            };
+            return new ShrankRestfulAddress("" + "/" + smartLinkNode.name());
         }
     });
 
@@ -62,7 +54,7 @@ public class RestfulController implements MsgService<DelNodeMsg, Response> {
     @RequestMapping("/onMsg")
     public Response onMsg(@RequestParam RequestWrapper request) {
         return services.getOrDefault(request.name(), (MsgService) msg -> {
-            logger(RestfulController.class).warn("cannot found service of " + request.name());
+            logger(ClientRestfulController.class).warn("cannot found service of " + request.name());
             return new Failure(new ServiceNotFoundException("cannot found service of " + request.name()));
         }).on(request.content());
     }

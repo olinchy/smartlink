@@ -54,11 +54,11 @@ public class Server implements MsgService<RegisterMsg, RegisterResponse> {
     private RegisterResponse register(final RegisterMsg message) {
         final ArrayList<AddressBook> list = new ArrayList<>();
         clients.keySet().stream().filter(
-                addressSyncMsgAddress -> !addressSyncMsgAddress.equals(message.clientAddress())).forEach(
+                addressSyncMsgAddress -> !addressSyncMsgAddress.equals(message.getClientAddress())).forEach(
                 client -> list.add(clients.get(client)));
 
-        clients.put(message.clientAddress(), message.addressBook());
-        fusing.push(message.clientAddress());
+        clients.put(message.getClientAddress(), message.getAddressBook());
+        fusing.push(message.getClientAddress());
 
         return new RegisterResponse(list);
     }

@@ -45,7 +45,7 @@ public class RestfulSmartLinkClient {
                 WebTarget target = client.target(discoveryClient.getInstances("smartlink-eureka-server").get(
                         0).getUri());
                 try {
-                    return target.path("on").queryParam("name", JsonUtil.toString(msg)).request().accept(
+                    return target.path("on").queryParam("msg", JsonUtil.toString(msg)).request().accept(
                             MediaType.APPLICATION_JSON).get(msg.getRespClass());
                 } catch (Exception e) {
                     e.printStackTrace();

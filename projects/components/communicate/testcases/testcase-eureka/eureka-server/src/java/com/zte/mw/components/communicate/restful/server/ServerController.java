@@ -21,7 +21,7 @@ import com.zte.mw.components.communicate.smartlink.model.message.RegisterRespons
 
 @RestController
 public class ServerController implements MsgService<RegisterMsg, RegisterResponse> {
-    private Server server = new Server(new ShrankRestfulAddress() {
+    private Server server = new Server(new ShrankRestfulAddress("" + "/" + smartLinkNode.name()) {
         {
             url = "";
         }

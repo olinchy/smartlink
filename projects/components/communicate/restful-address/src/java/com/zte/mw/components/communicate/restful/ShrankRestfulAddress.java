@@ -8,13 +8,12 @@
 
 package com.zte.mw.components.communicate.restful;
 
-import com.zte.mw.components.communicate.restful.RestfulAddress;
 import com.zte.mw.components.communicate.smartlink.model.Address;
 import com.zte.mw.components.communicate.smartlink.model.Service;
 import com.zte.mw.components.communicate.smartlink.model.SmartLinkNode;
 
 public class ShrankRestfulAddress extends RestfulAddress {
-    public ShrankRestfulAddress() {}
+    public ShrankRestfulAddress(String url) {}
 
     @Override
     public void bind(final Service service) {

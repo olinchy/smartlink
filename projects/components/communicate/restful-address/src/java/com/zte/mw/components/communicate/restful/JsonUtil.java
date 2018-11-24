@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -26,6 +28,7 @@ public class JsonUtil {
         mapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.configure(READ_ENUMS_USING_TO_STRING, true);
         mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
 
     public static <T> T toObject(String content, Class<T> clazz) {

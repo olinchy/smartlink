@@ -10,6 +10,7 @@ package com.zte.mw.components.communicate.restful;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.zte.mw.components.communicate.smartlink.model.Address;
@@ -18,6 +19,7 @@ import com.zte.mw.components.communicate.smartlink.model.Response;
 
 public abstract class RestfulAddress<T extends Request<R>, R extends Response> implements Address<T, R>, Serializable {
     private static Client client = Client.create();
+    @JsonProperty
     protected String url;
 
     @Override
