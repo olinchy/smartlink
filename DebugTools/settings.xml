@@ -161,7 +161,7 @@ under the License.
       <id>nexus</id>
       <mirrorOf>*</mirrorOf>
       <name>nexus</name>
-      <url>http://10.8.9.81:8081/repository/maven-public/</url>
+      <url>http://10.8.9.87:8081/repository/maven-public/</url>
     </mirror>
   </mirrors>
 
@@ -259,7 +259,7 @@ under the License.
         <repository>
           <id>central</id>
           <name>maven repository</name>
-          <url>http://10.8.9.81:8081/repository/maven-public/</url>
+          <url>http://10.8.9.87:8081/repository/maven-public/</url>
           <layout>default</layout>
 
           <releases>
@@ -276,7 +276,7 @@ under the License.
         <pluginRepository>
           <id>central</id>
           <name>maven repository</name>
-          <url>http://10.8.9.81:8081/repository/maven-public/</url>
+          <url>http://10.8.9.87:8081/repository/maven-public/</url>
           <layout>default</layout>
 
           <releases>
