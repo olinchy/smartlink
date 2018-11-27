@@ -16,3 +16,4 @@ Restlet-Client-chrome.crx
 注意：以上方法均需要  请求rest接口时添加csrftoken的请求参数。
 
 实际操作时，只需要安步骤一操作即可在msb上使用rest接口，例如访问网址https://10.86.110.251/iui/microservices/iui-route/routeDetail.html?publishport=28002&routetype=api&routename=umebn-inv-basic&routeversion=v1
+postman 可以使用非安全通道http://10.86.110.251：28003
