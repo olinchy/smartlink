@@ -6,7 +6,7 @@
 
 一、对paas平台上后端微服务进行配置
      把需要去掉鉴权的微服务的conf目录下加上auth-config.prop文件，重新部署该微服务。原理就是屏蔽该类消息的鉴权，允许调用该微服务的接口。
-     auth-config.properties
+     [auth-config.properties](auth-config.properties)
 
 二、使用浏览器插件调试
     此种方法不需要添加去鉴权的配置文件，需要在浏览器上装上测试rest接口的插件。
