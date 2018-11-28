@@ -13,7 +13,7 @@
 0. 找到容器的id
 ` docker ps -a `
 0. 进入容器的sh
-` docker exex -it containerid /bin/sh `
+` docker exec -it containerid /bin/sh `
 0. 找出需要拷贝出的文件的路径
 0. 把文件拷贝到本地 ` docker cp containerid：filepath  localpath `
 
