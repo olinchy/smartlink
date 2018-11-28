@@ -1,5 +1,4 @@
-平台功能接口wiki：[https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871](https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871)
-
+#### Function List
 1. NE
 
    Display:
@@ -29,6 +28,10 @@
       规范：https://wiki.zte.com.cn/pages/viewpage.action?pageId=370216338
       https://wiki.zte.com.cn/pages/viewpage.action?pageId=311167338
 
+
+#### Develop Tips
+
+平台功能接口wiki：[https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871](https://wiki.zte.com.cn/pages/viewpage.action?pageId=184299871)
 
 承载的图标和右键菜单在meMgMt_init里，主要配置文件为
 umebn\support\nfmgmtui\meMgmt-init\src\main\assembly\resource\conf\function.json
