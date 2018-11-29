@@ -14,14 +14,14 @@
 
 #### 将调试端口发布到服务路由
 - 同上，找到相应的服务，可以看到最下面的Nodes List信息，记住其中的ip, 如下:
-   ![node list](diagrams/How2Debug/NodeList.png)
+   ![node list](../diagrams/How2Debug/NodeList.png)
 - 登录https://10.86.110.251/msb  ->Service Register,如下填写
    - 其中Service Name任意填写，publish port即为对外注册的调试端口，可以在paas controller上找一个未被占用的端口，
    - 注意取值范围28001-29800,否则即使端口在监听，外部也连不进去
-      ![service register](diagrams/How2Debug/ServiceRegister.png)
+      ![service register](../diagrams/How2Debug/ServiceRegister.png)
 - 添加服务实例
    - 在Host List里点击Add Host,IP填写Node List里看到的服务节点的ip，这里的ip是刚刚在Nodes List里看到的，Port是在容器里打开的调试端口
-      ![Add Host](diagrams/How2Debug/AddHost.png)
+      ![Add Host](../diagrams/How2Debug/AddHost.png)
       > 注：这里的端口是打开的调试端口,在run.sh中配置的,不是提供服务的端口,否则会出现shakehand failed.
 
 #### Idea的远程调试端口填写Service Register里配置的对外注册的调试端口即可
