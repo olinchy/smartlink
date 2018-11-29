@@ -32,7 +32,7 @@
 
 ###### infrastructure
 | Features | Tasks | Plan | Progress | Description  | Blockage |
-| :--------: | :--------: | :-----------: | :--------: | :--------: |:--------: |
+| :-------- | :--------| :----------- | :-------- | :-------- |:-------- |
 | SmartLink | Design | *it*: 169 ![](https://placehold.it/15/008000/000000?text=+) | finished![](https://placehold.it/15/008000/000000?text=+) | designs | |
 | | Framework coding | *it*: 169 ![](https://placehold.it/15/008000/000000?text=+) | finished![](https://placehold.it/15/008000/000000?text=+) | communication concept and documents | |
 | | RMI-Based Communication | *it*: 169 ![](https://placehold.it/15/008000/000000?text=+) | finished![](https://placehold.it/15/008000/000000?text=+) |  | |
