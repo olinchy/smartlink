@@ -29,7 +29,7 @@
 0. sU31-EM
  - inherit from BN
  - register device series and device types of Microwave
- <img src="diagrams/component_hmf.png" width="800">
+ <img src="diagrams/component_hmf.png" width="400">
   
 0. south oriented service
 

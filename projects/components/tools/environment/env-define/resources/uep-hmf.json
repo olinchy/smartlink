@@ -1,0 +1,1664 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "api"
+  },
+  "basePath": "/api/hmf-uep4x/v1",
+  "tags": [
+    {
+      "name": "hmf-uep4x"
+    },
+    {
+      "name": "north"
+    },
+    {
+      "name": "module_inside"
+    },
+    {
+      "name": "module_outside"
+    },
+    {
+      "name": "hmf-sm"
+    },
+    {
+      "name": "heapmc"
+    },
+    {
+      "name": "threadmc"
+    },
+    {
+      "name": "thirdpartylib"
+    }
+  ],
+  "paths": {
+    "/local/agents/moc/{moc}": {
+      "get": {
+        "tags": [
+          "module_inside"
+        ],
+        "summary": "Query LocalAgents",
+        "description": "",
+        "operationId": "queryLocalAgentWithMoc",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "moc",
+            "in": "path",
+            "description": "<b><font color=\"red\">for example</font></b>:<br>{\"moc\": common.em}<br>根据moc类型查询代理<br>不会为null，可能为空列表",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LocalAgents"
+            }
+          }
+        }
+      }
+    },
+    "/agent/sync/notify": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "Notify SubAdaptor that HMF will start syncing agents",
+        "description": "",
+        "operationId": "syncNotify",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type:start,end",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "notifyId",
+            "in": "query",
+            "description": "notifyId:UUID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "moc",
+            "in": "query",
+            "description": "moc:common.em,bearer.em",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/agent/adapter": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "execute subAdaptor cmd",
+        "description": "",
+        "operationId": "executeAdaptor",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Execute Adaptor Entity",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdaptorRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SubAdaptorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/local/adaptors/moc/{moc}": {
+      "get": {
+        "tags": [
+          "module_inside"
+        ],
+        "summary": "Query LocalAdaptors",
+        "description": "",
+        "operationId": "queryLocalAdaptorWithMoc",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "moc",
+            "in": "path",
+            "description": "<b><font color=\"red\">for example</font></b>:<br>{\"moc\": common.em}<br>根据moc类型查询代理<br>不会为null，可能为空列表",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LocalAdaptors"
+            }
+          }
+        }
+      }
+    },
+    "/embUrl": {
+      "get": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "get embUrl cmd",
+        "description": "",
+        "operationId": "getEmbUrl",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ppuName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pmuName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pmuFunc",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EMBUrl"
+            }
+          }
+        }
+      }
+    },
+    "/netIp": {
+      "get": {
+        "tags": [
+          "module_inside"
+        ],
+        "summary": "get interface net ip",
+        "description": "",
+        "operationId": "get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "interfaceName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/unregister": {
+      "post": {
+        "tags": [
+          "module_outside"
+        ],
+        "summary": "execute unregister SubAdaptor cmd",
+        "description": "",
+        "operationId": "unregister",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "unregister subAdaptors execute conditions",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UepSubAdaptorBean"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EmsOperateResponse"
+            }
+          }
+        }
+      }
+    },
+    "/agent/adaptor/pa/path": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "fetch subAdaptor pa path cmd",
+        "description": "",
+        "operationId": "paPath",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "PAPathRequest:moc,emsId,scope",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PAPathRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PAPathResponse"
+            }
+          }
+        }
+      }
+    },
+    "/agent/adaptor/pa/message": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "execute subAdaptor pa message handle cmd",
+        "description": "",
+        "operationId": "paMessage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "PAPathRequest:moc,emsId,scope",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PARequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PAResponse"
+            }
+          }
+        }
+      }
+    },
+    "/agent/adaptor/heartbeat": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "execute subAdaptor heartbeat cmd",
+        "description": "",
+        "operationId": "heartBeat",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "execute heartBeat",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HmfHeartBeats"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/HmfHeartBeats"
+            }
+          }
+        }
+      }
+    },
+    "/embUrlAndPath": {
+      "get": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "get embUrlAndPath cmd",
+        "description": "",
+        "operationId": "getEmbUrlAndPath",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ppuName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pmuName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pmuFunc",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EMBUrlAndPath"
+            }
+          }
+        }
+      }
+    },
+    "/moc/{moc}": {
+      "get": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "Query Agents",
+        "description": "",
+        "operationId": "queryWithMoc",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "moc",
+            "in": "path",
+            "description": "<b><font color=\"red\">for example</font></b>:<br>{\"moc\": common.em}<br>根据moc类型查询代理<br>不会为null，可能为空列表",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Agents"
+            }
+          }
+        }
+      }
+    },
+    "/agent/sync/status": {
+      "post": {
+        "tags": [
+          "hmf-uep4x",
+          "north"
+        ],
+        "summary": "Query Agents",
+        "description": "",
+        "operationId": "syncStatus",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<b><font color=\"red\">检测代理状态</font></b>",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AgentStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AgentStatusResponse"
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "module_outside"
+        ],
+        "summary": "execute register SubAdaptor cmd",
+        "description": "",
+        "operationId": "register",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "register subAdaptors execute conditions",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UepSubAdaptorBean"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EmsOperateResponse"
+            }
+          }
+        }
+      }
+    },
+    "/sm/secretkey/destroy": {
+      "put": {
+        "tags": [
+          "hmf-sm",
+          "module_outside"
+        ],
+        "summary": "called by Secret Key Center for destroying secret key",
+        "description": "",
+        "operationId": "updateAgentAttrOnline",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SecretDestroyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/heapmc/dumpHeap": {
+      "post": {
+        "tags": [
+          "heapmc"
+        ],
+        "summary": "dump jvm heap",
+        "description": "",
+        "operationId": "dumpHeap",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/DumpFileParamBean"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/threadmc/dumpAllThreadTolog": {
+      "post": {
+        "tags": [
+          "threadmc"
+        ],
+        "summary": "dump all thread",
+        "description": "",
+        "operationId": "dumpAllThreadTolog",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/thirdpartylib/infos": {
+      "get": {
+        "tags": [
+          "thirdpartylib"
+        ],
+        "summary": "query 3rd lib infos",
+        "description": "query 3rd lib infos",
+        "operationId": "getAllLibInfos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArtifactInfo"
+            }
+          },
+          "500": {
+            "description": "inner error"
+          },
+          "404": {
+            "description": "query 3rd lib infos not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Ems": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "hmfHandlerIpPort": {
+          "type": "string"
+        },
+        "emsBaseBean": {
+          "$ref": "#/definitions/EmsBaseBean"
+        },
+        "emsLinkBean": {
+          "$ref": "#/definitions/EmsLinkBean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "primaryCmdLock": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "versionChanged": {
+          "type": "boolean"
+        },
+        "firstActivate": {
+          "type": "boolean"
+        },
+        "keyFieldChanged": {
+          "type": "boolean"
+        },
+        "bkStartCounter": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "inBkStart": {
+          "type": "boolean"
+        },
+        "inBkStartWait": {
+          "type": "boolean"
+        },
+        "infiniteBkStart": {
+          "type": "boolean"
+        },
+        "inModelUpgrade": {
+          "type": "boolean"
+        },
+        "subAdaptors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubAdaptorBean"
+          }
+        },
+        "linkBrokenCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "linkBroken": {
+          "type": "boolean"
+        },
+        "emsJvmLable": {
+          "type": "string"
+        },
+        "emsLinkEmbSequence": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "runningState": {
+          "type": "string"
+        }
+      }
+    },
+    "EmsBaseBean": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nbiId": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "vendorName": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "administrativeState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "connectionState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "operationalState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "managedPort": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "modelType": {
+          "type": "string"
+        },
+        "ftpuser": {
+          "type": "string"
+        },
+        "ftppasswd": {
+          "type": "string"
+        },
+        "ftpport": {
+          "type": "string"
+        },
+        "ftptype": {
+          "type": "string"
+        },
+        "secretId": {
+          "type": "string"
+        },
+        "propSecretId": {
+          "type": "string"
+        }
+      }
+    },
+    "EmsLinkBean": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "sourcePortId": {
+          "type": "string"
+        },
+        "sourcePortMoc": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "destPortId": {
+          "type": "string"
+        },
+        "destPortMoc": {
+          "type": "string"
+        },
+        "destId": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "administrativeState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "connectionState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "operationalState": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "LocalAgents": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ems"
+          }
+        }
+      }
+    },
+    "OperateBtn": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "actionType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestPath": {
+          "type": "string"
+        },
+        "redirectPath": {
+          "type": "string"
+        },
+        "ms": {
+          "type": "string"
+        },
+        "msversion": {
+          "type": "string"
+        },
+        "dangerous": {
+          "type": "boolean"
+        },
+        "dangerousTip": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "OperateButtons": {
+      "type": "object",
+      "properties": {
+        "moc": {
+          "type": "string"
+        },
+        "uiType": {
+          "type": "string"
+        },
+        "operateBtns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OperateBtn"
+          }
+        }
+      }
+    },
+    "SubAdaptorBean": {
+      "type": "object",
+      "properties": {
+        "ms": {
+          "type": "string"
+        },
+        "msversion": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "mocTitle": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "i18n": {
+          "type": "string"
+        },
+        "heartBeatPath": {
+          "type": "string"
+        },
+        "businessAdaptorPath": {
+          "type": "string"
+        },
+        "uiList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UI"
+          }
+        },
+        "modelType": {
+          "type": "string"
+        },
+        "needRegisterPA": {
+          "type": "boolean"
+        },
+        "operateButtons": {
+          "$ref": "#/definitions/OperateButtons"
+        },
+        "detailPath": {
+          "type": "string"
+        }
+      }
+    },
+    "UI": {
+      "type": "object",
+      "properties": {
+        "uiType": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "scopeDisplayName": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "moc": {
+          "type": "string"
+        },
+        "uiConfigGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UIGroup"
+          }
+        },
+        "optional": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "modelType": {
+          "type": "string"
+        }
+      }
+    },
+    "UIGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "uiItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UIItem"
+          }
+        }
+      }
+    },
+    "UIItem": {
+      "type": "object",
+      "properties": {
+        "relatedSelect": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "value": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string"
+        },
+        "displayType": {
+          "type": "string"
+        },
+        "regex": {
+          "type": "string"
+        },
+        "regexes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validateInfo": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "max": {
+          "type": "string"
+        },
+        "min": {
+          "type": "string"
+        },
+        "valueMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "description": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "editable": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SubAdaptorResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "content": {
+          "type": "string"
+        },
+        "nbiId": {
+          "type": "string"
+        },
+        "nbiName": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "ftpuser": {
+          "type": "string"
+        },
+        "ftppasswd": {
+          "type": "string"
+        },
+        "ftpport": {
+          "type": "string"
+        },
+        "ftptype": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "timezonedst": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "string"
+        },
+        "secretId": {
+          "type": "string"
+        },
+        "propSecretId": {
+          "type": "string"
+        }
+      }
+    },
+    "AdaptorRequest": {
+      "type": "object",
+      "properties": {
+        "imessage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mo": {
+          "$ref": "#/definitions/EmsBaseBean"
+        }
+      }
+    },
+    "LocalAdaptors": {
+      "type": "object",
+      "properties": {
+        "adaptors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UepSubAdaptorBean"
+          }
+        }
+      }
+    },
+    "UepOperateBtn": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "actionType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestPath": {
+          "type": "string"
+        },
+        "redirectPath": {
+          "type": "string"
+        },
+        "dangerous": {
+          "type": "boolean"
+        },
+        "dangerousTip": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UepOperateButtons": {
+      "type": "object",
+      "properties": {
+        "moc": {
+          "type": "string"
+        },
+        "uiType": {
+          "type": "string"
+        },
+        "operateBtns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UepOperateBtn"
+          }
+        }
+      }
+    },
+    "UepSubAdaptorBean": {
+      "type": "object",
+      "properties": {
+        "ms": {
+          "type": "string"
+        },
+        "msversion": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "mocTitle": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "i18n": {
+          "type": "string"
+        },
+        "heartBeatPath": {
+          "type": "string"
+        },
+        "businessAdaptorPath": {
+          "type": "string"
+        },
+        "uiList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UI"
+          }
+        },
+        "modelType": {
+          "type": "string"
+        },
+        "needRegisterPA": {
+          "type": "boolean"
+        },
+        "operateButtons": {
+          "$ref": "#/definitions/UepOperateButtons"
+        }
+      }
+    },
+    "EMBUrl": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ipaddress": {
+          "type": "string"
+        }
+      }
+    },
+    "EmsOperateResponse": {
+      "type": "object",
+      "properties": {
+        "emsBaseInfo": {
+          "$ref": "#/definitions/EmsBaseBean"
+        },
+        "emsLink": {
+          "$ref": "#/definitions/EmsLinkBean"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "PAPathResponse": {
+      "type": "object",
+      "properties": {
+        "ms": {
+          "type": "string"
+        },
+        "msversion": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        }
+      }
+    },
+    "PAPathRequest": {
+      "type": "object",
+      "properties": {
+        "emsId": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
+    },
+    "PAResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "PARequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        }
+      }
+    },
+    "HmfHeartBeat": {
+      "type": "object",
+      "properties": {
+        "emsJvmLabChg": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "checkResult": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "internal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "emsJvmLable": {
+          "type": "string"
+        },
+        "isEmsJvmLabChg": {
+          "type": "boolean"
+        },
+        "emsLinkEmbSequence": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      }
+    },
+    "HmfHeartBeats": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "content": {
+          "type": "string"
+        },
+        "heartBeats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HmfHeartBeat"
+          }
+        }
+      }
+    },
+    "EMBUrlAndPath": {
+      "type": "object",
+      "properties": {
+        "embUrl": {
+          "$ref": "#/definitions/EMBUrl"
+        },
+        "destPath": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nbiId": {
+          "type": "string"
+        },
+        "moc": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "vendorName": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "administrativeState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "connectionState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "operationalState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "managedPort": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "modelType": {
+          "type": "string"
+        },
+        "ftpuser": {
+          "type": "string"
+        },
+        "ftppasswd": {
+          "type": "string"
+        },
+        "ftpport": {
+          "type": "string"
+        },
+        "ftptype": {
+          "type": "string"
+        },
+        "secretId": {
+          "type": "string"
+        },
+        "propSecretId": {
+          "type": "string"
+        }
+      }
+    },
+    "Agents": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Agent"
+          }
+        }
+      }
+    },
+    "AgentStatusDetectResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "AgentStatusResponse": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentStatusDetectResponse"
+          }
+        }
+      }
+    },
+    "AgentStatusDetectRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "AgentStatusRequest": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentStatusDetectRequest"
+          }
+        }
+      }
+    },
+    "SecretDestroyRequest": {
+      "type": "object",
+      "properties": {
+        "secretKeyType": {
+          "type": "string"
+        },
+        "secretKeyId": {
+          "type": "string"
+        }
+      }
+    },
+    "DumpFileParamBean": {
+      "type": "object",
+      "properties": {
+        "outFilePath": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ArtifactInfo": {
+      "type": "object",
+      "properties": {
+        "GroupId": {
+          "type": "string"
+        },
+        "ArtifactId": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Classifier": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string"
+        },
+        "Scope": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
