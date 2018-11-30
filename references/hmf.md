@@ -27,3 +27,10 @@
 ![configurations in pluginCenter](../diagrams/hmf_plugincenter_configuration.png)
 
 ###### add U31 as SU31 to UME
+```
+https://X.X.X.X:28002/spt-portal-omc/framework/default.html
+Topo---Hierarchical Access --- NEW --- sU31
+
+ps: DC configurations can be ignorable...for now
+```
+![](../diagrams/add_access_su31.png)
